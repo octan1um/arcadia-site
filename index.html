@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Arcadia — hold an app, get its world</title>
-<meta name="description" content="Arcadia is an Android home screen launcher. Hold any icon for its notifications, shortcuts and a live widget. Fast, private, and with no internet permission at all.">
+<meta name="description" content="A home screen launcher where every icon opens into its own panel: notifications, shortcuts and a live widget. Smart-home scenes on your home screen. Nothing leaves your phone.">
 <meta name="theme-color" content="#05070c">
-<meta property="og:title" content="Arcadia Launcher">
-<meta property="og:description" content="Hold an app, get its world. A fast, private Android home screen with no internet permission.">
+<meta property="og:title" content="Arcadia">
+<meta property="og:description" content="Hold an app, get its world. Smart-home scenes, live widgets and notifications, without opening anything.">
 <meta property="og:type" content="website">
 <link rel="icon" href="assets/icon.png">
 <link rel="stylesheet" href="style.css">
@@ -15,41 +15,34 @@
 <body>
 
 <div class="aurora" aria-hidden="true">
-  <span class="blob b1"></span>
-  <span class="blob b2"></span>
-  <span class="blob b3"></span>
-  <div class="grid-veil"></div>
-  <div class="noise"></div>
+  <span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span>
+  <div class="grid-veil"></div><div class="noise"></div>
 </div>
 
 <header class="nav">
-  <a class="brand" href="#top">
-    <img src="assets/icon.png" alt="" width="32" height="32">
-    <span>Arcadia</span>
-  </a>
+  <a class="brand" href="#top"><img src="assets/icon.png" alt="" width="32" height="32"><span>Arcadia</span></a>
   <nav>
-    <a href="#overlay">Overlay</a>
-    <a href="#blocks">App Blocks</a>
-    <a href="#features">Features</a>
-    <a href="#privacy">Privacy</a>
+    <a href="#panel">The panel</a>
+    <a href="#scenes">Scenes</a>
+    <a href="#widgets">Widgets</a>
+    <a href="#control">Control</a>
   </nav>
   <a class="btn tiny primary" href="#get">Get it</a>
 </header>
 
 <main id="top">
 
-  <!-- ─────────────── hero ─────────────── -->
   <section class="hero">
-    <p class="eyebrow reveal"><span class="dot"></span> Android home screen launcher</p>
+    <p class="eyebrow reveal"><span class="dot"></span> Home screen launcher</p>
     <h1 class="reveal delay-1">Hold an app.<br><em>Get its world.</em></h1>
     <p class="lede reveal delay-2">
-      Every icon opens into its own panel — notifications, shortcuts, a live widget —
-      without ever launching the app. Fast, quiet, and with no internet permission at all,
-      so it cannot phone home even if it wanted to.
+      Press and hold any icon and it opens into a panel of its own — the notifications it
+      sent you, the shortcuts it publishes, and one of its widgets running live. You get
+      what you came for without the app ever opening.
     </p>
     <div class="cta reveal delay-2">
       <a class="btn primary" href="#get">Get Arcadia</a>
-      <a class="btn ghost" href="#overlay">See it work</a>
+      <a class="btn ghost" href="#panel">See it</a>
     </div>
 
     <div class="hero-visual reveal delay-2" aria-hidden="true">
@@ -59,144 +52,187 @@
         <span></span><span></span><span></span><span></span><span></span><span></span>
         <span></span><span></span><span></span><span></span><span></span><span></span>
       </div>
-      <div class="pulse-ring"></div>
+      <div class="pulse-ring"></div><div class="pulse-ring r2"></div>
     </div>
-
-    <ul class="trust reveal delay-2">
-      <li><strong>0</strong><span>trackers</span></li>
-      <li><strong>0</strong><span>accounts</span></li>
-      <li><strong>0</strong><span>network permission</span></li>
-      <li><strong>~2&nbsp;MB</strong><span>download</span></li>
-    </ul>
   </section>
 
-  <!-- ─────────────── marquee ─────────────── -->
   <section class="strip" aria-label="At a glance">
     <div class="strip-inner">
-      <span>Long-press panels</span><i>◆</i><span>App Blocks</span><i>◆</i><span>Widgets in every icon</span><i>◆</i>
-      <span>Notification badges</span><i>◆</i><span>Folders</span><i>◆</i><span>Hidden apps</span><i>◆</i>
-      <span>Double-tap to lock</span><i>◆</i><span>Sunrise &amp; sunset</span><i>◆</i><span>Offline by design</span><i>◆</i>
-      <span>Long-press panels</span><i>◆</i><span>App Blocks</span><i>◆</i><span>Widgets in every icon</span><i>◆</i>
-      <span>Notification badges</span><i>◆</i><span>Folders</span><i>◆</i><span>Hidden apps</span><i>◆</i>
-      <span>Double-tap to lock</span><i>◆</i><span>Sunrise &amp; sunset</span><i>◆</i><span>Offline by design</span><i>◆</i>
+      <span>Panels</span><i>◆</i><span>Smart-home scenes</span><i>◆</i><span>Live widgets</span><i>◆</i>
+      <span>Stacked widgets</span><i>◆</i><span>Resize anything</span><i>◆</i><span>App Zero</span><i>◆</i>
+      <span>Game launcher</span><i>◆</i><span>Hide 94 apps</span><i>◆</i><span>Backup &amp; restore</span><i>◆</i>
+      <span>Panels</span><i>◆</i><span>Smart-home scenes</span><i>◆</i><span>Live widgets</span><i>◆</i>
+      <span>Stacked widgets</span><i>◆</i><span>Resize anything</span><i>◆</i><span>App Zero</span><i>◆</i>
+      <span>Game launcher</span><i>◆</i><span>Hide 94 apps</span><i>◆</i><span>Backup &amp; restore</span><i>◆</i>
     </div>
   </section>
 
-  <!-- ─────────────── the overlay ─────────────── -->
-  <section id="overlay" class="showcase">
+  <!-- the panel -->
+  <section id="panel" class="showcase">
     <header class="sec-head reveal">
-      <p class="eyebrow">The long-press panel</p>
-      <h2>One gesture, and the app comes to you.</h2>
+      <p class="eyebrow">The panel</p>
+      <h2>One press, and the app comes to you.</h2>
       <p class="lede">
-        Most launchers give you a shortcut menu. Arcadia gives you the app's whole surface —
-        and keeps it open for as long as your finger stays down.
+        Most launchers answer a long press with a short menu of shortcuts. Arcadia answers
+        with the app itself — and holds it open until you lift your finger.
       </p>
     </header>
 
     <div class="feature-stage reveal">
-      <figure class="stage-shot">
-        <img src="assets/shot-appblocks.png" alt="Arcadia's long-press panel for the Google Home app, showing eight smart-home shortcuts and an App info row">
-        <figcaption>Real panel, captured on a Galaxy Z Fold</figcaption>
+      <figure class="stage-shot glow">
+        <img src="assets/overlay-shortcuts.png" alt="A long-press panel listing eight smart-home shortcuts: Lights off, Office Lights, Kitchen Lights, Living Room Lights, Bedroom Lights, Moonlight, Doorbell and Garden Camera">
+        <figcaption>Eight smart-home scenes under one icon — the lights, the doorbell and the garden camera, none of them more than a press away.</figcaption>
       </figure>
       <ol class="stage-notes">
-        <li>
-          <span class="n">01</span>
-          <div><h3>Its notifications</h3><p>Everything the app has sent you, including what you have already swiped away, scrollable inside the panel.</p></div>
-        </li>
-        <li>
-          <span class="n">02</span>
-          <div><h3>Its real shortcuts</h3><p>The same deep links the app publishes to Android — tappable without letting go of the icon.</p></div>
-        </li>
-        <li>
-          <span class="n">03</span>
-          <div><h3>A live widget</h3><p>Any one widget the app offers, running inside the panel. Not a picture of one.</p></div>
-        </li>
-        <li>
-          <span class="n">04</span>
-          <div><h3>Two fingers, no fuss</h3><p>Keep the first finger down and scroll or tap with a second. The panel closes when you decide, not when Android decides.</p></div>
-        </li>
+        <li><span class="n">01</span><div>
+          <h3>The notifications it sent you</h3>
+          <p>Live ones and the ones you already swiped away, kept per app and scrollable inside the panel.</p></div></li>
+        <li><span class="n">02</span><div>
+          <h3>The shortcuts it publishes</h3>
+          <p>Whatever the app offers — a scene, a chat, a search — reachable without loading the app first.</p></div></li>
+        <li><span class="n">03</span><div>
+          <h3>One of its widgets, running</h3>
+          <p>Pick a widget per app and it runs inside the panel, updating as it would on the home screen.</p></div></li>
       </ol>
     </div>
   </section>
 
-  <!-- ─────────────── app blocks ─────────────── -->
-  <section id="blocks" class="blocks">
-    <div class="blocks-inner reveal">
-      <div class="blocks-copy">
+  <!-- scenes -->
+  <section id="scenes" class="split-section">
+    <div class="split-inner reveal">
+      <div class="split-copy">
         <p class="eyebrow">App Blocks</p>
-        <h2>Your automations,<br><em>one press away.</em></h2>
+        <h2>The whole house,<br><em>under one icon.</em></h2>
         <p class="lede">
-          Pull any app's automation shortcuts straight onto the home screen or into its panel.
-          Smart-home scenes, routines, quick actions — whatever the app exposes, Arcadia surfaces.
+          Name your smart-home routines once and Arcadia hangs them off the app's icon.
+          Turning everything off on your way out is a press and a tap, not four taps and a
+          loading screen.
         </p>
         <ul class="ticks">
-          <li>Kill every light in the house without opening Google Home</li>
-          <li>Check the doorbell or garden camera from a long-press</li>
-          <li>Rename anything, reorder it, drop it on the home screen as its own tile</li>
+          <li>Rename each scene to whatever you actually call it</li>
+          <li>Reorder them so the one you use at 11pm is first</li>
+          <li>Pull any of them out as its own tile on the home screen</li>
         </ul>
       </div>
-      <div class="blocks-demo" aria-hidden="true">
-        <div class="chip-grid">
-          <span class="chip"><i>◎</i>Lights off</span>
-          <span class="chip"><i>◎</i>Office Lights</span>
-          <span class="chip"><i>◎</i>Kitchen Lights</span>
-          <span class="chip"><i>◎</i>Living Room</span>
-          <span class="chip"><i>◎</i>Bedroom Lights</span>
-          <span class="chip"><i>◎</i>Moonlight</span>
-          <span class="chip"><i>▣</i>Doorbell</span>
-          <span class="chip"><i>▣</i>Garden Camera</span>
-        </div>
+      <figure class="split-media glow">
+        <img src="assets/app-blocks-editor.png" alt="The App Blocks editor listing eight named scenes, each with arrows to reorder and a button to place it on the home screen">
+        <figcaption>Naming and ordering the scenes. The icons on the left mark which are lights and which are cameras.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- widgets -->
+  <section id="widgets" class="showcase alt">
+    <header class="sec-head reveal">
+      <p class="eyebrow">Widgets</p>
+      <h2>Stack them, stretch them, tuck them inside an icon.</h2>
+    </header>
+
+    <div class="media-duo reveal">
+      <figure class="clip glow">
+        <video src="assets/stacked-widgets.mp4" autoplay muted loop playsinline preload="metadata"
+               aria-label="Swiping through a stack of widgets sharing a single slot on the home screen"></video>
+        <figcaption>Several widgets sharing one slot. Swipe the stack to bring the next one forward.</figcaption>
+      </figure>
+      <figure class="clip glow">
+        <img src="assets/widget-resize.png" alt="A widget's resize controls: its name and grid size, arrows to grow or shrink it, and a zoom slider set to 60 percent">
+        <figcaption>Grab a widget and every dimension opens up — grid size, and a zoom that scales the contents rather than cropping them.</figcaption>
+      </figure>
+    </div>
+
+    <div class="feature-stage flip reveal">
+      <figure class="stage-shot glow">
+        <img src="assets/icon-widgets.png" alt="A list of installed apps, each with a Tap to configure row, under a switch that enables widgets inside long-press panels">
+        <figcaption>Every app on the phone, each able to carry one widget inside its panel.</figcaption>
+      </figure>
+      <div class="stage-copy">
+        <h3>A widget inside the icon</h3>
+        <p>
+          Give an app a widget and it lives in that app's panel instead of taking a slot on
+          your home screen. The calendar stays with the calendar, the player stays with the
+          player, and your grid stays yours.
+        </p>
       </div>
     </div>
   </section>
 
-  <!-- ─────────────── features ─────────────── -->
-  <section id="features" class="features">
+  <!-- control -->
+  <section id="control" class="features">
     <header class="sec-head reveal">
-      <p class="eyebrow">Everything else</p>
-      <h2>Configured once. Then it gets out of the way.</h2>
+      <p class="eyebrow">Control</p>
+      <h2>Made to be set up once and then left alone.</h2>
     </header>
+
     <div class="cards">
-      <article class="card reveal"><div class="ic">▦</div><h3>The grid, your way</h3><p>Columns, rows, icon size, labels on or off, folders that open where you tapped.</p></article>
-      <article class="card reveal delay-1"><div class="ic">◐</div><h3>App Zero</h3><p>One app lives on the page left of home. One swipe and you are in it.</p></article>
-      <article class="card reveal delay-2"><div class="ic">⦿</div><h3>Double-tap to lock</h3><p>Two taps on empty space locks the screen — and your fingerprint still unlocks it, unlike the usual trick.</p></article>
-      <article class="card reveal"><div class="ic">◍</div><h3>Hidden apps</h3><p>Take anything off home, dock and search without uninstalling it.</p></article>
-      <article class="card reveal delay-1"><div class="ic">◈</div><h3>Notification badges</h3><p>Counts on icons, and the full history on the home screen when you want it.</p></article>
-      <article class="card reveal delay-2"><div class="ic">☀</div><h3>Sunrise &amp; sunset</h3><p>Hold a clock app for today's times, worked out on the device — never fetched.</p></article>
+      <article class="card reveal">
+        <div class="ic">◐</div><h3>App Zero</h3>
+        <p>One app owns the page to the left of home. Swipe right from page zero and you are straight into it — no drawer, no search.</p>
+      </article>
+      <article class="card reveal delay-1">
+        <div class="ic">▧</div><h3>Game launcher</h3>
+        <p>Nominate a launcher app, then choose which games appear inside its panel. Your library lives under one icon instead of across three pages.</p>
+      </article>
+      <article class="card reveal delay-2">
+        <div class="ic">◍</div><h3>Hide what you never open</h3>
+        <p>Ninety-four apps hidden on the phone these shots came from. Gone from home, dock and search, still installed and still working.</p>
+      </article>
+      <article class="card reveal">
+        <div class="ic">◈</div><h3>Notifications worth keeping</h3>
+        <p>Stored per app, with the images they arrived with, long after the shade has been cleared. Clear one app or all of them.</p>
+      </article>
+      <article class="card reveal delay-1">
+        <div class="ic">⬚</div><h3>Backup and restore</h3>
+        <p>Your layout — pages, folders, widgets, the lot — saved to a file you keep. New phone, same home screen.</p>
+      </article>
+      <article class="card reveal delay-2">
+        <div class="ic">◱</div><h3>Folds properly</h3>
+        <p>Cover screen and inner screen keep their own layouts, so opening the phone does not rearrange your home screen.</p>
+      </article>
     </div>
   </section>
 
-  <!-- ─────────────── privacy ─────────────── -->
+  <!-- gallery -->
+  <section class="gallery">
+    <header class="sec-head reveal">
+      <p class="eyebrow">A look around</p>
+      <h2>Settings that say what they do.</h2>
+    </header>
+    <div class="shots">
+      <figure class="reveal glow"><img src="assets/settings.png" alt="Arcadia's settings list: home screen, wallpaper, icon widgets, app zero, gestures, app blocks, game launcher, hidden apps, permissions, notification history, backup and restore"><figcaption>Everything in one list, each row saying plainly what it changes.</figcaption></figure>
+      <figure class="reveal delay-1 glow"><img src="assets/game-launcher.png" alt="The game launcher screen: choosing a launcher app, then a list of apps with Add buttons to place them in its panel"><figcaption>Pick the app that holds the library, then add the games that appear inside it.</figcaption></figure>
+      <figure class="reveal delay-2 glow"><img src="assets/notification-history.png" alt="Notification history grouped by app, showing stored counts and which have images, with a clear all button"><figcaption>Stored notifications grouped by app, counted, with the ones carrying images marked.</figcaption></figure>
+      <figure class="reveal glow"><img src="assets/app-zero.png" alt="The App Zero screen with a switch, a chosen app, and a line explaining that swiping right from page zero opens it"><figcaption>One app, one swipe, permanently to the left of home.</figcaption></figure>
+      <figure class="reveal delay-1 glow"><img src="assets/hidden-apps.png" alt="The hidden apps list showing apps with checkboxes and a count of ninety-four hidden"><figcaption>Tick anything you never open. It leaves home, dock and search but stays installed.</figcaption></figure>
+      <figure class="reveal delay-2 glow"><img src="assets/backup-restore.png" alt="A backup and restore screen with a backup button and a restore button"><figcaption>Two buttons. Your whole layout out to a file, and back again.</figcaption></figure>
+    </div>
+  </section>
+
+  <!-- privacy -->
   <section id="privacy" class="privacy">
     <div class="privacy-inner reveal">
       <p class="eyebrow">Privacy</p>
       <h2>It cannot send your data anywhere.<br><em>Not "does not" — cannot.</em></h2>
       <p class="lede">
-        Arcadia does not declare Android's <code>INTERNET</code> permission. Without it the
-        operating system refuses every outbound connection the app could attempt. That is
-        enforced by the platform, not promised in a policy you have to trust.
+        Arcadia never asks for network access, so the operating system refuses every
+        outbound connection it could attempt. Your notifications, your layout and your
+        location stay on the phone because there is no route off it.
       </p>
       <div class="pills">
-        <span class="pill">No <code>INTERNET</code> permission</span>
-        <span class="pill">No analytics or crash reporting</span>
-        <span class="pill">No ads, no ad SDK</span>
-        <span class="pill">No accounts, no sign-in</span>
+        <span class="pill">No network permission</span>
+        <span class="pill">No analytics</span>
+        <span class="pill">No ads</span>
+        <span class="pill">No account</span>
         <span class="pill">No precise location</span>
-        <span class="pill">No all-files access</span>
+        <span class="pill">No file access</span>
       </div>
-      <p class="fine">
-        Notifications and approximate location are read on your device and stay in Arcadia's
-        private storage. Uninstalling takes all of it with them.
-        <a href="privacy-policy.html">Read the policy</a>.
-      </p>
+      <p class="fine">Everything Arcadia stores goes when you uninstall it. <a href="privacy-policy.html">Read the policy</a>.</p>
     </div>
   </section>
 
-  <!-- ─────────────── get ─────────────── -->
   <section id="get" class="get">
     <div class="get-inner reveal">
       <h2>Get Arcadia</h2>
-      <p class="lede">Android 8.0 and newer. Around 2&nbsp;MB.</p>
+      <p class="lede">Free. No account, no trial, nothing to sign up for.</p>
       <div class="cta"><a class="btn primary" href="PLAY_URL_PLACEHOLDER" data-placeholder="true">Google&nbsp;Play</a></div>
     </div>
   </section>
@@ -207,7 +243,6 @@
   <div class="foot-inner">
     <img src="assets/icon.png" alt="" width="28" height="28">
     <p>Arcadia · <a href="privacy-policy.html">Privacy policy</a> · <a href="mailto:contact@arcadiafoundry.com">contact@arcadiafoundry.com</a></p>
-    <p class="muted">Android is a trademark of Google LLC.</p>
   </div>
 </footer>
 

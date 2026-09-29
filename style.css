@@ -271,3 +271,70 @@ footer{border-top:1px solid var(--line);padding:2.6rem clamp(1rem,4vw,2.5rem);ma
   .chip-grid{grid-template-columns:1fr}
   .hero .trust{gap:1rem 1.6rem}
 }
+
+/* ═══════════ v3: media-led sections, richer motion ═══════════ */
+
+/* a second, offset pulse ring for depth */
+.pulse-ring.r2{animation-delay:1.7s;border-color:rgba(255,122,217,.45)}
+
+/* shared glow-on-reveal for any media block */
+.glow{position:relative}
+.glow::before{content:"";position:absolute;inset:-1px;border-radius:inherit;z-index:-1;opacity:0;
+  background:linear-gradient(130deg,var(--cyan),var(--violet),var(--pink));
+  filter:blur(16px);transition:opacity .8s ease}
+.glow.in::before,.reveal.in .glow::before,.glow:hover::before{opacity:.28}
+
+/* figures carry captions everywhere now */
+figure{margin:0}
+figcaption{padding:.85rem 1rem;font-size:.86rem;line-height:1.5;color:var(--muted);
+  border-top:1px solid var(--line)}
+
+.stage-shot.glow,.split-media,.clip,.shots figure{border-radius:var(--r);overflow:hidden;
+  border:1px solid var(--line);background:var(--card)}
+.split-media img,.clip img,.clip video{width:100%;display:block}
+
+/* stage: alternate which side the shot sits on */
+.feature-stage.flip{direction:rtl}
+.feature-stage.flip > *{direction:ltr}
+.stage-copy h3{font-size:1.35rem;margin-bottom:.6rem}
+.stage-copy p{color:var(--muted);margin:0}
+
+/* split section */
+.split-section{padding-block:clamp(3rem,7vw,6rem)}
+.split-inner{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,4rem);align-items:center}
+
+/* two media side by side */
+.media-duo{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.2rem,3vw,2rem);
+  margin-bottom:clamp(2.5rem,6vw,4.5rem)}
+.clip video{background:#000}
+
+/* gallery becomes a masonry-ish grid of tall shots */
+.shots{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.3rem}
+.shots img{aspect-ratio:9/19.5;object-fit:cover;object-position:top;transition:transform .9s cubic-bezier(.2,.8,.2,1)}
+.shots figure:hover img{transform:scale(1.04)}
+.shots figure{transition:transform .45s cubic-bezier(.2,.8,.2,1),border-color .45s}
+.shots figure:hover{transform:translateY(-6px);border-color:rgba(150,190,255,.34)}
+
+/* cards get a slow gradient sweep on the icon */
+.card .ic{background:linear-gradient(135deg,var(--cyan),var(--violet),var(--pink));
+  background-size:200% 200%;animation:sweep 7s ease-in-out infinite}
+@keyframes sweep{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+
+/* headline gradient drifts rather than sitting still */
+em{background-size:220% 220%;animation:drift-text 9s ease-in-out infinite}
+@keyframes drift-text{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+
+/* pills lift in sequence */
+.pills .pill{animation:chipIn .55s backwards}
+.pills .pill:nth-child(1){animation-delay:.05s}.pills .pill:nth-child(2){animation-delay:.11s}
+.pills .pill:nth-child(3){animation-delay:.17s}.pills .pill:nth-child(4){animation-delay:.23s}
+.pills .pill:nth-child(5){animation-delay:.29s}.pills .pill:nth-child(6){animation-delay:.35s}
+
+.showcase.alt{padding-top:0}
+
+@media (max-width:900px){
+  .split-inner,.media-duo{grid-template-columns:1fr}
+  .feature-stage.flip{direction:ltr}
+  .split-copy{text-align:center}
+  .split-copy .ticks li{text-align:left}
+}
