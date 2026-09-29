@@ -420,3 +420,8 @@ body.scrolled .nav{padding-block:.55rem;background:linear-gradient(180deg,rgba(5
   .screen-pair .cover,.screen-pair .open{opacity:1!important;transform:none!important;animation:none!important}
   .sec-head h2::after{transition:none;width:100%}
 }
+
+/* the stacked-widget clip is a wide letterbox, not a phone-shaped tile */
+.clip{max-width:760px;margin:0 auto clamp(2rem,5vw,3rem);border-radius:var(--r);overflow:hidden;
+  border:1px solid var(--line);background:var(--card)}
+.clip video{width:100%;display:block;background:#05070c}
