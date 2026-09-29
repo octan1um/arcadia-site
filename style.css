@@ -338,3 +338,17 @@ em{background-size:220% 220%;animation:drift-text 9s ease-in-out infinite}
   .split-copy{text-align:center}
   .split-copy .ticks li{text-align:left}
 }
+
+/* ═══════════ real device shots ═══════════ */
+.hero-phone{margin:clamp(2.2rem,5vw,3.2rem) auto 0;width:min(300px,68vw);border-radius:34px;
+  overflow:hidden;border:1px solid rgba(160,190,255,.22);background:#04060c;
+  box-shadow:0 50px 90px -42px rgba(0,0,0,.95);animation:float 10s ease-in-out infinite}
+.hero-phone img{width:100%;display:block}
+.hero .hero-visual{margin-top:clamp(1.5rem,4vw,2.4rem);opacity:.75}
+
+.screens .screen-pair{display:grid;grid-template-columns:.62fr 1fr;gap:clamp(1.2rem,3vw,2.4rem);align-items:start}
+.screen-pair figure{border-radius:var(--r);overflow:hidden;border:1px solid var(--line);background:var(--card);
+  transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+.screen-pair figure:hover{transform:translateY(-6px)}
+.screen-pair img{width:100%;display:block}
+@media (max-width:820px){ .screens .screen-pair{grid-template-columns:1fr} }
