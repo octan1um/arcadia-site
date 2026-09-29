@@ -20,6 +20,38 @@
     targets.forEach(function (el) { io.observe(el); });
   }
 
+  /* Split the headline into words so they can rise in sequence. */
+  document.querySelectorAll('.hero h1').forEach(function (h1) {
+    var walk = function (node) {
+      Array.prototype.slice.call(node.childNodes).forEach(function (child) {
+        if (child.nodeType === 3 && child.textContent.trim()) {
+          var frag = document.createDocumentFragment();
+          child.textContent.split(/(\s+)/).forEach(function (part) {
+            if (!part.trim()) { frag.appendChild(document.createTextNode(part)); return; }
+            var span = document.createElement('span');
+            span.className = 'word';
+            span.textContent = part;
+            frag.appendChild(span);
+          });
+          node.replaceChild(frag, child);
+        } else if (child.nodeType === 1 && child.tagName !== 'BR') {
+          walk(child);
+        }
+      });
+    };
+    walk(h1);
+    h1.querySelectorAll('.word').forEach(function (w, i) {
+      w.style.animationDelay = (0.05 + i * 0.07) + 's';
+    });
+  });
+
+  /* Condense the nav once the page has moved. */
+  var onScroll = function () {
+    document.body.classList.toggle('scrolled', window.scrollY > 40);
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
   if (reduced) return;
 
   /* Cards light up under the cursor. */
