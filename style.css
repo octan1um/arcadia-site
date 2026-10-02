@@ -535,3 +535,19 @@ body.scrolled .nav{padding-block:.55rem;background:linear-gradient(180deg,rgba(5
   list-style:none;padding:0;margin:0}
 .wide-notes li{display:flex;gap:.8rem;opacity:1;transform:none}
 @media (max-width:820px){ .wide-notes{grid-template-columns:1fr} }
+
+/* ═══════════ the panel, mapped ═══════════ */
+/* The section claims three things and had one screenshot, of the shortcuts. There is no honest
+   capture of the other two to hand, and a staged one would be a picture of a test fixture — so
+   each point carries a small diagram of the panel instead, with its own band lit. Plainly a
+   diagram rather than a screenshot, drawn in the page's own colours, and it answers the
+   question the screenshot could not: where in the panel does this live. */
+.panel-map{display:grid;gap:3px;width:104px;padding:7px;margin-top:.7rem;
+  border-radius:10px;border:1px solid var(--line);background:rgba(255,255,255,.025)}
+.pm-head{height:9px;border-radius:3px;background:rgba(255,255,255,.14)}
+.pm-band{display:flex;gap:3px;min-height:9px}
+.pm-band.tall{min-height:22px;border-radius:4px;background:rgba(255,255,255,.07)}
+.pm-band i{flex:1;height:9px;border-radius:3px;background:rgba(255,255,255,.07)}
+.pm-band.lit i,.pm-band.tall.lit{background:linear-gradient(100deg,var(--cyan),var(--violet));
+  box-shadow:0 0 10px rgba(92,225,255,.4)}
+.pm-band.lit{min-height:9px}
