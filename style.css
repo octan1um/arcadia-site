@@ -366,14 +366,18 @@ em{background-size:220% 220%;animation:drift-text 9s ease-in-out infinite}
      capture is fitted inside that at its own aspect so nothing is cropped. */
   left:8.8132%;top:6.8956%;width:82.4912%;height:85.0189%}
 .demo .home{position:absolute;inset:0;width:100%;height:100%;object-fit:fill;z-index:0}
-.demo .press{position:absolute;z-index:1;left:50%;top:93.2%;width:11%;aspect-ratio:1;
+/* On the Google Home icon, because the panel that opens is the Google Home panel. It is the
+   fourth of eight in the dock of home-cover.png, centred at ~44% of the width; pressing the
+   middle of the dock and then opening Google Home's panel was a sleight of hand. */
+.demo .press{position:absolute;z-index:1;left:44%;top:93.2%;width:11%;aspect-ratio:1;
   margin-left:-5.5%;border-radius:50%;background:rgba(255,255,255,.9);
   box-shadow:0 0 0 0 rgba(255,255,255,.55);opacity:0;transform:scale(.4);
   animation:demoPress 7s cubic-bezier(.2,.8,.2,1) infinite}
 /* A panel, not a second screen: its own aspect, sitting above the dock it was opened from. */
 .demo .panel{position:absolute;z-index:2;left:5%;right:5%;bottom:9%;width:90%;height:auto;
   object-fit:contain;border-radius:12px;opacity:0;
-  transform:translateY(14%) scale(.86);transform-origin:50% 92%;
+  /* Grows out of the icon that was held, not out of the middle of the screen. */
+  transform:translateY(14%) scale(.86);transform-origin:44% 100%;
   box-shadow:0 18px 40px rgba(0,0,0,.66);
   animation:demoPanel 7s cubic-bezier(.2,.8,.2,1) infinite}
 
@@ -384,7 +388,7 @@ em{background-size:220% 220%;animation:drift-text 9s ease-in-out infinite}
   30%,100%{opacity:0;transform:scale(1.5)}
 }
 @keyframes demoPanel{
-  0%,16%{opacity:0;transform:translateY(14%) scale(.86)}
+  0%,16%{opacity:0;transform:translateY(14%) scale(.72)}
   28%{opacity:1;transform:translateY(0) scale(1)}
   82%{opacity:1;transform:translateY(0) scale(1)}
   92%,100%{opacity:0;transform:translateY(6%) scale(.96)}
@@ -397,7 +401,6 @@ em{background-size:220% 220%;animation:drift-text 9s ease-in-out infinite}
 @media (prefers-reduced-motion:reduce){
   .demo .press{display:none}
   .demo .panel{opacity:1;transform:none;animation:none}
-}
 }
 
 .screens .screen-pair{display:grid;grid-template-columns:.62fr 1fr;gap:clamp(1.2rem,3vw,2.4rem);align-items:start}
