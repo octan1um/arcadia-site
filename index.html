@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Arcadia — a launcher where every icon opens into a panel</title>
+<title>Arcadia — hold an icon, use the app without opening it</title>
 <meta name="description" content="An Android home screen launcher. Hold any icon to see that app's notifications, its shortcuts and one of its widgets, without opening it. No network permission.">
 <meta name="theme-color" content="#05070c">
 <meta property="og:title" content="Arcadia">
@@ -21,44 +21,29 @@
 
 <header class="nav">
   <a class="brand" href="#top"><img src="assets/icon.png" alt="" width="32" height="32"><span>Arcadia</span></a>
-  <nav>
-    <a href="#panel">The panel</a>
-    <a href="#fold">Two screens</a>
-    <a href="#scenes">Scenes</a>
-    <a href="#widgets">Widgets</a>
-    <a href="#control">Control</a>
-  </nav>
   <a class="btn tiny primary" href="#get">Get it</a>
 </header>
 
 <main id="top">
 
   <section class="hero">
-    <p class="eyebrow reveal"><span class="dot"></span> Home screen launcher</p>
-    <h1 class="reveal delay-1">Every icon opens<br><em>into its own panel.</em></h1>
-    <p class="lede reveal delay-2">
-      Hold any icon and a panel opens over your home screen: the notifications that app
-      sent you, the shortcuts it publishes, and one of its widgets, running. The app
-      itself stays closed.
-    </p>
-    <div class="cta reveal delay-2">
-      <a class="btn primary" href="#get">Get Arcadia</a>
-      <a class="btn ghost" href="#panel">See it</a>
+    <div class="hero-copy">
+      <p class="eyebrow reveal"><span class="dot"></span> Home screen launcher</p>
+      <h1 class="reveal delay-1">Hold an icon.<br><em>Use the app without opening it.</em></h1>
+      <p class="lede reveal delay-2">
+        A panel opens over your home screen with that app's notifications, its shortcuts,
+        and one of its widgets running live. Read it, tap what you need, let go. The app
+        never launches.
+      </p>
+      <div class="cta reveal delay-2">
+        <a class="btn primary" href="#get">Get Arcadia</a>
+        <a class="btn ghost" href="#panel">See it</a>
+      </div>
     </div>
 
     <figure class="hero-phone reveal delay-2">
       <img src="assets/home-cover.png" alt="A home screen: three message notifications across the top, then calendar, activity and weather widgets above two folders and a dock">
     </figure>
-
-    <div class="hero-visual reveal delay-2" aria-hidden="true">
-      <div class="icon-field">
-        <span></span><span></span><span></span><span></span><span></span><span></span>
-        <span></span><span></span><span></span><span></span><span></span><span></span>
-        <span></span><span></span><span></span><span></span><span></span><span></span>
-        <span></span><span></span><span></span><span></span><span></span><span></span>
-      </div>
-      <div class="pulse-ring"></div><div class="pulse-ring r2"></div>
-    </div>
   </section>
 
   <section class="strip" aria-label="At a glance">
@@ -107,18 +92,19 @@
   <section id="fold" class="screens">
     <header class="sec-head reveal">
       <p class="eyebrow">Two screens</p>
-      <h2>Open the phone and nothing jumps.</h2>
+      <h2>Built for a folding phone.</h2>
       <p class="lede">
-        The cover screen and the inner screen keep separate layouts. Widgets sized for the
-        narrow screen stay there, and the wide arrangement is already set up when you open
-        the phone.
+        Arcadia keeps a home screen for each screen and remembers both. Unfold, and the
+        wide layout you arranged is already there — not the cover screen stretched across
+        the width. Fold it back and the cover layout returns exactly as you left it. You
+        set each one up once.
       </p>
     </header>
     <div class="screen-pair reveal">
       <figure class="glow cover"><img src="assets/home-cover.png" alt="The narrow cover screen: a stacked calendar, activity rings, weather and two folders">
-        <figcaption>Closed: a column of widgets, folders and the dock.</figcaption></figure>
+        <figcaption>Folded — the layout you set for the cover screen.</figcaption></figure>
       <figure class="glow open"><img src="assets/home-open.png" alt="The wide inner screen: calendar, activity, device batteries, sleep and energy widgets, a weather panel and a full month calendar">
-        <figcaption>Open: room for a month view, device batteries and the rest.</figcaption></figure>
+        <figcaption>Unfolded — the layout you set for the big screen, waiting. Nothing stretches, nothing rearranges.</figcaption></figure>
     </div>
   </section>
 
@@ -141,7 +127,7 @@
       </div>
       <figure class="split-media glow">
         <img src="assets/app-blocks-editor.png" alt="The App Blocks editor listing eight named scenes, each with arrows to reorder and a button to place it on the home screen">
-        <figcaption>Naming and ordering the scenes. The icon on the left marks lights from cameras.</figcaption>
+        <figcaption>The App Blocks editor: rename each scene, move it up or down, or send it to the home screen as its own tile.</figcaption>
       </figure>
     </div>
   </section>
@@ -154,29 +140,28 @@
       <p class="lede">Several widgets can share one slot; swipe to bring the next forward. Any widget can be resized or zoomed without leaving the home screen.</p>
     </header>
 
-    <figure class="clip glow reveal">
-      <video src="assets/stacked-widgets.mp4" autoplay muted loop playsinline preload="metadata"
-             aria-label="A stack of widgets sharing one slot on the home screen, swiped through three room sensors while the icons and folders below stay put"></video>
-      <figcaption>One slot, three room sensors. Swiping the stack moves only the stack; the icons and folders below stay put.</figcaption>
-    </figure>
-
-    <figure class="wide-shot glow reveal">
-      <img src="assets/widget-resize.png" alt="A widget's resize controls: its name and grid size, arrows to grow or shrink it, and a zoom slider set to 60 percent">
-      <figcaption>Grid size, plus a zoom that scales the widget's contents instead of cropping them.</figcaption>
-    </figure>
-
-    <div class="feature-stage flip reveal">
-      <figure class="stage-shot glow">
-        <img src="assets/icon-widgets.png" alt="The Icon widgets screen: a Carrying a widget list of eight apps, each marked Compact or Large, above an Everything else list of the remaining apps">
-        <figcaption>Apps carrying a widget sit at the top with the size each one uses. Everything else is below.</figcaption>
+    <div class="media-trio reveal">
+      <figure class="trio-item tall">
+        <div class="trio-media glow">
+          <img src="assets/icon-widgets.png" alt="The Icon widgets screen: a Carrying a widget list of eight apps, each marked Compact or Large, above an Everything else list of the remaining apps">
+        </div>
+        <figcaption><strong>Inside an icon</strong> Give an app a widget and it runs in that app's panel instead of taking a home screen slot. One per app, compact or large.</figcaption>
       </figure>
-      <div class="stage-copy">
-        <h3>A widget inside the icon</h3>
-        <p>
-          Give an app a widget and it runs in that app's panel instead of taking a slot on
-          the home screen. One widget per app, compact or large.
-        </p>
-      </div>
+
+      <figure class="trio-item square">
+        <div class="trio-media glow">
+          <video src="assets/stacked-widgets.mp4" autoplay muted loop playsinline preload="metadata"
+                 aria-label="A stack of widgets sharing one slot on the home screen, swiped through three room sensors while the icons and folders below stay put"></video>
+        </div>
+        <figcaption><strong>Stacked</strong> One slot, three room sensors. Swiping the stack moves only the stack — the icons and folders below stay put.</figcaption>
+      </figure>
+
+      <figure class="trio-item wide">
+        <div class="trio-media glow">
+          <img src="assets/widget-resize.png" alt="A widget's resize controls: its name and grid size, arrows to grow or shrink it, and a zoom slider set to 60 percent">
+        </div>
+        <figcaption><strong>Resized and zoomed</strong> Set the grid size, then zoom the contents rather than cropping them.</figcaption>
+      </figure>
     </div>
   </section>
 
@@ -251,6 +236,32 @@
   <div class="foot-inner">
     <img src="assets/icon.png" alt="" width="28" height="28">
     <p>Arcadia · <a href="privacy-policy.html">Privacy policy</a> · <a href="mailto:contact@arcadiafoundry.com">contact@arcadiafoundry.com</a></p>
+
+    <div class="legal">
+      <h2>Trademarks and third-party content</h2>
+      <p>
+        Arcadia is an independent home screen launcher for Android™. What we provide is the
+        launcher itself.
+      </p>
+      <p>
+        The widgets, app icons, shortcuts, notifications and smart-home controls Arcadia
+        displays are created and supplied by the apps you install. They remain the property
+        of their respective owners, and Arcadia only renders what Android's public app widget
+        and launcher APIs hand to it. We do not own, license, modify, host or endorse that
+        content, and we are not responsible for its accuracy, behaviour or availability.
+        Your use of those apps stays governed by their own terms and privacy policies.
+      </p>
+      <p>
+        Product names, logos and brands shown on this page — including in screenshots and
+        video — are the property of their respective owners and are used only to identify
+        the apps concerned. Their use does not imply any affiliation with, sponsorship by,
+        or endorsement from those owners.
+      </p>
+      <p>
+        Android, Google Home and Google Play are trademarks of Google LLC. All other
+        trademarks are the property of their respective owners.
+      </p>
+    </div>
   </div>
 </footer>
 
