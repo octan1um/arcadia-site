@@ -332,10 +332,14 @@ em{background-size:220% 220%;animation:drift-text 9s ease-in-out infinite}
 }
 
 /* ═══════════ real device shots ═══════════ */
-.hero-phone{margin:0 auto;width:min(340px,82%);border-radius:34px;
+/* Sized from the height available, not the column width. At a laptop viewport the phone was
+   861px tall inside a 602px content area, so it was sliced off at the fold and the buttons
+   went with it. Height-led, it shrinks to fit and the whole device is always on screen. */
+.hero-phone{margin:0 auto;height:min(763px,calc(100svh - 215px));width:auto;aspect-ratio:838/1877;
+  border-radius:34px;
   overflow:hidden;border:1px solid rgba(160,190,255,.22);background:#04060c;
   box-shadow:0 50px 90px -42px rgba(0,0,0,.95);animation:float 10s ease-in-out infinite}
-.hero-phone img{width:100%;display:block}
+.hero-phone img{width:100%;height:100%;display:block;object-fit:contain}
 
 .screens .screen-pair{display:grid;grid-template-columns:.62fr 1fr;gap:clamp(1.2rem,3vw,2.4rem);align-items:start}
 .screen-pair figure{border-radius:var(--r);overflow:hidden;border:1px solid var(--line);background:var(--card);
@@ -436,9 +440,10 @@ body.scrolled .nav{padding-block:.55rem;background:linear-gradient(180deg,rgba(5
    comes from the grid row, which a percentage height cannot resolve against, and the shot
    spilled out above the frame */
 .trio-media img,.trio-media video{position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:cover}
-/* 1080x2412 cropped to its top: the lists are the feature, the empty tail below is not */
-.trio-item.tall .trio-media{flex:1;min-height:clamp(320px,34vw,460px)}
-.trio-item.tall .trio-media img{object-position:top center}
+/* Shown whole. Cropping it to the lists hid the screen's own header and read as a broken
+   image; contained in a tall frame the entire 1080x2412 screen fits without dominating. */
+.trio-item.tall .trio-media{flex:1;min-height:clamp(320px,34vw,460px);background:#05070c}
+.trio-item.tall .trio-media img{object-fit:contain;object-position:center}
 .trio-item.square .trio-media{aspect-ratio:720/672}
 .trio-item.wide .trio-media{aspect-ratio:960/400}
 .trio-item figcaption{color:var(--muted);font-size:.92rem;line-height:1.5;
@@ -448,7 +453,7 @@ body.scrolled .nav{padding-block:.55rem;background:linear-gradient(180deg,rgba(5
 @media (max-width:760px){
   .media-trio{grid-template-columns:1fr}
   .trio-item.tall{grid-row:auto;align-self:start}
-  .trio-item.tall .trio-media{flex:none;aspect-ratio:1080/1560}
+  .trio-item.tall .trio-media{flex:none;aspect-ratio:1080/2412}
 }
 
 /* ═══════════ footer legal notice ═══════════ */
