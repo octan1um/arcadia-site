@@ -332,14 +332,24 @@ em{background-size:220% 220%;animation:drift-text 9s ease-in-out infinite}
 }
 
 /* ═══════════ real device shots ═══════════ */
-/* Sized from the height available, not the column width. At a laptop viewport the phone was
-   861px tall inside a 602px content area, so it was sliced off at the fold and the buttons
-   went with it. Height-led, it shrinks to fit and the whole device is always on screen. */
-.hero-phone{margin:0 auto;height:min(763px,calc(100svh - 215px));width:auto;aspect-ratio:838/1877;
-  border-radius:34px;
-  overflow:hidden;border:1px solid rgba(160,190,255,.22);background:#04060c;
-  box-shadow:0 50px 90px -42px rgba(0,0,0,.95);animation:float 10s ease-in-out infinite}
-.hero-phone img{width:100%;height:100%;display:block;object-fit:contain}
+/* Both devices, because the first thing the page says is that this is one launcher on an
+   ordinary phone and on a folding one. Sized from the height available rather than the column
+   width: at a laptop viewport a width-led hero was 861px tall inside 602px of content area,
+   so it was sliced at the fold and the buttons went with it. */
+.hero-devices{display:flex;align-items:center;justify-content:center;
+  height:min(620px,calc(100svh - 225px))}
+.dev{margin:0;height:100%;display:flex;align-items:center}
+.dev img{height:100%;width:auto;display:block;
+  filter:drop-shadow(0 38px 60px rgba(0,0,0,.72))}
+/* The open device leads; the phone stands in front of its right edge at the scale it would
+   really be, so the pair reads as one launcher on two screens rather than two products. */
+.dev.fold{height:88%}
+.dev.bar{height:100%;margin-left:-5%}
+
+@media (max-width:860px){
+  .hero-devices{height:min(460px,52svh)}
+  .dev.bar{margin-left:-8%}
+}
 
 .screens .screen-pair{display:grid;grid-template-columns:.62fr 1fr;gap:clamp(1.2rem,3vw,2.4rem);align-items:start}
 .screen-pair figure{border-radius:var(--r);overflow:hidden;border:1px solid var(--line);background:var(--card);
