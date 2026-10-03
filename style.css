@@ -7,12 +7,9 @@
   --muted:#93a1bf;
   --line:rgba(150,180,255,.14);
   --card:rgba(140,170,255,.045);
-  /* Toned 2026-10-03 to match the app, which Kashim asked to be made much more subtle. Same
-     transform both sides: desaturate 45% toward each colour's own luminance, darken 6%. The aurora
-     and the accents still read as Arcadia; they stop being the brightest thing on a dark page. */
-  --cyan:#84c8d8;
-  --violet:#8179bd;
-  --pink:#c682b3;
+  --cyan:#5ce1ff;
+  --violet:#8b7bff;
+  --pink:#ff7ad9;
   --maxw:1120px;
   --r:22px;
 }
