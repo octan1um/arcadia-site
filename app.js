@@ -52,6 +52,79 @@
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
+  /* Hold the Home icon and its panel opens, for as long as you hold it.
+   *
+   * The looping animation is an attract mode for someone who has not touched anything. The first
+   * press hands control over: the loop stops and the panel follows the finger instead, which is
+   * the only part of Arcadia a visitor can try without installing it.
+   *
+   * Pointer events cover mouse, touch and pen in one path. Keyboard gets the same thing through
+   * Space and Enter, held down, because the gesture *is* a hold - a click that toggles would be
+   * teaching a gesture the app does not have.
+   */
+  var demo = document.querySelector('.demo');
+  var hold = demo && demo.querySelector('.hold');
+  var hint = demo && demo.querySelector('.demo-hint');
+  if (demo && hold) {
+    var HINT_IDLE = 'Hold the Home icon';
+    var HINT_HELD = 'Let go to close';
+
+    function startHold(e) {
+      if (e && e.cancelable) e.preventDefault();
+      demo.classList.add('live', 'holding');
+      if (hint) hint.textContent = HINT_HELD;
+      /* Keep receiving the release even if the finger slides off the icon, or the panel would
+         stay open with nothing holding it. */
+      if (e && e.pointerId !== undefined && hold.setPointerCapture) {
+        try { hold.setPointerCapture(e.pointerId); } catch (err) { /* not fatal */ }
+      }
+    }
+
+    function endHold() {
+      demo.classList.remove('holding');
+      if (hint) hint.textContent = HINT_IDLE;
+    }
+
+    hold.addEventListener('pointerdown', startHold);
+    hold.addEventListener('pointerup', endHold);
+    hold.addEventListener('pointercancel', endHold);
+    hold.addEventListener('pointerleave', function (e) {
+      /* With capture held, leave fires only when the pointer is genuinely gone. */
+      if (!hold.hasPointerCapture || !hold.hasPointerCapture(e.pointerId)) endHold();
+    });
+    /* A long-press on a touch screen otherwise raises the text-selection or context menu. */
+    hold.addEventListener('contextmenu', function (e) { e.preventDefault(); });
+
+    hold.addEventListener('keydown', function (e) {
+      if (e.key !== ' ' && e.key !== 'Enter' && e.key !== 'Spacebar') return;
+      if (e.repeat) return;
+      e.preventDefault();
+      startHold(null);
+    });
+    hold.addEventListener('keyup', function (e) {
+      if (e.key !== ' ' && e.key !== 'Enter' && e.key !== 'Spacebar') return;
+      endHold();
+    });
+    hold.addEventListener('blur', endHold);
+
+    /* Hand over on the first press, not on load: until then the loop is doing the teaching. */
+    hold.addEventListener('pointerenter', function () { demo.classList.add('live'); });
+    hold.addEventListener('focus', function () { demo.classList.add('live'); });
+  }
+
+  /* The Play button is a placeholder until the listing is live; say so rather than 404. */
+  document.querySelectorAll('[data-placeholder="true"]').forEach(function (el) {
+    el.addEventListener('click', function (e) {
+      if (el.getAttribute('href') !== 'PLAY_URL_PLACEHOLDER') return;
+      e.preventDefault();
+      el.textContent = 'Coming soon';
+      setTimeout(function () { el.innerHTML = 'Google&nbsp;Play'; }, 1600);
+    });
+  });
+  /* Everything below is motion: hover tilts, card glows, parallax. Nothing below is
+     behaviour, which is why the two blocks above moved up here - with them under this
+     return, the one interactive thing on the page and the Play placeholder both did
+     nothing at all for anyone who asked for less motion. */
   if (reduced) return;
 
   /* Cards light up under the cursor. */
@@ -83,13 +156,4 @@
     });
   }
 
-  /* The Play button is a placeholder until the listing is live; say so rather than 404. */
-  document.querySelectorAll('[data-placeholder="true"]').forEach(function (el) {
-    el.addEventListener('click', function (e) {
-      if (el.getAttribute('href') !== 'PLAY_URL_PLACEHOLDER') return;
-      e.preventDefault();
-      el.textContent = 'Coming soon';
-      setTimeout(function () { el.innerHTML = 'Google&nbsp;Play'; }, 1600);
-    });
-  });
 })();

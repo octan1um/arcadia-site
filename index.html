@@ -51,7 +51,14 @@
           <img class="home" src="assets/home-cover.png" alt="An ordinary phone running Arcadia: notifications across the top, then calendar, activity and weather widgets above two folders and a dock">
           <span class="press" aria-hidden="true"></span>
           <img class="panel" src="assets/overlay-shortcuts.png" alt="" aria-hidden="true">
+          <!-- The whole pitch is a gesture, and until now the page only played it at you.
+               Hold this and the panel opens for as long as you hold it, exactly as on the phone. -->
+          <button class="hold" type="button"
+                  aria-label="Press and hold the Google Home icon to open its panel">
+            <span class="hold-ring" aria-hidden="true"></span>
+          </button>
         </span>
+        <figcaption class="demo-hint" aria-live="polite">Hold the Home icon</figcaption>
       </figure>
     </div>
   </section>
