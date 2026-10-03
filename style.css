@@ -8,7 +8,9 @@
   --line:rgba(150,180,255,.14);
   --card:rgba(140,170,255,.045);
   --cyan:#5ce1ff;
-  --violet:#8b7bff;
+  /* Softened 2026-10-03: Kashim asked for the purple to be more subtle and for the rest of the
+     palette left alone. Desaturated 35% toward its own luminance; cyan and pink are untouched. */
+  --violet:#8c80d6;
   --pink:#ff7ad9;
   --maxw:1120px;
   --r:22px;
