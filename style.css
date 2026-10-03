@@ -221,7 +221,13 @@ footer{border-top:1px solid var(--line);padding:2.6rem clamp(1rem,4vw,2.5rem);ma
 .hero .cta{justify-content:flex-start}
 .hero .trust{flex-wrap:wrap;gap:clamp(1.2rem,4vw,3rem)}
 
-@media (max-width:860px){
+/* The two-column hero needs room for a text column *and* a pair of devices. Below this it is
+   stacked. The cut used to be 860px, which falls between a Fold's two states: folded sat under
+   it and got the large stacked devices, unfolded sat just over it and got two columns on a
+   screen with no width to spare - so opening the phone made the devices *smaller*, 369px down
+   to 256px. The page has to grow monotonically with the screen, so the cut moved to where a
+   second column is genuinely affordable. */
+@media (max-width:1200px){
   .hero{grid-template-columns:1fr;text-align:center;padding-top:clamp(1.5rem,5vw,2.5rem)}
   .hero .lede{margin-inline:auto}
   .hero .cta{justify-content:center}
@@ -394,9 +400,20 @@ em{background-size:220% 220%;animation:drift-text 9s ease-in-out infinite}
   92%,100%{opacity:0;transform:translateY(6%) scale(.96)}
 }
 
-@media (max-width:860px){
-  .hero-devices{height:min(470px,52svh)}
-  .dev.bar{margin-left:-8%}
+@media (max-width:1200px){
+  /* Width-led when stacked. Height-led sizing let the images keep their natural width inside
+     the flex row - the aspect box never constrained them - and a 360px phone scrolled sideways
+     by 225px. Giving each device a share of the width makes the pair fit any screen by
+     construction, and the height follows. */
+  /* Capped so the stacked pair does not outgrow what the two-column hero draws just above the
+     breakpoint. Without it the devices were 629px at 1200 and 379px at 1280 - the page got
+     smaller as the window got bigger, which is the same complaint one breakpoint higher. */
+  .hero-devices{aspect-ratio:auto;height:auto;max-height:none;align-items:flex-end;
+    max-width:min(100%,620px)}
+  .dev{height:auto}
+  .dev img{width:100%;height:auto}
+  .dev.fold{width:60%;height:auto}
+  .dev.bar{width:34%;height:auto;margin-left:-4%}
 }
 @media (prefers-reduced-motion:reduce){
   .demo .press{display:none}
