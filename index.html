@@ -66,10 +66,10 @@
   <section class="strip" aria-label="At a glance">
     <div class="strip-inner">
       <span>Panels</span><i>◆</i><span>Smart-home scenes</span><i>◆</i><span>Live widgets</span><i>◆</i>
-      <span>Stacked widgets</span><i>◆</i><span>Resize anything</span><i>◆</i><span>App Zero</span><i>◆</i>
+      <span>Widget stacks</span><i>◆</i><span>Resize and scale</span><i>◆</i><span>App Zero</span><i>◆</i>
       <span>Game launcher</span><i>◆</i><span>Hide apps</span><i>◆</i><span>Backup &amp; restore</span><i>◆</i>
       <span>Panels</span><i>◆</i><span>Smart-home scenes</span><i>◆</i><span>Live widgets</span><i>◆</i>
-      <span>Stacked widgets</span><i>◆</i><span>Resize anything</span><i>◆</i><span>App Zero</span><i>◆</i>
+      <span>Widget stacks</span><i>◆</i><span>Resize and scale</span><i>◆</i><span>App Zero</span><i>◆</i>
       <span>Game launcher</span><i>◆</i><span>Hide apps</span><i>◆</i><span>Backup &amp; restore</span><i>◆</i>
     </div>
   </section>
@@ -153,23 +153,24 @@
     </ol>
   </section>
 
-  <!-- two screens -->
+  <!-- per-display layouts -->
   <section id="fold" class="screens">
     <header class="sec-head reveal">
-      <p class="eyebrow">Two screens</p>
-      <h2>At home on an ordinary phone. Ready for a folding one.</h2>
+      <p class="eyebrow">Adaptive layouts</p>
+      <h2>A layout per display, held independently.</h2>
       <p class="lede">
-        On any phone, Arcadia is simply your home screen. On a folding phone it keeps a
-        separate one for each screen and remembers both: unfold, and the wide layout you
-        arranged is already there, not the cover screen stretched across the width. Fold it
-        back and the cover layout returns exactly as you left it. You set each one up once.
+        Arcadia stores a complete home screen configuration for each display a device
+        exposes — pages, grid, widget placement and sizing, folders and dock. On a
+        single-screen phone that is one layout. On a foldable or a device with an external
+        display, each one is configured once and restored as the device switches, rather
+        than being stretched or reflowed from the layout beside it.
       </p>
     </header>
     <div class="screen-pair reveal">
       <figure class="glow cover"><img src="assets/home-cover.png" alt="The narrow cover screen: a stacked calendar, activity rings, weather and two folders">
-        <figcaption>Folded — the layout you set for the cover screen.</figcaption></figure>
+        <figcaption>Compact display — its own page set, grid and widget sizes.</figcaption></figure>
       <figure class="glow open"><img src="assets/home-open.png" alt="The wide inner screen: calendar, activity, device batteries, sleep and energy widgets, a weather panel and a full month calendar">
-        <figcaption>Unfolded — the layout you set for the big screen, waiting. Nothing stretches, nothing rearranges.</figcaption></figure>
+        <figcaption>Expanded display — a separate layout at its native grid. No scaling, no rearranging.</figcaption></figure>
     </div>
   </section>
 
@@ -201,8 +202,13 @@
   <section id="widgets" class="showcase alt">
     <header class="sec-head reveal">
       <p class="eyebrow">Widgets</p>
-      <h2>Stacked, resized, or inside an icon.</h2>
-      <p class="lede">Several widgets can share one slot; swipe to bring the next forward. Any widget can be resized or zoomed without leaving the home screen.</p>
+      <h2>Stacked, scaled, or hosted inside an icon.</h2>
+      <p class="lede">
+        Arcadia hosts standard Android app widgets and adds three things the platform
+        launcher does not: several widgets sharing a single grid slot, independent resizing
+        and content scaling, and a widget that runs inside an app's panel instead of on the
+        home screen.
+      </p>
     </header>
 
     <div class="media-trio reveal">
@@ -210,22 +216,22 @@
         <div class="trio-media glow">
           <img src="assets/icon-widgets.png" alt="The Icon widgets screen: a Carrying a widget list of eight apps, each marked Compact or Large, above an Everything else list of the remaining apps">
         </div>
-        <figcaption><strong>Inside an icon</strong> Give an app a widget and it runs in that app's panel instead of taking a home screen slot. One per app, compact or large.</figcaption>
+        <figcaption><strong>Hosted in a panel</strong> Assign one widget per app and it renders in that app's panel rather than consuming a home screen slot, in a compact or large size.</figcaption>
       </figure>
 
       <figure class="trio-item square">
         <div class="trio-media glow">
           <video src="assets/stacked-widgets.mp4" autoplay muted loop playsinline preload="metadata"
-                 aria-label="A stack of widgets sharing one slot on the home screen, swiped through three room sensors while the icons and folders below stay put"></video>
+                 aria-label="Several widgets sharing a single grid slot on the home screen, cycled by swiping the stack, while the surrounding icons and folders stay in place"></video>
         </div>
-        <figcaption><strong>Stacked</strong> One slot, three room sensors. Swiping the stack moves only the stack — the icons and folders below stay put.</figcaption>
+        <figcaption><strong>Stacks</strong> Any number of widgets share one grid slot and are cycled with a swipe. The gesture is scoped to the stack — surrounding icons, folders and widgets are untouched.</figcaption>
       </figure>
 
       <figure class="trio-item wide">
         <div class="trio-media glow">
           <img src="assets/widget-resize.png" alt="A widget's resize controls: its name and grid size, arrows to grow or shrink it, and a zoom slider set to 60 percent">
         </div>
-        <figcaption><strong>Resized and zoomed</strong> Set the grid size, then zoom the contents rather than cropping them.</figcaption>
+        <figcaption><strong>Resize and scale</strong> Set the grid footprint, then scale the widget's contents to fit it instead of cropping them.</figcaption>
       </figure>
     </div>
   </section>
@@ -259,8 +265,8 @@
         <p>Pages, folders, widgets and settings saved to a file you keep. New phone, same home screen.</p>
       </article>
       <article class="card reveal delay-2">
-        <div class="ic">◱</div><h3>Folds properly</h3>
-        <p>Cover and inner screens keep their own layouts, so opening the phone does not rearrange anything.</p>
+        <div class="ic">◱</div><h3>Per-display layouts</h3>
+        <p>Each display holds its own pages, grid and widget sizes, so changing form factor rearranges nothing.</p>
       </article>
     </div>
   </section>
