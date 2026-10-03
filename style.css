@@ -404,15 +404,23 @@ em{background-size:220% 220%;animation:drift-text 9s ease-in-out infinite}
 .demo .home{position:absolute;inset:0;width:100%;height:100%;object-fit:fill;z-index:0}
 /* On the Google Home icon, because the panel that opens is the Google Home panel. It is the
    fourth of eight in the dock of home-cover.png, centred at ~44% of the width; pressing the
-   middle of the dock and then opening Google Home's panel was a sleight of hand. */
-.demo .press{position:absolute;z-index:1;left:44%;top:93.2%;width:11%;aspect-ratio:1;
+   middle of the dock and then opening Google Home's panel was a sleight of hand.
+   The horizontal half of that was right and the vertical half was not. The dock in that
+   screenshot has *two* rows, and the press sat between them: measured in the browser, its centre
+   was at 95.7% of the screen height while Google Home's row is at ~89%. It was pressing the
+   second row - the Android icon - and the Google Home panel then opened from it. */
+.demo .press{position:absolute;z-index:3;left:44%;top:86.5%;width:11%;aspect-ratio:1;
   margin-left:-5.5%;border-radius:50%;background:rgba(255,255,255,.9);
   box-shadow:0 0 0 0 rgba(255,255,255,.55);opacity:0;transform:scale(.4);
   animation:demoPress 7s cubic-bezier(.2,.8,.2,1) infinite}
 /* A panel, not a second screen: its own aspect, sitting above the dock it was opened from. */
-.demo .panel{position:absolute;z-index:2;left:5%;right:5%;bottom:9%;width:90%;height:auto;
+.demo .panel{position:absolute;z-index:2;left:5%;right:5%;bottom:13.5%;width:90%;height:auto;
   object-fit:contain;border-radius:12px;opacity:0;
-  /* Grows out of the icon that was held, not out of the middle of the screen. */
+  /* Grows out of the icon that was held, not out of the middle of the screen.
+     The lower edge rests on the top of Google Home's icon rather than through the middle of it,
+     so the icon and the press on it stay visible while the panel unfurls upward from exactly
+     there. Seating it on the icon's centre instead cut the dock row in half and hid the thing
+     the animation is about. */
   transform:translateY(14%) scale(.86);transform-origin:44% 100%;
   box-shadow:0 18px 40px rgba(0,0,0,.66);
   animation:demoPanel 7s cubic-bezier(.2,.8,.2,1) infinite}
