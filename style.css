@@ -227,12 +227,42 @@ footer{border-top:1px solid var(--line);padding:2.6rem clamp(1rem,4vw,2.5rem);ma
    screen with no width to spare - so opening the phone made the devices *smaller*, 369px down
    to 256px. The page has to grow monotonically with the screen, so the cut moved to where a
    second column is genuinely affordable. */
-@media (max-width:1200px){
+/* The hero was the one section that did not change when the Fold opened.
+ *
+ * Measured at the three widths that matter, in CSS pixels - an unfolded Fold at density 360 is
+ * 874 CSS px, not 1968:
+ *
+ *            shut 365   open 874   desk 1440
+ *   .hero      1 col      1 col      2 col
+ *   .wide-notes 1 col     3 col      3 col
+ *   .screen-pair 1 col    2 col      2 col
+ *
+ * Everything else rearranged on unfolding and the hero did not, so the entire first screen looked
+ * identical in both states - which is what "the site is not scaling between folded and unfolded"
+ * describes. It stacked below 1200px, a threshold an unfolded Fold never reaches.
+ *
+ * Stacking now ends at 820px, just under the folded width, so opening the phone visibly changes
+ * the first thing on screen. The phones have to come down to fit beside the text in a column that
+ * is only ~360px wide at 874, so they size from the viewport through that band instead of sitting
+ * at their fixed caps.
+ */
+@media (max-width:820px){
   .hero{grid-template-columns:1fr;text-align:center;padding-top:clamp(1.5rem,5vw,2.5rem)}
   .hero .lede{margin-inline:auto}
   .hero .cta{justify-content:center}
   .hero .trust{justify-content:center}
   .hero .trust li{align-items:center}
+}
+@media (min-width:821px) and (max-width:1200px){
+  .hero{gap:clamp(1.2rem,3vw,2.2rem)}
+  .hero .phone{width:clamp(132px,19vw,230px)}
+  .hero .phone.small{width:clamp(112px,16vw,195px)}
+  .hero .trust{gap:1.5rem}
+  .hero .trust strong{font-size:1.25rem}
+  /* The headline is sized for a full-width column. In half of 874px it broke into four short
+   * lines, one of them a single word, so it is set to the column it is actually in. */
+  .hero h1{font-size:clamp(2rem,4.3vw,3.1rem)}
+  .hero .lede{font-size:1rem}
 }
 
 /* ---------- showcase: shot beside numbered notes ---------- */
@@ -424,8 +454,24 @@ em{background-size:220% 220%;animation:drift-text 9s ease-in-out infinite}
 .screen-pair figure{border-radius:var(--r);overflow:hidden;border:1px solid var(--line);background:var(--card);
   transition:transform .5s cubic-bezier(.2,.8,.2,1)}
 .screen-pair figure:hover{transform:translateY(-6px)}
-.screen-pair img{width:100%;display:block}
-@media (max-width:820px){ .screens .screen-pair{grid-template-columns:1fr} }
+/* Sized by how much screen they are allowed to take, not by the column they sit in.
+ *
+ * These are phone screenshots, so at full column width their own aspect ratio decides the height
+ * and nothing caps it. Measured before this: the section ran 1809px on a folded Fold against an
+ * 897px viewport - two full screens of scrolling, with the cover shot alone 801px tall - and
+ * 1595px on a 1440x900 desktop. That is "the two screen section images take up way too much
+ * space".
+ *
+ * Capping the height and letting the width follow keeps both shots sharp and in proportion; they
+ * simply stop being the tallest thing on the page. */
+.screen-pair img{display:block;width:auto;max-width:100%;max-height:38vh;margin-inline:auto}
+@media (max-width:820px){
+  .screens .screen-pair{grid-template-columns:1fr}
+  /* Stacked, the two shots are one above the other, so each one's height counts twice toward
+   * the scroll. A tighter cap here keeps the section near a single screen on a cover display. */
+  .screens .screen-pair img{max-height:30vh}
+  .screens{padding-top:clamp(3rem,7vw,5rem);padding-bottom:clamp(3rem,7vw,5rem)}
+}
 
 /* single wide media block, replacing the removed duo */
 .wide-shot{border-radius:var(--r);overflow:hidden;border:1px solid var(--line);background:var(--card);
