@@ -352,6 +352,15 @@
   </div>
 </footer>
 
+<script>
+/* One-off cleanup for the service worker withdrawn on 2026-10-04. Harmless where none was ever
+   registered; without it, a browser that cached the old page would keep showing it. */
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.getRegistrations().then(function (regs) {
+    regs.forEach(function (reg) { reg.update(); });
+  });
+}
+</script>
 <script src="app.js"></script>
 <script src="motion.js" defer></script>
 </body>
