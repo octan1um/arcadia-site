@@ -17,6 +17,7 @@
     { id: 'scenes', label: 'Scenes', hue: 36 },
     { id: 'widgets', label: 'Widgets', hue: 318 },
     { id: 'control', label: 'Control', hue: 212 },
+    { id: 'compare-sec', label: 'How it differs', hue: 190 },
     { id: 'privacy', label: 'Privacy', hue: 150 },
     { id: 'get', label: 'Get it', hue: 196 }
   ].filter(function (s) { return document.getElementById(s.id); });
@@ -104,6 +105,11 @@
     var scroll = function () {
       target.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'start' });
       history.replaceState(null, '', hash);
+      /* Mark it straight away rather than waiting for the observer to agree. A section's
+         heading sits above the band the observer watches, so a jump could land you on
+         Foldables with the rail lighting Scenes - and the keyboard would then page on from
+         the wrong place. */
+      setCurrent(hash.slice(1));
     };
     if (!reduced && document.startViewTransition) {
       document.startViewTransition(scroll);

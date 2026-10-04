@@ -758,3 +758,82 @@ body.scrolled .nav{padding-block:.55rem;background:linear-gradient(180deg,rgba(5
 /* A section arrives as one piece rather than snapping into place. */
 @view-transition{navigation:auto}
 ::view-transition-old(root),::view-transition-new(root){animation-duration:.35s}
+
+/* ======================================================= screenshot viewer
+   The shots are 1200-1400px wide and the page draws them a few hundred across.
+   Everything worth seeing is in the detail, so the detail has to be reachable. */
+
+img.zoomable{cursor:zoom-in}
+img.zoomable:focus-visible{outline:2px solid hsl(var(--accent-h) 100% 70%);outline-offset:4px}
+
+.viewer{position:fixed;inset:0;z-index:95;display:grid;place-items:center;padding:4vh 4vw;
+  background:rgba(3,5,10,.93);backdrop-filter:blur(8px)}
+.viewer[hidden]{display:none}
+body.viewer-on{overflow:hidden}
+.viewer-figure{margin:0;display:flex;flex-direction:column;align-items:center;gap:14px;max-height:92vh}
+.viewer-figure img{max-width:min(1100px,88vw);max-height:76vh;width:auto;height:auto;
+  border-radius:16px;border:1px solid var(--line);box-shadow:0 30px 90px rgba(0,0,0,.6)}
+.viewer-figure figcaption{max-width:720px;text-align:center;font-size:13px;color:var(--muted);line-height:1.6}
+.viewer-count{position:absolute;bottom:18px;left:0;right:0;text-align:center;font-size:12px;color:var(--muted);margin:0}
+.viewer-close,.viewer-nav{position:absolute;border:1px solid var(--line);background:rgba(10,14,26,.8);
+  color:var(--ink);border-radius:999px;cursor:pointer;display:grid;place-items:center;font:inherit}
+.viewer-close{top:18px;right:18px;width:40px;height:40px;font-size:22px;line-height:1}
+.viewer-nav{top:50%;transform:translateY(-50%);width:44px;height:44px;font-size:26px;line-height:1}
+.viewer-nav.prev{left:14px}
+.viewer-nav.next{right:14px}
+.viewer-close:focus-visible,.viewer-nav:focus-visible{outline:2px solid hsl(var(--accent-h) 100% 70%);outline-offset:3px}
+@media (max-width:640px){.viewer-nav{display:none}}
+
+/* ========================================================= comparison table */
+
+.compare-sec{padding:var(--sec-pad,96px) 20px;max-width:var(--maxw);margin:0 auto}
+.diff-toggle{display:inline-flex;align-items:center;gap:9px;margin:26px 0 18px;font-size:13px;color:var(--muted);cursor:pointer}
+.diff-toggle input{accent-color:var(--cyan);width:16px;height:16px}
+.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r);background:var(--card)}
+#compare{width:100%;border-collapse:collapse;min-width:640px}
+#compare th,#compare td{padding:14px 16px;text-align:left;border-bottom:1px solid var(--line);font-size:14px;vertical-align:top}
+#compare thead th{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
+#compare thead th:nth-child(2){color:var(--ink)}
+#compare tbody th{font-weight:500;color:var(--ink);max-width:340px}
+#compare td{color:var(--muted)}
+#compare td.y{color:var(--ink)}
+#compare td.y::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;
+  background:hsl(var(--accent-h) 100% 70%);margin-right:9px;vertical-align:middle}
+#compare td.n::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;
+  background:rgba(150,180,255,.22);margin-right:9px;vertical-align:middle}
+#compare tbody tr:last-child th,#compare tbody tr:last-child td{border-bottom:0}
+#compare.diff-only tr[data-diff="false"]{display:none}
+
+/* ========================================================== device check */
+
+.check{margin:26px auto 0;max-width:460px;padding:16px 18px;border-radius:16px;
+  border:1px solid var(--line);background:var(--card);text-align:left}
+.check-verdict{margin:0 0 4px;font-size:14px;font-weight:600;display:flex;align-items:center;gap:9px}
+.check-verdict::before{content:"";width:8px;height:8px;border-radius:50%;flex:0 0 auto;background:rgba(150,180,255,.35)}
+.check[data-state="yes"] .check-verdict::before{background:#5bd6a0;box-shadow:0 0 10px rgba(91,214,160,.7)}
+.check[data-state="no"] .check-verdict::before{background:var(--pink)}
+.check[data-state="desktop"] .check-verdict::before{background:var(--cyan)}
+.check-detail{margin:0;font-size:12.5px;color:var(--muted);line-height:1.6;padding-left:17px}
+
+/* ======================================================= permissions panel */
+
+.perms{display:grid;gap:8px;margin:28px 0 22px;text-align:left}
+.perm{border:1px solid var(--line);border-radius:14px;background:var(--card);overflow:hidden}
+.perm-head{width:100%;display:flex;align-items:center;gap:12px;padding:13px 15px;
+  background:none;border:0;color:var(--ink);font:inherit;font-size:14px;cursor:pointer;text-align:left}
+.perm-state{font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;padding:3px 8px;border-radius:999px;flex:0 0 auto}
+.perm-state.asks{background:rgba(92,225,255,.14);color:var(--cyan)}
+.perm-state.never{background:rgba(150,180,255,.1);color:var(--muted)}
+.perm-name{flex:1 1 auto}
+.perm-chev{color:var(--muted);transition:transform .22s ease}
+.perm.open .perm-chev{transform:rotate(90deg)}
+.perm-why{margin:0;max-height:0;overflow:hidden;padding:0 15px;font-size:13px;color:var(--muted);
+  line-height:1.65;transition:max-height .28s ease,padding .28s ease}
+.perm.open .perm-why{max-height:220px;padding:0 15px 14px}
+.perm-head:focus-visible{outline:2px solid hsl(var(--accent-h) 100% 70%);outline-offset:-2px}
+
+@media (prefers-reduced-motion:reduce){.perm-why,.perm-chev{transition:none}}
+
+/* Jumping to a section put its heading under the fixed nav — visible in every render taken
+   after a rail click. The rail, the in-page links and the browser's own hash all land here. */
+main > section{scroll-margin-top:84px}

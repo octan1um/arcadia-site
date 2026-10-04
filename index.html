@@ -285,6 +285,39 @@
     </div>
   </section>
 
+
+  <!-- how it differs -->
+  <section id="compare-sec" class="compare-sec">
+    <header class="sec-head reveal">
+      <p class="eyebrow">How it differs</p>
+      <h2>Against the launchers it was built next to.</h2>
+      <p class="lede">Arcadia was made because Nova and One UI each do part of this. The rows
+        below are the parts they do not.</p>
+    </header>
+    <label class="diff-toggle reveal">
+      <input type="checkbox" id="onlyDiff"> <span>Only show what differs</span>
+    </label>
+    <div class="table-wrap reveal delay-1">
+      <table id="compare">
+        <thead>
+          <tr><th scope="col">&nbsp;</th><th scope="col">Arcadia</th><th scope="col">Nova</th><th scope="col">One&nbsp;UI</th></tr>
+        </thead>
+        <tbody>
+          <tr data-diff="true"><th scope="row">Notifications, shortcuts and a live widget in one panel</th><td class="y">Yes</td><td class="n">Shortcuts only</td><td class="n">Shortcuts only</td></tr>
+          <tr data-diff="true"><th scope="row">A widget inside an app&rsquo;s panel</th><td class="y">Yes</td><td class="n">No</td><td class="n">No</td></tr>
+          <tr data-diff="true"><th scope="row">One layout across the fold, nothing rearranged</th><td class="y">Yes</td><td class="n">Separate layouts</td><td class="n">Separate layouts</td></tr>
+          <tr data-diff="true"><th scope="row">Notification history after the shade is cleared</th><td class="y">Per app, with images</td><td class="n">No</td><td class="n">System-wide only</td></tr>
+          <tr data-diff="true"><th scope="row">Smart-home scenes on the home screen</th><td class="y">Yes</td><td class="n">No</td><td class="n">No</td></tr>
+          <tr data-diff="true"><th scope="row">No network permission at all</th><td class="y">Yes</td><td class="n">Requests network</td><td class="n">Requests network</td></tr>
+          <tr data-diff="false"><th scope="row">Icon packs</th><td class="y">Yes</td><td class="y">Yes</td><td class="y">Yes</td></tr>
+          <tr data-diff="false"><th scope="row">Grid size and icon shape</th><td class="y">Yes</td><td class="y">Yes</td><td class="y">Yes</td></tr>
+          <tr data-diff="false"><th scope="row">Backup and restore</th><td class="y">To a file you keep</td><td class="y">Yes</td><td class="y">Yes</td></tr>
+          <tr data-diff="false"><th scope="row">Free</th><td class="y">Yes</td><td class="n">Paid tier</td><td class="y">Yes</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
   <!-- privacy -->
   <section id="privacy" class="privacy">
     <div class="privacy-inner reveal">
@@ -303,6 +336,53 @@
         <span class="pill">No precise location</span>
         <span class="pill">No file access</span>
       </div>
+      <div class="perms">
+        <div class="perm">
+          <button type="button" class="perm-head" aria-expanded="false">
+            <span class="perm-state asks">Asks</span>
+            <span class="perm-name">Notification access</span>
+            <span class="perm-chev" aria-hidden="true">›</span>
+          </button>
+          <p class="perm-why">So a panel can show that app&rsquo;s notifications, and so history
+            survives the shade being cleared. Nothing leaves the phone, because there is no route off it.</p>
+        </div>
+        <div class="perm">
+          <button type="button" class="perm-head" aria-expanded="false">
+            <span class="perm-state asks">Asks</span>
+            <span class="perm-name">Default home app</span>
+            <span class="perm-chev" aria-hidden="true">›</span>
+          </button>
+          <p class="perm-why">Arcadia is the home screen. Android only hands the home button to the
+            launcher you choose, and you can change it back at any time.</p>
+        </div>
+        <div class="perm">
+          <button type="button" class="perm-head" aria-expanded="false">
+            <span class="perm-state never">Never</span>
+            <span class="perm-name">Internet</span>
+            <span class="perm-chev" aria-hidden="true">›</span>
+          </button>
+          <p class="perm-why">The permission is absent from the manifest, so Android refuses any
+            outbound connection Arcadia could attempt. This is the one that makes the rest of it true.</p>
+        </div>
+        <div class="perm">
+          <button type="button" class="perm-head" aria-expanded="false">
+            <span class="perm-state never">Never</span>
+            <span class="perm-name">Precise location</span>
+            <span class="perm-chev" aria-hidden="true">›</span>
+          </button>
+          <p class="perm-why">Weather and scenes use what the system already offers them. Arcadia
+            does not ask where you are.</p>
+        </div>
+        <div class="perm">
+          <button type="button" class="perm-head" aria-expanded="false">
+            <span class="perm-state never">Never</span>
+            <span class="perm-name">All files</span>
+            <span class="perm-chev" aria-hidden="true">›</span>
+          </button>
+          <p class="perm-why">Wallpapers are drawn through the window, not read from storage.
+            A backup is written only where you point it.</p>
+        </div>
+      </div>
       <p class="fine">Everything Arcadia stores goes when you uninstall it. <a href="privacy-policy.html">Read the policy</a>.</p>
     </div>
   </section>
@@ -312,6 +392,10 @@
       <h2>Get Arcadia</h2>
       <p class="lede">Free. No account, no trial.</p>
       <div class="cta"><a class="btn primary" href="PLAY_URL_PLACEHOLDER" data-placeholder="true">Google&nbsp;Play</a></div>
+      <div class="check" id="deviceCheck" data-state="checking">
+        <p class="check-verdict">Checking this device&hellip;</p>
+        <p class="check-detail"></p>
+      </div>
     </div>
   </section>
 
@@ -355,13 +439,16 @@
 <script>
 /* One-off cleanup for the service worker withdrawn on 2026-10-04. Harmless where none was ever
    registered; without it, a browser that cached the old page would keep showing it. */
-if ('serviceWorker' in navigator) {
+if ('serviceWorker' in navigator && location.protocol.indexOf('http') === 0) {
+  /* http(s) only: getRegistrations() throws on a file:// origin, which is how the page is
+     opened when it is being tested locally. */
   navigator.serviceWorker.getRegistrations().then(function (regs) {
     regs.forEach(function (reg) { reg.update(); });
-  });
+  }).catch(function () { /* nothing registered, nothing to clean up */ });
 }
 </script>
 <script src="app.js"></script>
 <script src="motion.js" defer></script>
+<script src="features.js" defer></script>
 </body>
 </html>
