@@ -11,7 +11,6 @@
 <meta property="og:type" content="website">
 <link rel="icon" href="assets/icon.png">
 <link rel="stylesheet" href="style.css">
-<link rel="manifest" href="manifest.webmanifest">
 </head>
 <body>
 
@@ -22,14 +21,7 @@
 
 <header class="nav">
   <a class="brand" href="#top"><img src="assets/icon.png" alt="" width="32" height="32"><span>Arcadia</span></a>
-  <div class="nav-actions">
-    <button type="button" class="btn tiny ghost palette-open" id="paletteOpen" aria-haspopup="dialog" aria-label="Open the command bar">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true" width="14" height="14"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg>
-      <span class="palette-key">K</span>
-    </button>
-    <button type="button" class="btn tiny ghost" id="installBtn" hidden>Install</button>
-    <a class="btn tiny primary" href="#get">Get it</a>
-  </div>
+  <a class="btn tiny primary" href="#get">Get it</a>
 </header>
 
 <main id="top">
@@ -82,71 +74,6 @@
     </div>
   </section>
 
-
-  <!-- try it: a working Arcadia in the page -->
-  <section id="try" class="playground">
-    <header class="sec-head reveal">
-      <h2>Try it here.</h2>
-      <p>Not a video. Hold an icon to open its panel, drag icons to rearrange them, fold the
-        phone and watch the same layout reflow. Everything below runs in this page.</p>
-    </header>
-
-    <div class="play-wrap reveal delay-1">
-      <div class="play-stage">
-        <div class="phone" id="phone" data-folded="false">
-          <div class="phone-screen">
-            <div class="phone-status"><span id="demoClock">9:41</span><span class="phone-status-right">Arcadia</span></div>
-            <div class="home" id="home" role="application" aria-label="Arcadia home screen demo"></div>
-            <div class="dots" id="dots" aria-hidden="true"></div>
-            <div class="dock" id="dock"></div>
-            <div class="panel" id="panel-sheet" role="dialog" aria-label="App panel" aria-hidden="true"></div>
-          </div>
-          
-        </div>
-        <p class="play-hint" id="playHint">Press and hold an icon</p>
-      </div>
-
-      <div class="play-controls">
-        <fieldset>
-          <legend>Device</legend>
-          <div class="seg" role="group" aria-label="Device size">
-            <button type="button" data-fold="false" class="on">Unfolded</button>
-            <button type="button" data-fold="true">Folded</button>
-          </div>
-        </fieldset>
-
-        <fieldset>
-          <legend>Icon shape</legend>
-          <div class="seg" role="group" aria-label="Icon shape">
-            <button type="button" data-shape="squircle" class="on">Squircle</button>
-            <button type="button" data-shape="circle">Circle</button>
-            <button type="button" data-shape="rounded">Rounded</button>
-          </div>
-        </fieldset>
-
-        <fieldset>
-          <legend>Labels</legend>
-          <div class="seg" role="group" aria-label="Labels">
-            <button type="button" data-labels="true" class="on">On</button>
-            <button type="button" data-labels="false">Off</button>
-          </div>
-        </fieldset>
-
-        <label class="slider-row">
-          <span>Columns <output id="colsOut">4</output></span>
-          <input type="range" id="cols" min="3" max="6" value="4" step="1">
-        </label>
-
-        <label class="slider-row">
-          <span>Icon opacity <output id="opacityOut">100%</output></span>
-          <input type="range" id="opacity" min="40" max="100" value="100" step="5">
-        </label>
-
-        <p class="play-note">Drag an icon to move it. Drop one onto another to make a folder.
-          Press <kbd id="comboKey">Ctrl</kbd><kbd>K</kbd> anywhere for the command bar.</p>
-      </div>
-    </div>
-  </section>
 
   <!-- the panel -->
   <section id="panel" class="showcase">
@@ -390,13 +317,6 @@
 
 </main>
 
-<div class="palette" id="palette" role="dialog" aria-modal="true" aria-label="Command bar" hidden>
-  <div class="palette-box">
-    <input type="text" id="paletteInput" placeholder="Jump to a section, or type a command" autocomplete="off" spellcheck="false">
-    <ul id="paletteList" role="listbox" aria-label="Results"></ul>
-    <p class="palette-foot"><kbd>↑</kbd><kbd>↓</kbd> move · <kbd>↵</kbd> go · <kbd>esc</kbd> close</p>
-  </div>
-</div>
 
 
 <footer>
@@ -433,7 +353,6 @@
 </footer>
 
 <script src="app.js"></script>
-<script src="demo.js" defer></script>
-<script src="palette.js" defer></script>
+<script src="motion.js" defer></script>
 </body>
 </html>
