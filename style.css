@@ -71,6 +71,13 @@ h2{font-size:clamp(1.7rem,3.6vw,2.7rem);line-height:1.15;letter-spacing:-.02em;m
 h3{font-size:1.22rem;margin:0 0 .55rem;font-weight:700;letter-spacing:-.01em}
 em{font-style:normal;background:linear-gradient(100deg,var(--cyan),var(--violet) 55%,var(--pink));
   -webkit-background-clip:text;background-clip:text;color:transparent}
+/* A gradient fill is painted into the element's box and then clipped to the glyphs, so a glyph
+   that reaches outside that box is simply not painted. An inline em is font-sized and fine, but
+   once an em becomes a block or inline-block its box is line-height tall - and the display
+   headings here set line-height below 1, which left the tail of the "g" in "Let go." unpainted.
+   The padding gives the gradient somewhere to land; the negative margin keeps the layout put.
+   tools/measure-hero-descender.mjs prints the room against the ink. */
+.hero h1 em,.opener h1 em{padding-bottom:.14em;margin-bottom:-.14em}
 .lede{color:var(--muted);font-size:clamp(1rem,1.5vw,1.14rem);max-width:56ch;margin:0 0 1.8rem}
 .fine{color:var(--muted);font-size:.86rem;margin-top:1.2rem}
 .sec-head{margin-bottom:3rem;max-width:60ch}
