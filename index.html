@@ -25,6 +25,7 @@
   <nav aria-label="Sections">
     <a href="#panel">The panel</a>
     <a href="#widgets">Widgets</a>
+    <a href="#features">Under the icon</a>
     <a href="#privacy">Privacy</a>
   </nav>
   <a class="btn tiny primary" href="#get">Get it</a>
@@ -276,6 +277,98 @@
         </div>
         <figcaption><strong>Resize and scale</strong> Set the grid footprint, then scale the widget's contents to fit it instead of cropping them.</figcaption>
       </figure>
+    </div>
+  </section>
+
+  <!-- under a held icon: icon stacks, the game launcher, media controls.
+       Explained with abstract animations drawn in the page - shapes for icons, a finger, and
+       the thing that opens - rather than filmed. Each stage is sized in container units so it
+       scales with its card; app.js pauses them while they are off screen. -->
+  <section id="features" class="explain">
+    <header class="sec-head reveal">
+      <p class="eyebrow">Under a held icon</p>
+      <h2>Three more things <em>a long press</em> can carry.</h2>
+      <p class="lede">
+        The panel is not only notifications, shortcuts and a widget. An icon can carry a
+        stack of other apps, a game launcher can carry its games, and an app that is
+        playing carries its controls.
+      </p>
+    </header>
+
+    <div class="explain-grid">
+      <article class="explain-card reveal">
+        <div class="anim anim-stack" data-anim aria-hidden="true">
+          <i class="ic c1" style="--h:206"></i>
+          <i class="ic c2 held" style="--h:150"></i>
+          <i class="ic c3" style="--h:44"></i>
+          <i class="ic c4" style="--h:320"></i>
+          <i class="ic c1 r2" style="--h:12"></i>
+          <i class="ic c2 r2" style="--h:268"></i>
+          <i class="ic c3 r2" style="--h:196"></i>
+          <i class="ic c4 r2" style="--h:190"></i>
+          <span class="ring"></span>
+          <div class="sheet">
+            <div class="row" style="--i:0"><i style="--h:206"></i><b style="--w:18cqw"></b></div>
+            <div class="row" style="--i:1"><i style="--h:44"></i><b style="--w:12cqw"></b></div>
+            <div class="row" style="--i:2"><i style="--h:320"></i><b style="--w:20cqw"></b></div>
+            <div class="row" style="--i:3"><i style="--h:268"></i><b style="--w:14cqw"></b></div>
+          </div>
+          <span class="finger"></span>
+        </div>
+        <h3>Icon stacks</h3>
+        <p>Any home icon can carry a list of apps you choose. Hold it and they appear underneath it as a stack of small icons, in your order, each one a tap away. Let go and the home screen is exactly as it was.</p>
+        <p class="how">Long press on any icon</p>
+      </article>
+
+      <article class="explain-card reveal delay-1">
+        <div class="anim anim-games" data-anim aria-hidden="true">
+          <i class="ic bg c1" style="--h:206"></i>
+          <i class="ic bg c2" style="--h:44"></i>
+          <i class="ic bg c3" style="--h:320"></i>
+          <i class="ic bg c4" style="--h:150"></i>
+          <div class="chips">
+            <span class="chip" style="--i:0;--h:14;--w:11cqw"><i></i><b></b></span>
+            <span class="chip" style="--i:1;--h:120;--w:8cqw"><i></i><b></b></span>
+            <span class="chip" style="--i:2;--h:200;--w:13cqw"><i></i><b></b></span>
+            <span class="chip" style="--i:3;--h:280;--w:9cqw"><i></i><b></b></span>
+            <span class="chip" style="--i:4;--h:40;--w:12cqw"><i></i><b></b></span>
+            <span class="chip" style="--i:5;--h:330;--w:10cqw"><i></i><b></b></span>
+          </div>
+          <div class="dock"></div>
+          <i class="ic c1" style="--h:12"></i>
+          <i class="ic c2 held" style="--h:262"><svg viewBox="0 0 24 24"><rect x="2.5" y="7" width="19" height="10.5" rx="5.2" fill="none" stroke="currentColor" stroke-width="1.9"/><path d="M8 10.2v4M6 12.2h4" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><circle cx="15.6" cy="11.1" r="1.2" fill="currentColor"/><circle cx="18" cy="13.6" r="1.2" fill="currentColor"/></svg></i>
+          <i class="ic c3" style="--h:190"></i>
+          <i class="ic c4" style="--h:96"></i>
+          <span class="ring"></span>
+          <span class="finger"></span>
+        </div>
+        <h3>Game launcher</h3>
+        <p>Pick a launcher app and choose up to six games for it. Hold its icon and they slide out as a row of chips, each one straight into the game. The library sits under one icon instead of across a page.</p>
+        <p class="how">Long press on the game launcher icon</p>
+      </article>
+
+      <article class="explain-card reveal delay-2">
+        <div class="anim anim-media" data-anim aria-hidden="true">
+          <i class="ic c1" style="--h:206"></i>
+          <i class="ic c2 held" style="--h:340"><svg viewBox="0 0 24 24"><path d="M9 18.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0Zm0 0V6l10-2.5v12.5m0 0a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0Z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round" stroke-linecap="round"/></svg></i>
+          <i class="ic c3" style="--h:44"></i>
+          <span class="ring"></span>
+          <div class="sheet">
+            <div class="art"><span class="disc"></span></div>
+            <b class="title"></b><b class="sub"></b>
+            <div class="btn-row">
+              <span class="ctl"><svg viewBox="0 0 24 24"><rect x="5" y="5" width="2.4" height="14" rx=".8" fill="currentColor"/><path d="M19 5 8.5 12 19 19z" fill="currentColor"/></svg></span>
+              <span class="ctl play"><svg viewBox="0 0 24 24"><rect x="6.5" y="5" width="4" height="14" rx="1" fill="currentColor"/><rect x="13.5" y="5" width="4" height="14" rx="1" fill="currentColor"/></svg></span>
+              <span class="ctl"><svg viewBox="0 0 24 24"><rect x="16.6" y="5" width="2.4" height="14" rx=".8" fill="currentColor"/><path d="M5 5l10.5 7L5 19z" fill="currentColor"/></svg></span>
+            </div>
+            <div class="track"><span class="fill"></span><span class="knob"></span></div>
+          </div>
+          <span class="finger"></span>
+        </div>
+        <h3>Media controls</h3>
+        <p>Hold the icon of an app that is playing and its panel shows what is on: the artwork, and play, pause and next. Two things and nothing else, with no use counts beside them. Skip the track or pause it, then let go.</p>
+        <p class="how">Long press on an app that is playing</p>
+      </article>
     </div>
   </section>
 

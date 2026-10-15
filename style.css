@@ -471,6 +471,156 @@ figcaption{padding:.85rem 1rem;font-size:.86rem;line-height:1.5;color:var(--mute
   .trio-item.tall .trio-media{flex:none;aspect-ratio:1080/2412}
 }
 
+/* =============================================================== under a held icon
+   Three things the long-press menu can carry, each explained by an abstract animation drawn
+   in the page: shapes for icons, a finger, and the thing that appears under it. Every
+   animation is transform and opacity only, shares one 7-second clock, is paused while off
+   screen (app.js adds .idle), and is a single still for anyone who asked for less motion. */
+.explain-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(1rem,2.4vw,1.8rem)}
+.explain-card{position:relative;padding:.9rem .9rem 1.6rem;border-radius:calc(var(--r) + 4px);
+  background:var(--white);border:1px solid var(--line);box-shadow:var(--shadow-soft);
+  transition:transform .4s cubic-bezier(.2,.8,.2,1),box-shadow .4s}
+.explain-card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.explain-card h3{margin:1.2rem .5rem .45rem}
+.explain-card p{margin:0 .5rem;color:var(--muted);font-size:.95rem}
+.explain-card .how{margin:.9rem .5rem 0;font-size:.8rem;color:var(--muted);letter-spacing:.02em;
+  display:flex;align-items:center;gap:.5rem}
+.explain-card .how::before{content:"";width:1rem;height:1px;background:var(--coral)}
+@media (max-width:760px){ .explain-grid{grid-template-columns:1fr;max-width:460px;margin-inline:auto} }
+
+/* the stage: a wallpaper, sized in container units so every shape scales with the card */
+.anim{position:relative;aspect-ratio:4/3;border-radius:18px;overflow:hidden;
+  container-type:inline-size;isolation:isolate;
+  border:1px solid rgba(255,255,255,.8);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.7)}
+.anim-stack{background:
+  radial-gradient(55% 45% at 90% 8%,rgba(255,255,255,.55),transparent 70%),
+  linear-gradient(160deg,#ffd9c4 0%,#f6cbe0 45%,#c9d5ff 100%)}
+.anim-games{background:
+  radial-gradient(55% 45% at 10% 10%,rgba(255,255,255,.55),transparent 70%),
+  linear-gradient(200deg,#c4f0e4 0%,#bfe6fb 50%,#d6ccff 100%)}
+.anim-media{background:
+  radial-gradient(50% 40% at 85% 90%,rgba(255,255,255,.5),transparent 70%),
+  linear-gradient(150deg,#ffd0c4 0%,#f3c5d9 40%,#c8cdff 100%)}
+.anim *{position:absolute;box-sizing:border-box}
+.anim .ic{width:13cqw;height:13cqw;border-radius:28%;
+  background:linear-gradient(160deg,hsl(var(--h) 72% 66%),hsl(var(--h) 62% 48%));
+  box-shadow:0 1.2cqw 2.6cqw -1cqw rgba(70,45,15,.35),inset 0 .3cqw 0 rgba(255,255,255,.4)}
+.anim .ic svg{position:static;display:block;width:100%;height:100%;padding:24%;color:#fff}
+.anim .ic.bg{opacity:.5}
+.anim .held{z-index:3}
+/* sits 1.2cqw outside the held icon's box and scales with it */
+.anim .ring{z-index:2;border-radius:30%;width:15.4cqw;height:15.4cqw;
+  border:.9cqw solid rgba(255,255,255,.95);box-shadow:0 0 0 .9cqw rgba(46,198,240,.85);
+  opacity:0;transform:scale(.9)}
+.anim .finger{z-index:6;width:14cqw;height:14cqw;border-radius:50%;
+  background:rgba(255,255,255,.55);border:.5cqw solid rgba(255,255,255,.95);
+  box-shadow:0 1.5cqw 4cqw -1cqw rgba(70,45,15,.4);opacity:0}
+.anim .sheet{z-index:4;border-radius:3.6cqw;background:rgba(255,253,249,.92);
+  border:.3cqw solid rgba(255,255,255,.95);
+  box-shadow:0 5cqw 10cqw -4cqw rgba(70,45,15,.45);opacity:0}
+.anim .sheet b{display:block;border-radius:1cqw;background:rgba(70,52,28,.2)}
+.anim .row{display:flex;align-items:center;gap:2cqw;height:7cqw;opacity:0}
+.anim .row i{position:static;width:6cqw;height:6cqw;border-radius:30%;flex:0 0 auto;
+  background:linear-gradient(160deg,hsl(var(--h) 72% 66%),hsl(var(--h) 62% 48%))}
+.anim .row b{position:static;height:1.6cqw;width:var(--w,16cqw)}
+
+/* A: icon stacks. Hold an icon; a sheet opens under it with the stack of small icons. */
+.anim-stack .ic{top:10cqw}
+.anim-stack .r2{top:30cqw}
+.anim-stack .c1{left:7.5cqw}.anim-stack .c2{left:29.5cqw}.anim-stack .c3{left:51.5cqw}.anim-stack .c4{left:73.5cqw}
+.anim-stack .held{animation:heldIcon 7s ease-in-out infinite}
+.anim-stack .ring{top:8.8cqw;left:28.3cqw;animation:ringIn 7s ease-in-out infinite}
+.anim-stack .finger{left:33cqw;top:12.5cqw;animation:fingerIn 7s cubic-bezier(.2,.8,.2,1) infinite}
+.anim-stack .sheet{left:24cqw;top:27cqw;width:42cqw;padding:3cqw 3cqw;transform-origin:30% 0;
+  animation:sheetOpen 7s cubic-bezier(.2,.8,.2,1) infinite}
+.anim-stack .row{position:relative;animation:rowIn 7s cubic-bezier(.2,.8,.2,1) infinite;
+  animation-delay:calc(var(--i) * .09s)}
+.anim-stack .row + .row{margin-top:1.2cqw}
+.anim-stack .r2{animation:dimRow 7s ease-in-out infinite}
+@keyframes fingerIn{
+  0%{opacity:0;transform:translate(28cqw,34cqw) scale(1)}
+  10%{opacity:1;transform:translate(0,0) scale(1)}
+  14%,78%{opacity:1;transform:translate(0,0) scale(.84)}
+  86%,100%{opacity:0;transform:translate(0,-7cqw) scale(1)}
+}
+@keyframes heldIcon{0%,12%{transform:none}16%,80%{transform:scale(1.12)}88%,100%{transform:none}}
+@keyframes ringIn{0%,12%{opacity:0;transform:scale(.9)}16%,80%{opacity:1;transform:scale(1.12)}88%,100%{opacity:0;transform:scale(.9)}}
+@keyframes sheetOpen{0%,14%{opacity:0;transform:translateY(-2cqw) scale(.94)}22%,80%{opacity:1;transform:none}88%,100%{opacity:0;transform:translateY(-2cqw) scale(.94)}}
+@keyframes rowIn{0%,18%{opacity:0;transform:translateY(-2cqw)}26%,80%{opacity:1;transform:none}86%,100%{opacity:0;transform:translateY(-2cqw)}}
+@keyframes dimRow{0%,14%{opacity:1}22%,80%{opacity:.35}88%,100%{opacity:1}}
+
+/* B: game launcher. Hold the launcher icon; a row of game chips slides out above the dock. */
+.anim-games .dock{left:8cqw;right:8cqw;top:54cqw;height:19cqw;border-radius:5cqw;
+  background:rgba(255,253,249,.5);border:.3cqw solid rgba(255,255,255,.8)}
+.anim-games .ic{top:57cqw}
+.anim-games .ic.bg{top:9cqw}
+.anim-games .c1{left:13.5cqw}.anim-games .c2{left:33.5cqw}.anim-games .c3{left:53.5cqw}.anim-games .c4{left:73.5cqw}
+.anim-games .held{animation:heldIcon 7s ease-in-out infinite}
+.anim-games .ring{top:55.8cqw;left:32.3cqw;animation:ringIn 7s ease-in-out infinite}
+.anim-games .finger{left:37cqw;top:59.5cqw;animation:fingerGames 7s cubic-bezier(.2,.8,.2,1) infinite}
+@keyframes fingerGames{
+  0%{opacity:0;transform:translate(30cqw,-30cqw) scale(1)}
+  10%{opacity:1;transform:translate(0,0) scale(1)}
+  14%,78%{opacity:1;transform:translate(0,0) scale(.84)}
+  86%,100%{opacity:0;transform:translate(0,-7cqw) scale(1)}
+}
+.anim-games .chips{z-index:4;left:8cqw;top:36cqw;display:flex;gap:2.2cqw;width:max-content;
+  animation:chipsPan 7s cubic-bezier(.4,0,.2,1) infinite}
+.anim-games .chip{position:relative;display:flex;align-items:center;gap:1.8cqw;height:9.2cqw;
+  padding:0 3cqw 0 1.6cqw;border-radius:999px;background:rgba(255,253,249,.94);
+  border:.3cqw solid rgba(255,255,255,.95);box-shadow:0 2.4cqw 5cqw -2cqw rgba(70,45,15,.35);
+  opacity:0;animation:chipIn 7s cubic-bezier(.2,.8,.2,1) infinite;animation-delay:calc(var(--i) * .07s)}
+.anim-games .chip i{position:static;width:6cqw;height:6cqw;border-radius:50%;flex:0 0 auto;
+  background:linear-gradient(160deg,hsl(var(--h) 72% 64%),hsl(var(--h) 62% 46%))}
+.anim-games .chip b{position:static;display:block;height:1.6cqw;border-radius:1cqw;
+  width:var(--w,10cqw);background:rgba(70,52,28,.24)}
+@keyframes chipIn{0%,14%{opacity:0;transform:translateX(-7cqw) scale(.94)}24%,80%{opacity:1;transform:none}86%,100%{opacity:0;transform:translateX(-7cqw) scale(.94)}}
+@keyframes chipsPan{0%,36%{transform:translateX(0)}60%,90%{transform:translateX(-38cqw)}91%,100%{transform:translateX(0)}}
+
+/* C: media controls. Hold a playing app; a card shows the artwork and play, pause, next,
+   with the progress line moving. */
+.anim-media .ic{top:8cqw}
+.anim-media .c1{left:20.5cqw}.anim-media .c2{left:43.5cqw}.anim-media .c3{left:66.5cqw}
+.anim-media .held{animation:heldIcon 7s ease-in-out infinite}
+.anim-media .ring{top:6.8cqw;left:42.3cqw;animation:ringIn 7s ease-in-out infinite}
+.anim-media .finger{left:47cqw;top:10.5cqw;animation:fingerMedia 7s cubic-bezier(.2,.8,.2,1) infinite}
+@keyframes fingerMedia{
+  0%{opacity:0;transform:translate(26cqw,36cqw) scale(1)}
+  10%{opacity:1;transform:translate(0,0) scale(1)}
+  14%,78%{opacity:1;transform:translate(0,0) scale(.84)}
+  86%,100%{opacity:0;transform:translate(0,-7cqw) scale(1)}
+}
+.anim-media .sheet{left:11cqw;top:27cqw;width:78cqw;height:37cqw;padding:3.4cqw;transform-origin:50% 0;
+  animation:sheetOpen 7s cubic-bezier(.2,.8,.2,1) infinite}
+.anim-media .art{left:3.4cqw;top:3.4cqw;width:26cqw;height:26cqw;border-radius:3cqw;overflow:hidden;
+  background:linear-gradient(145deg,#ffb27e,#e06f8f 55%,#6b6ee8);
+  box-shadow:inset 0 .3cqw 0 rgba(255,255,255,.4)}
+.anim-media .disc{left:18%;top:18%;width:64%;height:64%;border-radius:50%;
+  background:conic-gradient(from 0deg,rgba(255,255,255,.1),rgba(255,255,255,.55),rgba(255,255,255,.1),rgba(255,255,255,.5),rgba(255,255,255,.1));
+  animation:discSpin 7s linear infinite}
+.anim-media .disc::after{content:"";position:absolute;inset:40%;border-radius:50%;background:rgba(40,25,60,.55)}
+@keyframes discSpin{0%,22%{transform:rotate(0)}80%,100%{transform:rotate(320deg)}}
+.anim-media .title{left:33.4cqw;top:5.2cqw;width:30cqw;height:2.2cqw}
+.anim-media .sub{left:33.4cqw;top:9.2cqw;width:18cqw;height:1.6cqw;background:rgba(70,52,28,.12)}
+.anim-media .btn-row{left:33.4cqw;top:14.6cqw;width:40cqw;height:10cqw;display:flex;gap:3cqw;align-items:center}
+.anim-media .ctl{position:static;width:8.6cqw;height:8.6cqw;border-radius:50%;flex:0 0 auto;
+  background:rgba(70,52,28,.08);display:grid;place-items:center;color:var(--ink)}
+.anim-media .ctl.play{width:10cqw;height:10cqw;background:var(--ink);color:var(--paper)}
+.anim-media .ctl svg{position:static;width:46%;height:46%;display:block}
+.anim-media .track{left:3.4cqw;top:31.6cqw;width:71.2cqw;height:1.4cqw;border-radius:1cqw;background:rgba(70,52,28,.12)}
+.anim-media .fill{left:0;top:0;width:100%;height:100%;border-radius:1cqw;transform-origin:0 50%;
+  background:linear-gradient(90deg,var(--cyan-deep),var(--violet));transform:scaleX(.18);
+  animation:progress 7s linear infinite}
+.anim-media .knob{top:-1cqw;left:0;width:3.4cqw;height:3.4cqw;border-radius:50%;background:var(--violet);
+  border:.5cqw solid #fff;box-shadow:0 .6cqw 1.6cqw -.4cqw rgba(70,45,15,.5);
+  animation:knob 7s linear infinite}
+@keyframes progress{0%,22%{transform:scaleX(.18)}80%{transform:scaleX(.64)}88%,100%{transform:scaleX(.18)}}
+@keyframes knob{0%,22%{transform:translateX(11.1cqw)}80%{transform:translateX(43.9cqw)}88%,100%{transform:translateX(11.1cqw)}}
+
+/* paused while off screen */
+.idle *{animation-play-state:paused!important}
+
 /* ---------- control cards ---------- */
 .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(272px,1fr));gap:1.1rem}
 .card{position:relative;padding:1.7rem 1.6rem;border-radius:var(--r);border:1px solid var(--line);

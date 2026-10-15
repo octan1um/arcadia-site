@@ -127,6 +127,19 @@
      nothing at all for anyone who asked for less motion. */
   if (reduced) return;
 
+  /* The three explained features and the marquee loop forever, so they only run while they
+     are on screen: off screen they get .idle, which pauses every animation inside them. With
+     no IntersectionObserver they simply run. */
+  if ('IntersectionObserver' in window) {
+    var loops = document.querySelectorAll('[data-anim], .strip');
+    var loopIo = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        entry.target.classList.toggle('idle', !entry.isIntersecting);
+      });
+    }, { threshold: 0.05 });
+    loops.forEach(function (el) { loopIo.observe(el); });
+  }
+
   /* Cards light up under the cursor. */
   document.querySelectorAll('.card').forEach(function (card) {
     card.addEventListener('pointermove', function (e) {
