@@ -447,6 +447,12 @@ figcaption{padding:.85rem 1rem;font-size:.86rem;line-height:1.5;color:var(--mute
 
 /* ---------- notifications: a wide, short shot, then three points beside each other ---------- */
 .strip-shot{margin:0 0 clamp(1.6rem,3.5vw,2.4rem)}
+/* grouped phone shots (W25): several captures in one picture, no frame of their own */
+.group-shot{margin:clamp(1.6rem,3.5vw,2.4rem) auto 0;max-width:1040px}
+.group-shot img{width:100%;height:auto;display:block}
+.group-shot figcaption{color:var(--muted);font-size:.86rem;line-height:1.5;padding:.7rem .2rem 0;text-align:center}
+.feature-stage .group-shot{margin:0}
+.feature-stage .group-shot img{width:100%;max-height:none}
 .strip-shot img{width:100%;display:block}
 .wide-notes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(1.2rem,2.6vw,2rem);
   list-style:none;padding:0;margin:0}
