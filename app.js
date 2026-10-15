@@ -112,15 +112,6 @@
     hold.addEventListener('focus', function () { demo.classList.add('live'); });
   }
 
-  /* The Play button is a placeholder until the listing is live; say so rather than 404. */
-  document.querySelectorAll('[data-placeholder="true"]').forEach(function (el) {
-    el.addEventListener('click', function (e) {
-      if (el.getAttribute('href') !== 'PLAY_URL_PLACEHOLDER') return;
-      e.preventDefault();
-      el.textContent = 'Coming soon';
-      setTimeout(function () { el.innerHTML = 'Google&nbsp;Play'; }, 1600);
-    });
-  });
   /* Everything below is motion: hover tilts, card glows, parallax. Nothing below is
      behaviour, which is why the two blocks above moved up here - with them under this
      return, the one interactive thing on the page and the Play placeholder both did
