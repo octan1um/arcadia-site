@@ -42,25 +42,40 @@
       </div>
     </div>
 
+    <!-- The panel is drawn the way Arcadia composes it (HomeActionsUi: one column holding the
+         header, the notification history, a separator, the hosted widget, a separator, the
+         shortcut chips, then App info / Create folder), dark over a home that dims as a whole;
+         the held icon stays lifted above it. Two fingers: the one that holds, and a second one
+         that taps a widget tile and a shortcut while the first keeps holding, as the app allows. -->
     <div class="opener-art" aria-hidden="true">
       <div class="slab">
         <div class="apps">
           <i style="--h:206"></i><i style="--h:150"></i><i style="--h:44"></i><i style="--h:320"></i>
           <i style="--h:12"></i><i style="--h:268"></i><i class="held" style="--h:196"></i><i style="--h:190"></i>
-          <i class="dim" style="--h:220"></i><i class="dim" style="--h:96"></i><i class="dim" style="--h:340"></i><i class="dim" style="--h:168"></i>
+          <i style="--h:220"></i><i style="--h:96"></i><i style="--h:340"></i><i style="--h:168"></i>
         </div>
+        <span class="shade"></span>
         <span class="press-ring"></span>
         <span class="finger"></span>
         <div class="sheet">
           <div class="sheet-head"><span class="sheet-ic"></span>
-            <span class="lines"><b style="width:46%"></b><b class="sm" style="width:66%"></b></span>
+            <span class="lines"><b style="width:30%"></b><b class="sm" style="width:52%"></b></span>
           </div>
           <div class="sheet-note" style="--h:206"><span class="dot2"></span>
-            <span class="lines"><b style="width:72%"></b><b class="sm" style="width:46%"></b></span>
+            <span class="lines"><b style="width:74%"></b><b class="sm" style="width:48%"></b></span>
+            <b class="when"></b>
           </div>
-          <div class="sheet-chips"><span></span><span></span><span></span></div>
-          <div class="sheet-widget"><b style="width:42%"></b><b class="sm" style="width:72%"></b></div>
+          <div class="sheet-widget">
+            <div class="widget-head"><span class="widget-ic"></span><b style="width:30%"></b></div>
+            <div class="tiles"><span></span><span class="lit"></span><span></span><span></span></div>
+          </div>
+          <div class="sheet-chips">
+            <span class="chip tap" style="--w:36%"></span><span class="chip" style="--w:48%"></span>
+            <span class="chip" style="--w:54%"></span><span class="chip" style="--w:38%"></span>
+          </div>
+          <div class="sheet-actions"><span></span><span></span></div>
         </div>
+        <span class="finger2"></span>
       </div>
     </div>
   </section>

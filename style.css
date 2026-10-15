@@ -169,7 +169,7 @@ em{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:-.0
   animation:openerRise .9s cubic-bezier(.22,.9,.2,1) .2s both}
 /* the wallpaper: a warm gradient with two soft lights in it */
 .opener-art .slab{
-  position:relative;aspect-ratio:352/436;border-radius:34px;padding:26px 26px 0;overflow:hidden;
+  position:relative;aspect-ratio:352/500;border-radius:34px;padding:26px 26px 0;overflow:hidden;
   background:
     radial-gradient(60% 45% at 85% 10%,rgba(255,255,255,.55),transparent 70%),
     radial-gradient(50% 40% at 10% 90%,rgba(255,255,255,.4),transparent 70%),
@@ -183,24 +183,30 @@ em{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:-.0
   background:linear-gradient(160deg,hsl(var(--h) 72% 66%),hsl(var(--h) 62% 48%));
   box-shadow:0 8px 18px -8px rgba(70,45,15,.35),inset 0 1px 0 rgba(255,255,255,.45);
 }
-.opener-art .apps i.dim{opacity:.5}
-/* The loop (8 s): a finger lands on an icon and holds; the icon lifts and a ring fills; the
-   sheet rises with its notification, its shortcuts and its widget arriving one after the other;
-   the other icons dim; then the finger lifts and everything settles back. The gesture, drawn.
-   The held icon is the 7th tile: row 2, column 3 of a 4-column grid inside 26px padding. */
+/* The loop (8 s), drawn the way the app does it. A finger lands on an icon and holds; at the
+   long press the icon buzzes once and lifts, the whole home dims, and the panel grows out of
+   the icon (OriginRevealUi): header, the notification, the hosted widget, the shortcut chips
+   and the App info row arrive one after the other. While the first finger keeps holding, a
+   second finger taps a widget tile (it lights) and then a shortcut (it fills) - the app lets a
+   second finger act while the owner finger holds. Then the first finger lifts and the panel
+   shrinks back into the icon. The held icon is the 7th tile: row 2, column 3 of a 4-column grid
+   inside 26px padding; it stays above the panel. */
 .opener-art .slab{--col:calc((100% - 52px - 54px) / 4)}
-.opener-art .apps i.held{opacity:1;animation:openerHeld 8s cubic-bezier(.2,.8,.2,1) infinite}
+.opener-art .apps i.held{position:relative;z-index:7;opacity:1;animation:openerHeld 8s cubic-bezier(.2,.8,.2,1) infinite}
 @keyframes openerHeld{
   0%,10%{transform:none;box-shadow:0 8px 18px -8px rgba(70,45,15,.35),inset 0 1px 0 rgba(255,255,255,.45)}
+  11.5%{transform:translateX(-2px) scale(1.06)}
+  12.5%{transform:translateX(2px) scale(1.06)}
+  13.5%{transform:translateX(-1px) scale(1.08)}
   16%,78%{transform:scale(1.14);box-shadow:0 0 0 2.5px #fff,0 0 0 5px rgba(46,198,240,.9),0 14px 30px -10px rgba(11,134,179,.6)}
   86%,100%{transform:none;box-shadow:0 8px 18px -8px rgba(70,45,15,.35),inset 0 1px 0 rgba(255,255,255,.45)}
 }
-.opener-art .apps i.dim{animation:openerDim 8s ease-in-out infinite}
-.opener-art .apps i:not(.held):not(.dim){animation:openerDimSoft 8s ease-in-out infinite}
-@keyframes openerDim{0%,10%{opacity:.92}20%,78%{opacity:.38}88%,100%{opacity:.92}}
-@keyframes openerDimSoft{0%,10%{opacity:.92}20%,78%{opacity:.62}88%,100%{opacity:.92}}
+/* the whole home dims behind the panel, as on the phone - not icon by icon */
+.opener-art .shade{position:absolute;inset:0;z-index:2;background:rgba(14,13,24,.74);opacity:0;
+  animation:openerShade 8s ease-in-out infinite}
+@keyframes openerShade{0%,14%{opacity:0}21%,78%{opacity:1}86%,100%{opacity:0}}
 /* the finger: a soft disc that comes in from the lower right, lands on the held icon, holds, lifts */
-.opener-art .finger{position:absolute;z-index:6;width:46px;height:46px;border-radius:50%;
+.opener-art .finger{position:absolute;z-index:8;width:46px;height:46px;border-radius:50%;
   left:calc(26px + 2 * var(--col) + 2 * 18px + var(--col) / 2 - 23px + 8px);
   top:calc(26px + var(--col) + 15px + var(--col) / 2 - 23px + 10px);
   background:radial-gradient(circle at 40% 35%,rgba(255,255,255,.95),rgba(255,255,255,.55) 60%,rgba(255,255,255,0) 70%);
@@ -214,7 +220,7 @@ em{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:-.0
   100%{opacity:0;transform:translate(70px,90px) scale(1.1)}
 }
 /* the ring that grows while the finger holds: the long-press timer */
-.opener-art .press-ring{position:absolute;z-index:5;width:64px;height:64px;border-radius:50%;
+.opener-art .press-ring{position:absolute;z-index:8;width:64px;height:64px;border-radius:50%;
   left:calc(26px + 2 * var(--col) + 2 * 18px + var(--col) / 2 - 32px);
   top:calc(26px + var(--col) + 15px + var(--col) / 2 - 32px);
   border:3px solid rgba(46,198,240,0);opacity:0;
@@ -225,48 +231,92 @@ em{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:-.0
   16%{opacity:1;transform:scale(1.15);border-color:rgba(46,198,240,.9)}
   20%,100%{opacity:0;transform:scale(1.35);border-color:rgba(46,198,240,0)}
 }
-/* the frosted sheet */
+/* the panel: dark, as the app draws it over any wallpaper; it grows out of the held icon */
 .opener-art .sheet{
-  position:absolute;left:13px;right:13px;bottom:13px;border-radius:22px;padding:14px 14px 15px;
-  background:rgba(255,253,249,.88);border:1px solid rgba(255,255,255,.9);
-  box-shadow:0 26px 54px -20px rgba(70,45,15,.45);
-  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
-  transform-origin:50% 100%;
+  position:absolute;z-index:4;left:13px;right:13px;bottom:13px;border-radius:22px;padding:13px 14px;
+  background:rgba(27,27,40,.96);border:1px solid rgba(255,255,255,.09);
+  box-shadow:0 26px 54px -20px rgba(30,20,60,.6);
+  transform-origin:62% 0;
   animation:openerSheet 8s cubic-bezier(.22,.9,.2,1) infinite;
 }
 @keyframes openerSheet{
-  0%,15%{opacity:0;transform:translateY(26px) scale(.96)}
+  0%,15%{opacity:0;transform:scale(.55)}
   22%,78%{opacity:1;transform:none}
-  86%,100%{opacity:0;transform:translateY(26px) scale(.96)}
+  86%,100%{opacity:0;transform:scale(.55)}
 }
-/* inside the sheet, things arrive in the order the app shows them: header, the notification,
-   the shortcuts, the widget - each a beat after the last */
-.opener-art .sheet-head,.opener-art .sheet-note,.opener-art .sheet-chips,.opener-art .sheet-widget{
+/* inside the panel, things arrive in the order the app composes them: header, the notification,
+   the widget, the shortcut chips, the App info row - each a beat after the last */
+.opener-art .sheet-head,.opener-art .sheet-note,.opener-art .sheet-widget,.opener-art .chip,.opener-art .sheet-actions{
   animation:openerRow 8s cubic-bezier(.22,.9,.2,1) infinite}
-.opener-art .sheet-note{animation-delay:.12s}
-.opener-art .sheet-chips{animation-delay:.24s}
-.opener-art .sheet-widget{animation-delay:.36s}
-@keyframes openerRow{0%,17%{opacity:0;transform:translateY(10px)}25%,78%{opacity:1;transform:none}86%,100%{opacity:0;transform:translateY(6px)}}
-/* the widget's bar fills while the sheet is up: something live, not a picture */
-.opener-art .sheet-widget b:first-child{animation:openerFill 8s cubic-bezier(.22,.9,.2,1) infinite}
-@keyframes openerFill{0%,24%{width:14%}40%,78%{width:42%}86%,100%{width:14%}}
+.opener-art .sheet-note{animation-delay:.08s}
+.opener-art .sheet-widget{animation-delay:.16s}
+.opener-art .chip:nth-child(1){animation-delay:.22s}
+.opener-art .chip:nth-child(2){animation-delay:.28s}
+.opener-art .chip:nth-child(3){animation-delay:.34s}
+.opener-art .chip:nth-child(4){animation-delay:.40s}
+.opener-art .sheet-actions{animation-delay:.46s}
+@keyframes openerRow{0%,17%{opacity:0;transform:translateY(8px)}25%,78%{opacity:1;transform:none}86%,100%{opacity:0;transform:translateY(5px)}}
 .opener-art .lines{flex:1 1 auto;display:grid;gap:5px}
-.opener-art b{display:block;height:8px;border-radius:5px;background:rgba(70,52,28,.22)}
-.opener-art b.sm{height:6px;background:rgba(70,52,28,.12)}
-.opener-art .sheet-head{display:flex;align-items:center;gap:11px;margin-bottom:13px}
-.opener-art .sheet-ic{width:34px;height:34px;border-radius:30%;flex:0 0 auto;
-  background:linear-gradient(160deg,#5fd8ff,#1c9fd2)}
-.opener-art .sheet-note{display:flex;gap:10px;align-items:center;padding:9px 11px;
-  border-radius:13px;background:rgba(70,52,28,.06)}
+.opener-art b{display:block;height:8px;border-radius:5px;background:rgba(255,255,255,.3)}
+.opener-art b.sm{height:6px;background:rgba(255,255,255,.16)}
+/* header: the app's round icon, its name, when it was last opened; a rule under it */
+.opener-art .sheet-head{display:flex;align-items:center;gap:11px;padding-bottom:10px;margin-bottom:10px;
+  border-bottom:1px solid rgba(255,255,255,.1)}
+.opener-art .sheet-ic{width:30px;height:30px;border-radius:50%;flex:0 0 auto;
+  background:radial-gradient(circle at 50% 56%,#f3f3f3 0 34%,transparent 36%),conic-gradient(#ff7a59,#ffcf3d,#48d17a,#3f9dff,#ff7a59);
+  box-shadow:0 0 0 4px rgba(255,255,255,.12)}
+/* one notification row: the sender's picture, two lines, the time it arrived */
+.opener-art .sheet-note{display:flex;gap:10px;align-items:center;padding:8px 10px;margin-bottom:10px;
+  border-radius:13px;background:rgba(255,255,255,.07)}
 .opener-art .dot2{width:22px;height:22px;border-radius:50%;flex:0 0 auto;
   background:linear-gradient(160deg,hsl(var(--h) 72% 66%),hsl(var(--h) 60% 48%))}
-.opener-art .sheet-chips{display:flex;gap:7px;margin:10px 0 11px}
-.opener-art .sheet-chips span{flex:1 1 auto;height:24px;border-radius:999px;
-  border:1px solid rgba(70,52,28,.16);background:rgba(255,255,255,.6)}
-.opener-art .sheet-widget{height:60px;border-radius:15px;padding:0 14px;
-  border:1px solid rgba(255,255,255,.9);display:flex;flex-direction:column;
-  justify-content:center;gap:8px;
-  background:linear-gradient(140deg,rgba(46,198,240,.22),rgba(91,97,227,.18))}
+.opener-art .when{width:22px;height:6px;background:rgba(255,255,255,.16);align-self:flex-start;margin-top:2px}
+/* the hosted widget: a card with its own small header and a row of tiles, one of them lit */
+.opener-art .sheet-widget{border-radius:14px;padding:10px;margin-bottom:10px;
+  background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.06)}
+.opener-art .widget-head{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.opener-art .widget-ic{width:14px;height:14px;border-radius:4px;flex:0 0 auto;background:linear-gradient(160deg,#5fd8ff,#1c9fd2)}
+.opener-art .widget-head b{height:7px;width:30%}
+.opener-art .tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.opener-art .tiles span{position:relative;display:block;height:38px;border-radius:10px;background:rgba(255,255,255,.09)}
+.opener-art .tiles span::before{content:"";position:absolute;left:8px;top:7px;width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.55)}
+.opener-art .tiles span::after{content:"";position:absolute;left:8px;right:10px;bottom:8px;height:5px;border-radius:3px;background:rgba(255,255,255,.22)}
+/* the second finger's tap switches this tile on: the amber the app uses for an "On" tile */
+.opener-art .tiles .lit{animation:openerTile 8s linear infinite}
+.opener-art .tiles .lit::before{animation:openerTileDot 8s linear infinite}
+@keyframes openerTile{0%,39%{background:rgba(255,255,255,.09);box-shadow:none}41%,78%{background:rgba(214,164,52,.34);box-shadow:inset 0 0 0 1px rgba(255,205,90,.4)}86%,100%{background:rgba(255,255,255,.09);box-shadow:none}}
+@keyframes openerTileDot{0%,39%{background:rgba(255,255,255,.55)}41%,78%{background:#ffd264}86%,100%{background:rgba(255,255,255,.55)}}
+/* the shortcut chips: pills that wrap, each with its little symbol and its name; a rule above */
+.opener-art .sheet-chips{display:flex;flex-wrap:wrap;gap:7px;padding-top:11px;margin-bottom:11px;border-top:1px solid rgba(255,255,255,.1)}
+.opener-art .chip{position:relative;display:block;width:var(--w);height:24px;border-radius:999px;
+  background:rgba(118,104,228,.2);border:1px solid rgba(140,130,255,.28)}
+.opener-art .chip::before{content:"";position:absolute;left:8px;top:7px;width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.6)}
+.opener-art .chip::after{content:"";position:absolute;left:23px;right:12px;top:9px;height:5px;border-radius:3px;background:rgba(255,255,255,.3)}
+.opener-art .chip.tap{animation:openerRow 8s cubic-bezier(.22,.9,.2,1) infinite,openerChip 8s linear infinite}
+@keyframes openerChip{0%,53%{background:rgba(118,104,228,.2)}55%,78%{background:rgba(118,104,228,.62)}86%,100%{background:rgba(118,104,228,.2)}}
+/* App info and Create folder, side by side */
+.opener-art .sheet-actions{display:flex;gap:8px}
+.opener-art .sheet-actions span{position:relative;flex:1 1 0;height:30px;border-radius:999px;background:rgba(255,255,255,.08)}
+.opener-art .sheet-actions span::before{content:"";position:absolute;left:12px;top:10px;width:10px;height:10px;border-radius:50%;border:1.5px solid rgba(255,255,255,.6)}
+.opener-art .sheet-actions span::after{content:"";position:absolute;left:30px;right:16px;top:12px;height:6px;border-radius:3px;background:rgba(255,255,255,.32)}
+/* the second finger: comes in while the first holds, taps the second tile, then the first chip,
+   and leaves. Placed from the bottom, because the panel is; the travel to the chip is a fixed
+   delta (3 px off at the narrowest width, under a 40 px disc) */
+.opener-art .finger2{position:absolute;z-index:8;width:40px;height:40px;border-radius:50%;
+  left:calc(43px + 1.5 * ((100% - 92px) / 4) - 20px);bottom:142px;
+  background:radial-gradient(circle at 40% 35%,rgba(255,255,255,.95),rgba(255,255,255,.55) 60%,rgba(255,255,255,0) 70%);
+  box-shadow:0 10px 24px -10px rgba(0,0,0,.6);opacity:0;
+  animation:openerFinger2 8s cubic-bezier(.2,.8,.2,1) infinite}
+@keyframes openerFinger2{
+  0%,30%{opacity:0;transform:translate(90px,110px) scale(1.1)}
+  36%{opacity:.95;transform:translate(0,0) scale(1)}
+  38%,41%{opacity:.85;transform:translate(0,0) scale(.86)}
+  44%{opacity:.95;transform:translate(0,-6px) scale(1)}
+  50%{opacity:.95;transform:translate(-60px,63px) scale(1)}
+  52%,55%{opacity:.85;transform:translate(-60px,63px) scale(.86)}
+  58%{opacity:.95;transform:translate(-60px,56px) scale(1)}
+  64%,100%{opacity:0;transform:translate(70px,130px) scale(1.1)}
+}
 
 @media (max-width:900px){
   .opener{grid-template-columns:1fr;min-height:0;gap:40px;padding-top:24px;padding-bottom:56px}
@@ -751,9 +801,9 @@ footer{border-top:1px solid var(--line);padding:2.6rem clamp(1rem,4vw,2.5rem);ma
   .reveal.in .word,.stage-notes li,.ticks li,.screen-pair .cover,.screen-pair .open,.pill{
     opacity:1!important;transform:none!important;animation:none!important}
   .opener h1 span,.opener h1 em,.opener .lede,.opener .cta,.opener .eyebrow,
-  .opener-art,.opener-art .sheet,.opener-art .apps i.held,.opener-art .apps i,.opener-art .sheet-head,.opener-art .sheet-note,.opener-art .sheet-chips,.opener-art .sheet-widget,.opener-art .sheet-widget b,.opener-art .finger,.opener-art .press-ring,.opener .dot{animation:none}
+  .opener-art,.opener-art .sheet,.opener-art .shade,.opener-art .apps i.held,.opener-art .apps i,.opener-art .sheet-head,.opener-art .sheet-note,.opener-art .sheet-widget,.opener-art .chip,.opener-art .sheet-actions,.opener-art .tiles .lit,.opener-art .tiles .lit::before,.opener-art .finger,.opener-art .finger2,.opener-art .press-ring,.opener .dot{animation:none!important;opacity:1;transform:none}
   .opener-art .apps i.held{transform:scale(1.14);box-shadow:0 0 0 2.5px #fff,0 0 0 5px rgba(46,198,240,.9),0 14px 30px -10px rgba(11,134,179,.6)}
-  .opener-art .apps i.dim{opacity:.38}.opener-art .finger,.opener-art .press-ring{opacity:0}.opener-art .sheet-widget b:first-child{width:42%}
+  .opener-art .shade{opacity:1}.opener-art .finger,.opener-art .finger2,.opener-art .press-ring{opacity:0}.opener-art .tiles .lit{background:rgba(214,164,52,.34)}.opener-art .tiles .lit::before{background:#ffd264}.opener-art .chip.tap{background:rgba(118,104,228,.62)}
   .strip-inner{animation:none}
   /* the hero demo: the panel is simply shown, and still answers a hold, instantly */
   .demo .press{display:none}
