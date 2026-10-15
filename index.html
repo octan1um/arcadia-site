@@ -5,7 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Arcadia — hold an icon, use the app without opening it</title>
 <meta name="description" content="An Android home screen launcher. Hold any icon to see that app's notifications, its shortcuts and one of its widgets, without opening it. No network permission.">
-<meta name="theme-color" content="#05070c">
+<meta name="theme-color" content="#f7f3ec">
+<meta name="color-scheme" content="light">
 <meta property="og:title" content="Arcadia">
 <meta property="og:description" content="Hold any icon to see that app's notifications, shortcuts and a live widget, without opening it.">
 <meta property="og:type" content="website">
@@ -21,6 +22,12 @@
 
 <header class="nav">
   <a class="brand" href="#top"><img src="assets/icon.png" alt="" width="32" height="32"><span>Arcadia</span></a>
+  <nav aria-label="Sections">
+    <a href="#panel">The panel</a>
+    <a href="#widgets">Widgets</a>
+    <a href="#features">Under the icon</a>
+    <a href="#privacy">Privacy</a>
+  </nav>
   <a class="btn tiny primary" href="#get">Get it</a>
 </header>
 
@@ -101,12 +108,12 @@
 
   <section class="strip" aria-label="At a glance">
     <div class="strip-inner">
-      <span>Panels</span><i>◆</i><span>Smart-home scenes</span><i>◆</i><span>Live widgets</span><i>◆</i>
-      <span>Widget stacks</span><i>◆</i><span>Resize and scale</span><i>◆</i><span>App Zero</span><i>◆</i>
-      <span>Game launcher</span><i>◆</i><span>Hide apps</span><i>◆</i><span>Backup &amp; restore</span><i>◆</i>
-      <span>Panels</span><i>◆</i><span>Smart-home scenes</span><i>◆</i><span>Live widgets</span><i>◆</i>
-      <span>Widget stacks</span><i>◆</i><span>Resize and scale</span><i>◆</i><span>App Zero</span><i>◆</i>
-      <span>Game launcher</span><i>◆</i><span>Hide apps</span><i>◆</i><span>Backup &amp; restore</span><i>◆</i>
+      <span>Panels</span><i></i><span>Smart-home scenes</span><i></i><span>Live widgets</span><i></i>
+      <span>Widget stacks</span><i></i><span>Resize and scale</span><i></i><span>App Zero</span><i></i>
+      <span>Game launcher</span><i></i><span>Hide apps</span><i></i><span>Backup &amp; restore</span><i></i>
+      <span>Panels</span><i></i><span>Smart-home scenes</span><i></i><span>Live widgets</span><i></i>
+      <span>Widget stacks</span><i></i><span>Resize and scale</span><i></i><span>App Zero</span><i></i>
+      <span>Game launcher</span><i></i><span>Hide apps</span><i></i><span>Backup &amp; restore</span><i></i>
     </div>
   </section>
 
@@ -273,6 +280,98 @@
     </div>
   </section>
 
+  <!-- under a held icon: icon stacks, the game launcher, media controls.
+       Explained with abstract animations drawn in the page - shapes for icons, a finger, and
+       the thing that opens - rather than filmed. Each stage is sized in container units so it
+       scales with its card; app.js pauses them while they are off screen. -->
+  <section id="features" class="explain">
+    <header class="sec-head reveal">
+      <p class="eyebrow">Under a held icon</p>
+      <h2>Three more things <em>a long press</em> can carry.</h2>
+      <p class="lede">
+        The panel is not only notifications, shortcuts and a widget. An icon can carry a
+        stack of other apps, a game launcher can carry its games, and an app that is
+        playing carries its controls.
+      </p>
+    </header>
+
+    <div class="explain-grid">
+      <article class="explain-card reveal">
+        <div class="anim anim-stack" data-anim aria-hidden="true">
+          <i class="ic c1" style="--h:206"></i>
+          <i class="ic c2 held" style="--h:150"></i>
+          <i class="ic c3" style="--h:44"></i>
+          <i class="ic c4" style="--h:320"></i>
+          <i class="ic c1 r2" style="--h:12"></i>
+          <i class="ic c2 r2" style="--h:268"></i>
+          <i class="ic c3 r2" style="--h:196"></i>
+          <i class="ic c4 r2" style="--h:190"></i>
+          <span class="ring"></span>
+          <div class="sheet">
+            <div class="row" style="--i:0"><i style="--h:206"></i><b style="--w:18cqw"></b></div>
+            <div class="row" style="--i:1"><i style="--h:44"></i><b style="--w:12cqw"></b></div>
+            <div class="row" style="--i:2"><i style="--h:320"></i><b style="--w:20cqw"></b></div>
+            <div class="row" style="--i:3"><i style="--h:268"></i><b style="--w:14cqw"></b></div>
+          </div>
+          <span class="finger"></span>
+        </div>
+        <h3>Icon stacks</h3>
+        <p>Any home icon can carry a list of apps you choose. Hold it and they appear underneath it as a stack of small icons, in your order, each one a tap away. Let go and the home screen is exactly as it was.</p>
+        <p class="how">Long press on any icon</p>
+      </article>
+
+      <article class="explain-card reveal delay-1">
+        <div class="anim anim-games" data-anim aria-hidden="true">
+          <i class="ic bg c1" style="--h:206"></i>
+          <i class="ic bg c2" style="--h:44"></i>
+          <i class="ic bg c3" style="--h:320"></i>
+          <i class="ic bg c4" style="--h:150"></i>
+          <div class="chips">
+            <span class="chip" style="--i:0;--h:14;--w:11cqw"><i></i><b></b></span>
+            <span class="chip" style="--i:1;--h:120;--w:8cqw"><i></i><b></b></span>
+            <span class="chip" style="--i:2;--h:200;--w:13cqw"><i></i><b></b></span>
+            <span class="chip" style="--i:3;--h:280;--w:9cqw"><i></i><b></b></span>
+            <span class="chip" style="--i:4;--h:40;--w:12cqw"><i></i><b></b></span>
+            <span class="chip" style="--i:5;--h:330;--w:10cqw"><i></i><b></b></span>
+          </div>
+          <div class="dock"></div>
+          <i class="ic c1" style="--h:12"></i>
+          <i class="ic c2 held" style="--h:262"><svg viewBox="0 0 24 24"><rect x="2.5" y="7" width="19" height="10.5" rx="5.2" fill="none" stroke="currentColor" stroke-width="1.9"/><path d="M8 10.2v4M6 12.2h4" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><circle cx="15.6" cy="11.1" r="1.2" fill="currentColor"/><circle cx="18" cy="13.6" r="1.2" fill="currentColor"/></svg></i>
+          <i class="ic c3" style="--h:190"></i>
+          <i class="ic c4" style="--h:96"></i>
+          <span class="ring"></span>
+          <span class="finger"></span>
+        </div>
+        <h3>Game launcher</h3>
+        <p>Pick a launcher app and choose up to six games for it. Hold its icon and they slide out as a row of chips, each one straight into the game. The library sits under one icon instead of across a page.</p>
+        <p class="how">Long press on the game launcher icon</p>
+      </article>
+
+      <article class="explain-card reveal delay-2">
+        <div class="anim anim-media" data-anim aria-hidden="true">
+          <i class="ic c1" style="--h:206"></i>
+          <i class="ic c2 held" style="--h:340"><svg viewBox="0 0 24 24"><path d="M9 18.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0Zm0 0V6l10-2.5v12.5m0 0a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0Z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round" stroke-linecap="round"/></svg></i>
+          <i class="ic c3" style="--h:44"></i>
+          <span class="ring"></span>
+          <div class="sheet">
+            <div class="art"><span class="disc"></span></div>
+            <b class="title"></b><b class="sub"></b>
+            <div class="btn-row">
+              <span class="ctl"><svg viewBox="0 0 24 24"><rect x="5" y="5" width="2.4" height="14" rx=".8" fill="currentColor"/><path d="M19 5 8.5 12 19 19z" fill="currentColor"/></svg></span>
+              <span class="ctl play"><svg viewBox="0 0 24 24"><rect x="6.5" y="5" width="4" height="14" rx="1" fill="currentColor"/><rect x="13.5" y="5" width="4" height="14" rx="1" fill="currentColor"/></svg></span>
+              <span class="ctl"><svg viewBox="0 0 24 24"><rect x="16.6" y="5" width="2.4" height="14" rx=".8" fill="currentColor"/><path d="M5 5l10.5 7L5 19z" fill="currentColor"/></svg></span>
+            </div>
+            <div class="track"><span class="fill"></span><span class="knob"></span></div>
+          </div>
+          <span class="finger"></span>
+        </div>
+        <h3>Media controls</h3>
+        <p>Hold the icon of an app that is playing and its panel shows what is on: the artwork, and play, pause and next. Two things and nothing else, with no use counts beside them. Skip the track or pause it, then let go.</p>
+        <p class="how">Long press on an app that is playing</p>
+      </article>
+    </div>
+  </section>
+
   <!-- control -->
   <section id="control" class="features">
     <header class="sec-head reveal">
@@ -282,39 +381,39 @@
 
     <div class="cards">
       <article class="card reveal">
-        <div class="ic">◐</div><h3>App Zero</h3>
+        <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12h11M10 7l-5 5 5 5"/><rect x="17.5" y="5" width="3" height="14" rx="1.2"/></svg></div><h3>App Zero</h3>
         <p>One app owns the page left of home. Swipe right from page zero and you are in it.</p>
       </article>
       <article class="card reveal delay-1">
-        <div class="ic">▧</div><h3>Game launcher</h3>
+        <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="2.5" y="7" width="19" height="10.5" rx="5.2"/><path d="M8 10.2v4M6 12.2h4"/><circle cx="15.6" cy="11.1" r="1.1" fill="currentColor" stroke="none"/><circle cx="18" cy="13.6" r="1.1" fill="currentColor" stroke="none"/></svg></div><h3>Game launcher</h3>
         <p>Pick a launcher app, then choose which games appear in its panel. The library sits under one icon.</p>
       </article>
       <article class="card reveal delay-2">
-        <div class="ic">◍</div><h3>Hide what you never open</h3>
+        <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 3l18 18M10.6 10.6a2 2 0 0 0 2.8 2.8M9.9 5.2A10.6 10.6 0 0 1 21 12a11 11 0 0 1-2.6 3.3M6.3 6.3A11 11 0 0 0 3 12s3.5 6.5 9 6.5a9.6 9.6 0 0 0 3.2-.6"/></svg></div><h3>Hide what you never open</h3>
         <p>Hidden apps leave home, the dock and search. They stay installed and still work.</p>
       </article>
       <article class="card reveal">
-        <div class="ic">◈</div><h3>Notification history</h3>
+        <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 16v-5a6 6 0 0 1 12 0v5l1.5 2h-15zM10 20.5a2 2 0 0 0 4 0"/></svg></div><h3>Notification history</h3>
         <p>Kept per app, with the images they arrived with, after the shade has been cleared. Clear one app or all of them.</p>
       </article>
       <article class="card reveal delay-1">
-        <div class="ic">⬚</div><h3>Backup and restore</h3>
+        <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 4v10M8 10l4 4 4-4M4 16v3h16v-3"/></svg></div><h3>Backup and restore</h3>
         <p>Pages, folders, widgets and settings saved to a file you keep. New phone, same home screen.</p>
       </article>
       <article class="card reveal delay-2">
-        <div class="ic">◱</div><h3>Phones and foldables</h3>
+        <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="8" height="14" rx="2"/><rect x="13" y="5" width="8" height="14" rx="2"/></svg></div><h3>Phones and foldables</h3>
         <p>One layout at one grid. The cover screen shows half of it, the inner screen shows all of it, and opening the phone rearranges nothing.</p>
       </article>
       <article class="card reveal">
-        <div class="ic">◓</div><h3>Lock the home screen</h3>
+        <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></div><h3>Lock the home screen</h3>
         <p>Freeze the layout so a stray press cannot drag an icon out of place. Press and hold still opens the app&rsquo;s block — the lock stops things moving, not the controls you use.</p>
       </article>
       <article class="card reveal delay-1">
-        <div class="ic">◇</div><h3>Gestures</h3>
+        <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="2"/><path d="M7.5 7.5a6.4 6.4 0 0 0 0 9M16.5 7.5a6.4 6.4 0 0 1 0 9"/></svg></div><h3>Gestures</h3>
         <p>Double tap to search or lock the phone. Swipe up for search, swipe up on the dock for the task switcher.</p>
       </article>
       <article class="card reveal delay-2">
-        <div class="ic">▦</div><h3>Large folders</h3>
+        <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="7" height="7" rx="1.6"/><rect x="13" y="4" width="7" height="7" rx="1.6"/><rect x="4" y="13" width="7" height="7" rx="1.6"/><rect x="13" y="13" width="7" height="7" rx="1.6"/></svg></div><h3>Large folders</h3>
         <p>Past four apps a folder becomes a large tile showing a grid of what is inside, so the app you want is easier to reach.</p>
       </article>
     </div>
