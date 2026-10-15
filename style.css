@@ -554,7 +554,7 @@ figcaption{padding:.85rem 1rem;font-size:.86rem;line-height:1.5;color:var(--mute
 .anim-games .dock{left:8cqw;right:8cqw;top:54cqw;height:19cqw;border-radius:5cqw;
   background:rgba(255,253,249,.5);border:.3cqw solid rgba(255,255,255,.8)}
 .anim-games .ic{top:57cqw}
-.anim-games .ic.bg{top:9cqw}
+.anim-games .ic.bg{top:9cqw;left:auto;right:8cqw;opacity:.55}
 .anim-games .c1{left:13.5cqw}.anim-games .c2{left:33.5cqw}.anim-games .c3{left:53.5cqw}.anim-games .c4{left:73.5cqw}
 .anim-games .held{animation:heldIcon 7s ease-in-out infinite}
 .anim-games .ring{top:55.8cqw;left:32.3cqw;animation:ringIn 7s ease-in-out infinite}
@@ -565,18 +565,16 @@ figcaption{padding:.85rem 1rem;font-size:.86rem;line-height:1.5;color:var(--mute
   14%,78%{opacity:1;transform:translate(0,0) scale(.84)}
   86%,100%{opacity:0;transform:translate(0,-7cqw) scale(1)}
 }
-.anim-games .chips{z-index:4;left:8cqw;top:36cqw;display:flex;gap:2.2cqw;width:max-content;
-  animation:chipsPan 7s cubic-bezier(.4,0,.2,1) infinite}
-.anim-games .chip{position:relative;display:flex;align-items:center;gap:1.8cqw;height:9.2cqw;
+.anim-games .chips{z-index:4;left:8cqw;top:5cqw;display:flex;flex-direction:column;gap:1.5cqw;width:56cqw}
+.anim-games .chip{position:relative;display:flex;align-items:center;gap:1.8cqw;height:6.9cqw;
   padding:0 3cqw 0 1.6cqw;border-radius:999px;background:rgba(255,253,249,.94);
   border:.3cqw solid rgba(255,255,255,.95);box-shadow:0 2.4cqw 5cqw -2cqw rgba(70,45,15,.35);
   opacity:0;animation:chipIn 7s cubic-bezier(.2,.8,.2,1) infinite;animation-delay:calc(var(--i) * .07s)}
-.anim-games .chip i{position:static;width:6cqw;height:6cqw;border-radius:50%;flex:0 0 auto;
+.anim-games .chip i{position:static;width:4.6cqw;height:4.6cqw;border-radius:50%;flex:0 0 auto;
   background:linear-gradient(160deg,hsl(var(--h) 72% 64%),hsl(var(--h) 62% 46%))}
 .anim-games .chip b{position:static;display:block;height:1.6cqw;border-radius:1cqw;
   width:var(--w,10cqw);background:rgba(70,52,28,.24)}
-@keyframes chipIn{0%,14%{opacity:0;transform:translateX(-7cqw) scale(.94)}24%,80%{opacity:1;transform:none}86%,100%{opacity:0;transform:translateX(-7cqw) scale(.94)}}
-@keyframes chipsPan{0%,36%{transform:translateX(0)}60%,90%{transform:translateX(-38cqw)}91%,100%{transform:translateX(0)}}
+@keyframes chipIn{0%,14%{opacity:0;transform:translateY(5cqw) scale(.94)}24%,80%{opacity:1;transform:none}86%,100%{opacity:0;transform:translateY(5cqw) scale(.94)}}
 
 /* C: media controls. Hold a playing app; a card shows the artwork and play, pause, next,
    with the progress line moving. */
@@ -711,7 +709,6 @@ footer{border-top:1px solid var(--line);padding:2.6rem clamp(1rem,4vw,2.5rem);ma
   .anim .ring{opacity:1;transform:scale(1.12)}
   .anim .sheet,.anim .row,.anim-games .chip{opacity:1;transform:none}
   .anim-stack .r2{opacity:.35}
-  .anim-games .chips{transform:translateX(-14cqw)}
   .anim-media .fill{transform:scaleX(.64)}
   .anim-media .knob{transform:translateX(43.9cqw)}
   .anim-media .disc{transform:rotate(320deg)}
