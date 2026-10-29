@@ -1,10 +1,11 @@
 # Arcadia — landing page
 
 Static marketing site for the Arcadia Android launcher. Plain HTML, CSS and
-JavaScript: no framework, no build step and no web fonts. This website does not embed analytics; optional app analytics is described in privacy-policy.html.
+JavaScript: no framework, no build step and no web fonts. This website does not embed analytics or load third-party resources.
 
-That last part is deliberate. The page's argument is that Arcadia cannot send your
-data anywhere, so the page itself does not load anything third-party either.
+Privacy commitment: **Your phone. Your rules. Zero ads. No data sold. Built to respect your privacy.**
+
+The public policy describes the currently shipped app. Unactivated Firebase work is held separately: do not publish speculative release promises or claim that system-provider requests and user-selected cloud backups can never use the network. Before enabling any usage collection, align the implementation, concise policy disclosures and Play Data safety answers.
 
 ## Layout
 
