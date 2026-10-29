@@ -1,7 +1,7 @@
 # Arcadia — landing page
 
 Static marketing site for the Arcadia Android launcher. Plain HTML, CSS and
-JavaScript: no framework, no build step, no web fonts, no analytics.
+JavaScript: no framework, no build step and no web fonts. This website does not embed analytics; optional app analytics is described in privacy-policy.html.
 
 That last part is deliberate. The page's argument is that Arcadia cannot send your
 data anywhere, so the page itself does not load anything third-party either.
