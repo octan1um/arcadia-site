@@ -831,10 +831,17 @@ footer{border-top:1px solid var(--line);padding:2.6rem clamp(1rem,4vw,2.5rem);ma
   .anim-media .disc{transform:rotate(320deg)}
 }
 
-/* Current real-device captures: no aspect distortion, scroll or clipping required. */
-.current-screens{max-width:1200px;margin:5rem auto;padding:0 1.5rem}
-.current-screen-gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.5rem}
-.current-screen-gallery figure{margin:0;min-width:0}
-.current-screen-gallery img{display:block;width:100%;height:auto;border-radius:1rem;background:#050508}
-.current-screen-gallery figcaption{margin:.7rem 0 0;font-weight:600}
-@media(max-width:700px){.current-screen-gallery{grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}}
+/* Original panel slot: native source images, not a resized/rotated raster montage.
+   Max widths retain at least 3 source pixels per CSS pixel on dense displays. */
+#panel .feature-stage{grid-template-columns:1fr;gap:2rem}
+#panel .panel-captures{display:grid;grid-template-columns:minmax(0,.483333fr) minmax(0,1fr);
+  gap:24px;max-width:914px;margin-inline:auto;align-items:center}
+#panel .panel-captures a{display:block;min-width:0;border-radius:18px;overflow:hidden;background:#050508}
+#panel .panel-captures img{width:100%;height:auto;max-height:none;display:block;margin:0}
+#panel .stage-notes{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media(max-width:700px){
+  #panel .panel-captures{grid-template-columns:minmax(0,1fr);gap:1.5rem}
+  #panel .panel-cover{width:100%;max-width:290px;margin-inline:auto}
+  #panel .panel-open{width:100%;max-width:600px;margin-inline:auto}
+  #panel .stage-notes{grid-template-columns:minmax(0,1fr)}
+}
