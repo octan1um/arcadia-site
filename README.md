@@ -15,6 +15,7 @@ The public policy describes the currently shipped app. Unactivated Firebase work
 | `style.css` | all styling: the light palette, the backdrop, the three feature animations |
 | `app.js` | scroll reveal, the hold-to-open hero demo, pausing loops that are off screen |
 | `privacy-policy.html` | privacy policy, also the URL Play requires |
+| `terms-of-service.html` | terms for the app and website, including lawful warranty and liability exclusions |
 | `assets/` | icon and product screenshots |
 | `tools/` | render and measurement scripts (see below) |
 
