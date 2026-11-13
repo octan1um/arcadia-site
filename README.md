@@ -16,6 +16,7 @@ The public policy describes the currently shipped app. Unactivated Firebase work
 | `app.js` | scroll reveal, the hold-to-open hero demo, pausing loops that are off screen |
 | `privacy-policy.html` | privacy policy, also the URL Play requires |
 | `terms-of-service.html` | terms for the app and website, including lawful warranty and liability exclusions |
+| `accessibility/index.html` | how the optional accessibility service is used, the page Play's accessibility declaration links to; its video is `media/arcadia-accessibility-demo.mp4` with `media/arcadia-accessibility-demo-poster.jpg` |
 | `assets/` | icon and product screenshots |
 | `tools/` | render and measurement scripts (see below) |
 

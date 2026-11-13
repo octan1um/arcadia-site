@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Arcadia — How Arcadia uses the accessibility service</title>
+  <meta name="description" content="Arcadia's accessibility service is optional and off until you turn it on. It locks the screen on a double tap, opens recent apps from the dock and closes the assistant after an App Block. It cannot read your screen, and nothing is collected or shared.">
+  <link rel="canonical" href="https://arcadiafoundry.com/accessibility/">
+  <link rel="icon" href="/assets/icon.png">
+  <style>
+    body{font:17px/1.65 system-ui,sans-serif;max-width:840px;margin:0 auto;padding:32px 22px;background:#faf8f4;color:#211e1a}
+    h1,h2{line-height:1.25}h2{margin-top:2em}a{color:#175e9a;overflow-wrap:anywhere}li{margin:.55em 0}
+    nav{display:flex;flex-wrap:wrap;gap:.75em 1.5em;margin-bottom:2em}.notice{padding:1em 1.2em;border:1px solid #d6d0c6;border-radius:12px}
+    video{display:block;width:100%;height:auto;max-height:80vh;background:#111;border-radius:12px}
+    footer{border-top:1px solid #d6d0c6;margin-top:3em;padding-top:1.5em}
+  </style>
+</head>
+<body>
+  <nav aria-label="Site pages"><a href="/">Back to Arcadia</a><a href="/privacy-policy.html">Privacy policy</a><a href="/terms-of-service.html">Terms of service</a></nav>
+  <main>
+    <h1>How Arcadia uses the accessibility service</h1>
+    <p><strong>Last updated: 13 November 2026</strong></p>
+
+    <section class="notice" aria-labelledby="summary">
+      <h2 id="summary">In short</h2>
+      <p>Arcadia includes an optional service that uses Android’s AccessibilityService API. It is off until you turn it on in Android’s Accessibility settings. Arcadia is not an accessibility tool. The service is used only to lock the screen when you double-tap your Home screen, to open your recent apps when you swipe up on the dock, and to close the assistant after you run an App Block.</p>
+      <p>It cannot read what is on your screen or what you type, and it cannot tap or swipe for you. Arcadia does not collect, store or share any information through it.</p>
+    </section>
+
+    <h2 id="video">See it working</h2>
+    <video controls playsinline preload="metadata" src="/media/arcadia-accessibility-demo.mp4" poster="/media/arcadia-accessibility-demo-poster.jpg" aria-describedby="video-steps">
+      Your browser cannot play this video. <a href="/media/arcadia-accessibility-demo.mp4">Download it (MP4)</a>.
+    </video>
+    <p><a href="/media/arcadia-accessibility-demo.mp4" download>Download the video (MP4)</a></p>
+    <p>What the video shows:</p>
+    <ol id="video-steps">
+      <li>Pressing Home opens Arcadia, the phone’s Home screen. Its accessibility service is off.</li>
+      <li>Before anything is turned on, Arcadia shows what the service is used for, with two buttons: <strong>Not now</strong> and <strong>Agree and open settings</strong>.</li>
+      <li><strong>Not now</strong> closes it and nothing is turned on. Using the feature again shows the same explanation again.</li>
+      <li><strong>Agree and open settings</strong> opens Android’s Accessibility settings, which show Arcadia’s own description of its service. The service is turned on there.</li>
+      <li>Back on the Home screen, a double tap on empty space locks the phone. It then unlocks as usual.</li>
+      <li>A swipe up on the dock opens Android’s recent apps.</li>
+      <li>The service is turned off again in Settings &gt; Accessibility &gt; Arcadia.</li>
+    </ol>
+
+    <h2 id="uses">What it is used for</h2>
+    <ol>
+      <li><strong>Double-tap to lock.</strong> Double-tap an empty space on your Home screen and the phone locks, using Android’s lock-screen action. Android’s other way for an app to lock the phone, the device-administrator lock, makes you enter your PIN, pattern or password on the next unlock and switches off fingerprint and face unlock until you do. The accessibility action does not, so your phone unlocks the way it normally does.</li>
+      <li><strong>Recent apps from the dock.</strong> Swipe up on the dock to open Android’s recent apps screen. Android has no other public way for a home screen app to open it.</li>
+      <li><strong>Closing the assistant after an App Block.</strong> When you run an App Block (a Google Action Block or Assistant routine) from Arcadia, the assistant’s window can stay open over your Home screen. Arcadia closes it and takes you back to Home. To know when that window is in front, the service is told the app package and window name of the window in front, and only for 20 seconds after you run an App Block.</li>
+    </ol>
+
+    <h2 id="limits">What it cannot do</h2>
+    <ul>
+      <li>It cannot read the content of your screen or what you type. Arcadia’s service is set up without permission to retrieve window content.</li>
+      <li>It cannot perform taps, swipes or other gestures.</li>
+      <li>Apart from the 20 seconds after an App Block, it is told nothing about what happens on your phone.</li>
+    </ul>
+
+    <h2 id="data">Your information</h2>
+    <p>Arcadia does not collect, store or share any information through the accessibility service. The <a href="/privacy-policy.html">Privacy Policy</a> covers the rest of Arcadia.</p>
+
+    <h2 id="control">Turning it on and off</h2>
+    <p>The service stays off until you choose to turn it on. Before Arcadia opens Android’s Accessibility settings, it explains what the service is used for and asks for your agreement: tap <strong>Agree and open settings</strong> to continue, or <strong>Not now</strong> to leave it off. In Android’s settings, turn on Arcadia and confirm.</p>
+    <p>To turn it off at any time, open your phone’s <strong>Settings &gt; Accessibility &gt; Arcadia</strong> (on some phones under Downloaded apps or Installed apps) and switch it off. Without it, double-tap to lock and swiping up on the dock for recent apps will not work, and the assistant stays open after an App Block. Everything else in Arcadia works as before.</p>
+
+    <h2 id="contact">Questions</h2>
+    <p>Email <a href="mailto:contact@arcadiafoundry.com">contact@arcadiafoundry.com</a>.</p>
+  </main>
+  <footer><a href="/">Arcadia</a> · <a href="/privacy-policy.html">Privacy policy</a> · <a href="/terms-of-service.html">Terms of service</a> · <a href="mailto:contact@arcadiafoundry.com">Contact</a></footer>
+</body>
+</html>
