@@ -103,7 +103,7 @@
         <span class="phone">
         <img class="shell" src="assets/phone-shell.png" alt="">
         <span class="screen">
-          <img class="home" src="assets/home-cover.png" alt="An ordinary phone running Arcadia: notifications across the top, then calendar, activity and weather widgets above two folders and a dock">
+          <img class="home" src="assets/home-cover.png" alt="An ordinary phone running Arcadia: notifications across the top, then device batteries, the next alarm and a month calendar above a two-row dock">
           <span class="press" aria-hidden="true"></span>
           <img class="panel" src="assets/overlay-shortcuts.png" alt="" aria-hidden="true">
           <!-- The whole pitch is a gesture, and until now the page only played it at you.
@@ -124,9 +124,11 @@
       <span>Panels</span><i></i><span>Smart-home scenes</span><i></i><span>Live widgets</span><i></i>
       <span>Widget stacks</span><i></i><span>Resize and scale</span><i></i><span>App Zero</span><i></i>
       <span>Game launcher</span><i></i><span>Hide apps</span><i></i><span>Backup &amp; restore</span><i></i>
+      <span>App Library</span><i></i><span>Large folders</span><i></i><span>Glass icons</span><i></i>
       <span>Panels</span><i></i><span>Smart-home scenes</span><i></i><span>Live widgets</span><i></i>
       <span>Widget stacks</span><i></i><span>Resize and scale</span><i></i><span>App Zero</span><i></i>
       <span>Game launcher</span><i></i><span>Hide apps</span><i></i><span>Backup &amp; restore</span><i></i>
+      <span>App Library</span><i></i><span>Large folders</span><i></i><span>Glass icons</span><i></i>
     </div>
   </section>
 
@@ -145,8 +147,8 @@
     <div class="feature-stage reveal">
       <figure class="stage-shot group-shot">
         <div class="panel-captures">
-          <a class="panel-cover" href="assets/current-20261030/held-google-home.png" aria-label="View the cover-screen panel screenshot at full size">
-            <img src="assets/current-20261030/held-google-home.png" width="914" height="2048" alt="Google Home held on the cover screen, with its live controls and scene shortcuts">
+          <a class="panel-cover" href="assets/current-20261115/held-google-home.png" aria-label="View the cover-screen panel screenshot at full size">
+            <img src="assets/current-20261115/held-google-home.png" width="914" height="2048" alt="Google Home held on the cover screen, with its live controls and scene shortcuts">
           </a>
           <a class="panel-open" href="assets/panel-google-home-open.png" aria-label="View the open-screen panel screenshot at full size">
             <img src="assets/panel-google-home-open.png" width="1968" height="2184" alt="Google Home held on the open screen, with its live controls and scene shortcuts">
@@ -157,7 +159,7 @@
       <ol class="stage-notes">
         <li><span class="n">01</span><div>
           <h3>The notifications it sent you</h3>
-          <p>Live ones and the ones you already swiped away, kept per app and scrollable inside the panel.</p>
+          <p>Live ones and, with history on, the ones you already swiped away, kept per app and scrollable inside the panel.</p>
           <span class="panel-map" aria-hidden="true">
             <span class="pm-head"></span>
             <span class="pm-band lit"><i></i><i></i><i></i></span>
@@ -213,10 +215,10 @@
         <p>Sender, message and arrival time on the card. Most of the time that is the whole errand.</p></div></li>
       <li><span class="n">02</span><div>
         <h3>Kept after you clear them</h3>
-        <p>Swiping the shade does not lose them. Each app keeps its own history, including the images they arrived with.</p></div></li>
+        <p>Turn on notification history and clearing the shade does not lose them. Each app keeps its own, including the images they arrived with.</p></div></li>
       <li><span class="n">03</span><div>
         <h3>Waiting under the icon</h3>
-        <p>Hold an app and its notifications are in the panel, live ones and cleared ones together, scrollable.</p></div></li>
+        <p>Hold an app and its notifications are in the panel, live ones and kept ones together, scrollable.</p></div></li>
     </ol>
   </section>
 
@@ -231,11 +233,12 @@
         unfolded page — the same apps, in the same order, in the same places. Unfolding
         shows you the half you were not looking at. It does not switch layouts, reflow the
         grid or move anything, and widgets are limited to the width of one half, so nothing
-        is ever split down the fold.
+        is ever split down the fold. When Arcadia starts, your home screen is drawn complete
+        from a saved copy, then checked against your apps, so there is no empty grid filling in.
       </p>
     </header>
     <div class="screen-pair reveal">
-      <figure class="glow cover"><img src="assets/home-cover.png" alt="The cover screen showing one half of the home grid: a stacked calendar, activity rings, weather and two folders">
+      <figure class="glow cover"><img src="assets/home-cover-20261015.png" alt="The cover screen showing one half of the home grid: a stacked calendar, activity rings, weather and two folders">
         <figcaption>Folded — the cover screen shows one half of the grid.</figcaption></figure>
       <figure class="glow open"><img src="assets/home-open.png" alt="The inner screen showing both halves of the same home grid at once: calendar, activity, device batteries, sleep and energy widgets, a weather panel and a full month calendar">
         <figcaption>Unfolded — the same grid with both halves on screen. Nothing moved.</figcaption></figure>
@@ -272,17 +275,16 @@
       <p class="eyebrow">Widgets</p>
       <h2>Stacked, scaled, or hosted inside an icon.</h2>
       <p class="lede">
-        Arcadia hosts standard Android app widgets and adds three things the platform
-        launcher does not: several widgets sharing a single grid slot, independent resizing
-        and content scaling, and a widget that runs inside an app's panel instead of on the
-        home screen.
+        Arcadia hosts standard Android app widgets and adds three things: several widgets
+        sharing a single grid slot, independent resizing and content scaling, and a widget
+        that runs inside an app's panel instead of on the home screen.
       </p>
     </header>
 
     <div class="media-trio reveal">
       <figure class="trio-item tall">
         <div class="trio-media glow">
-          <img src="assets/icon-widgets.png" alt="Icon widgets settings with its live-overlay demonstration, app search and assigned widgets">
+          <img src="assets/icon-widgets.png" width="914" height="2048" alt="Maps held on the home screen: its search widget running inside the panel, with Bolt, Lime, Trainline and Uber stacked under it">
         </div>
         <figcaption><strong>Hosted in a panel</strong> Assign one widget per app and it renders in that app's panel rather than consuming a home screen slot, in a compact or large size.</figcaption>
       </figure>
@@ -292,7 +294,7 @@
           <video src="assets/stacked-widgets.mp4" poster="assets/stacked-widgets-poster.png" autoplay muted loop playsinline preload="metadata"
                  aria-label="Several widgets sharing a single grid slot on the home screen, cycled by swiping the stack, while the surrounding icons and folders stay in place"></video>
         </div>
-        <figcaption><strong>Stacks</strong> Any number of widgets share one grid slot and are cycled with a swipe. The gesture is scoped to the stack — surrounding icons, folders and widgets are untouched.</figcaption>
+        <figcaption><strong>Stacks</strong> Any number of widgets share one grid slot and are cycled with a swipe. The gesture is scoped to the stack — surrounding icons, folders and widgets are untouched. Turn on Auto-rotate and a different card is waiting each time you come back.</figcaption>
       </figure>
 
       <figure class="trio-item wide">
@@ -404,7 +406,7 @@
     </header>
 
     <figure class="group-shot reveal">
-      <img src="assets/group-pages.png" alt="Three phones: the pages overview with two page cards and Widgets, Settings and Lock tiles; the page editor listing a page's apps with Move buttons and ticks; the widget picker with its search box and app filters">
+      <img src="assets/group-pages.png" alt="Three phones: the pages overview with four page cards and Appearance, Widgets, Settings and Lock tiles; the page editor listing a page's apps with Move buttons and ticks; the widget picker searched for weather">
       <figcaption>Long-press empty space for the pages overview; a pencil on each page lists its apps; the widget picker searches everything your apps offer.</figcaption>
     </figure>
 
@@ -423,7 +425,7 @@
       </article>
       <article class="card reveal">
         <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 16v-5a6 6 0 0 1 12 0v5l1.5 2h-15zM10 20.5a2 2 0 0 0 4 0"/></svg></div><h3>Notification history</h3>
-        <p>Kept per app, with the images they arrived with, after the shade has been cleared. Clear one app or all of them.</p>
+        <p>Switch it on and notifications are kept per app, with the images they arrived with, after the shade has been cleared. Clear one app or all of them.</p>
       </article>
       <article class="card reveal delay-1">
         <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 4v10M8 10l4 4 4-4M4 16v3h16v-3"/></svg></div><h3>Backup and restore</h3>
@@ -445,11 +447,23 @@
         <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="7" height="7" rx="1.6"/><rect x="13" y="4" width="7" height="7" rx="1.6"/><rect x="4" y="13" width="7" height="7" rx="1.6"/><rect x="13" y="13" width="7" height="7" rx="1.6"/></svg></div><h3>Large folders</h3>
         <p>Switch it on, or resize a folder past one slot, and the folder becomes a large tile: its apps in a grid, each one tap away.</p>
       </article>
+      <article class="card reveal">
+        <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M8 9h8M8 12h8M8 15h5"/></svg></div><h3>App Library</h3>
+        <p>Swipe up and every app is there: sorted into categories you can rename, or A&ndash;Z.</p>
+      </article>
+      <article class="card reveal delay-1">
+        <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 7L4.5 11.5 9 16M4.5 11.5H15a4.5 4.5 0 0 1 0 9h-2"/></svg></div><h3>Undo</h3>
+        <p>Moved something by mistake? Undo and Redo are on screen while you arrange the home screen.</p>
+      </article>
+      <article class="card reveal delay-2">
+        <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 4a8 8 0 0 0 0 16z" fill="currentColor" stroke="none"/></svg></div><h3>Appearance</h3>
+        <p>Default, Dark, Glass or Hue icons, and light or dark panels, from solid to fully see-through.</p>
+      </article>
     </div>
 
     <figure class="group-shot reveal">
-      <img src="assets/group-settings.png" alt="Four settings pages side by side: the settings list, Gestures, Hidden apps and Backup and restore">
-      <figcaption>The settings pages: the main list, Gestures, Hidden apps, and Backup and restore.</figcaption>
+      <img src="assets/group-settings.png" alt="Four settings pages side by side: the settings list, Gestures, Notifications and Backup and restore">
+      <figcaption>The settings pages: the main list, Gestures, Notifications, and Backup and restore.</figcaption>
     </figure>
   </section>
 
