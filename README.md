@@ -39,7 +39,7 @@ call to action (`#get`).
   from the 15 Nov Fold captures with nothing blurred or masked.
 - Motion is transform and opacity only, revealed on scroll; everything is visible without
   JavaScript and under `prefers-reduced-motion`, where clips stay on their poster.
-- Glass and Hue (`#looks`) is Kashim's own Home in two of the four looks (Default, Dark, Glass,
+- Glass and Hue (`#looks`) is the same Home in two of the four looks (Default, Dark, Glass,
   Hue), from his Fold on 16 Nov, scaled only. app.js stacks the pair in one frame and crossfades
   (opacity only, a timer that runs only while the section is on screen, six turns, then still;
   a press on the Glass/Hue switch stops it). No script or less motion: side by side, captioned.

@@ -218,7 +218,7 @@ body.scrolled .nav { border-color: var(--line); background: rgba(247, 243, 236, 
 .t-blocks .tile-copy p { color: rgba(245, 241, 255, .72); }
 
 /* ---------- Glass and Hue: the same home in two looks ----------
-   Kashim's two captures, shown as they are: scaled to the frame, never cropped, nothing over them.
+   The two pictures, shown as they are: scaled to the frame, never cropped, nothing over them.
    Side by side by default (no script, or less motion); app.js stacks them in one frame
    (.looks-stage.fade) and crossfades, with a switch to pick one. The fade is opacity only, and
    its timer runs only while the section is on screen. */
