@@ -39,6 +39,9 @@
               frag.appendChild(span);
             });
             node.replaceChild(frag, child);
+          } else if (child.nodeType === 1 && child.tagName === 'EM') {
+            /* The coloured line rises as one piece, so its gradient runs unbroken across it. */
+            child.classList.add('word');
           } else if (child.nodeType === 1 && child.tagName !== 'BR') {
             walk(child);
           }
@@ -57,6 +60,49 @@
   };
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
+
+  /* Hold the Home icon on the hero's cover phone and its panel opens, for as long as you hold
+     it. The loop is an attract mode until the first press; then the panel follows the finger.
+     Pointer events cover mouse, touch and pen; Space and Enter, held down, do the same, because
+     the gesture is a hold and a click that toggles would teach a gesture the app does not have. */
+  var demo = document.querySelector('.demo');
+  var hold = demo && demo.querySelector('.hold');
+  var hint = document.querySelector('.demo-hint');
+  if (demo && hold) {
+    var startHold = function (e) {
+      if (e && e.cancelable) e.preventDefault();
+      demo.classList.add('live', 'holding');
+      if (hint) hint.textContent = 'Let go to close';
+      if (e && e.pointerId !== undefined && hold.setPointerCapture) {
+        try { hold.setPointerCapture(e.pointerId); } catch (err) { /* not fatal */ }
+      }
+    };
+    var endHold = function () {
+      demo.classList.remove('holding');
+      if (hint) hint.textContent = 'Hold the Home icon';
+    };
+    hold.addEventListener('pointerdown', startHold);
+    hold.addEventListener('pointerup', endHold);
+    hold.addEventListener('pointercancel', endHold);
+    hold.addEventListener('pointerleave', function (e) {
+      if (!hold.hasPointerCapture || !hold.hasPointerCapture(e.pointerId)) endHold();
+    });
+    hold.addEventListener('contextmenu', function (e) { e.preventDefault(); });
+    var isKey = function (e) { return e.key === ' ' || e.key === 'Enter' || e.key === 'Spacebar'; };
+    hold.addEventListener('keydown', function (e) { if (!isKey(e) || e.repeat) return; e.preventDefault(); startHold(null); });
+    hold.addEventListener('keyup', function (e) { if (isKey(e)) endHold(); });
+    hold.addEventListener('blur', endHold);
+    hold.addEventListener('pointerenter', function () { demo.classList.add('live'); });
+    hold.addEventListener('focus', function () { demo.classList.add('live'); });
+  }
+
+  /* The loops (the hero's field, the demos, the bands) only run while they are on screen. */
+  if (!reduced && 'IntersectionObserver' in window) {
+    var loopIo = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) { entry.target.classList.toggle('idle', !entry.isIntersecting); });
+    }, { threshold: 0 });
+    document.querySelectorAll('[data-anim]').forEach(function (el) { loopIo.observe(el); });
+  }
 
   /* The clips are real screen recordings. They play muted while on screen and pause when
      scrolled away. With less motion asked for they stay on their poster frame. */

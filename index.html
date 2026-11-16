@@ -29,8 +29,13 @@
   <!-- Hero: the one line, and the product on both screens. The cover phone plays the real
        hold (k03, Arcadia 0.2105 on Kashim's Fold) over the open phone's home (o01). -->
   <section class="hero">
+    <div class="hero-field" data-anim aria-hidden="true">
+      <span class="orb o1"></span><span class="orb o2"></span><span class="orb o3"></span><span class="orb o4"></span>
+      <span class="ring r1"></span><span class="ring r2"></span><span class="ring r3"></span>
+      <i class="spark s1"></i><i class="spark s2"></i><i class="spark s3"></i><i class="spark s4"></i><i class="spark s5"></i>
+    </div>
     <div class="hero-copy">
-      <p class="eyebrow rise">Arcadia for Android</p>
+      <p class="eyebrow rise"><span class="dot" aria-hidden="true"></span>Arcadia for Android</p>
       <h1 class="rise d1">Your home.<br><em>One hold away.</em></h1>
       <p class="lede rise d2">Hold any icon for its live widget, its notifications and its shortcuts. The app never opens.</p>
       <div class="cta rise d3">
@@ -40,32 +45,55 @@
     </div>
 
     <div class="hero-stage" aria-label="Arcadia on a foldable: the home screen on the open screen, and a held Google Home icon on the cover screen">
-      <span class="orb o1" aria-hidden="true"></span><span class="orb o2" aria-hidden="true"></span>
+      <!-- The abstract field behind the devices: slow orbs, a light ribbon, rings that breathe.
+           Gradients and transforms only; nothing is blurred. -->
+      <div class="field" data-anim aria-hidden="true">
+        <div class="ribbon"><svg viewBox="0 0 2400 300" preserveAspectRatio="none"><defs><linearGradient id="rib" x1="0" x2="1"><stop offset="0" stop-color="#6b4cf0" stop-opacity="0"/><stop offset=".25" stop-color="#8a5cf0" stop-opacity=".55"/><stop offset=".5" stop-color="#e86a8a" stop-opacity=".5"/><stop offset=".75" stop-color="#f29a3a" stop-opacity=".55"/><stop offset="1" stop-color="#6b4cf0" stop-opacity="0"/></linearGradient></defs>
+          <path d="M0 170C200 80 400 80 600 150S1000 240 1200 170 1600 80 1800 150 2200 240 2400 170" fill="none" stroke="url(#rib)" stroke-width="22" stroke-linecap="round"/>
+          <path d="M0 200C200 120 400 110 600 180S1000 260 1200 200 1600 110 1800 180 2200 260 2400 200" fill="none" stroke="url(#rib)" stroke-width="5" stroke-opacity=".7"/></svg></div>
+      </div>
       <div class="dev open hero-open enter">
         <div class="bz"><img src="assets/w44/home-open.webp" width="1400" height="1554" fetchpriority="high"
           alt="The open screen's home: notification cards across the top, the day's agenda, activity, device batteries, an alarm, the weather and a month calendar, with large folders and the dock"><i class="crease"></i></div>
       </div>
+      <!-- The hold, played on the cover phone with two real captures: the home (c01), then the
+           same home with the dock's Google Home icon held (c09). A finger lands on the icon, the
+           long-press ring fills, the panel rises. Press it yourself and it follows your finger. -->
       <div class="dev cover hero-cover enter d2">
         <div class="bz">
-          <video class="clip" muted loop playsinline autoplay preload="metadata" width="540" height="1260"
-                 poster="assets/w44/hold-clip-poster.webp" aria-label="Holding the Google Home icon in the dock: its live device tiles and scene shortcuts open over the home screen">
-            <source src="assets/w44/hold-clip.mp4" type="video/mp4">
-          </video>
+          <figure class="scr demo" aria-label="Holding the Google Home icon in the dock opens its live device tiles and scene shortcuts over the home screen">
+            <img src="assets/w44/home-cover.webp" width="720" height="1680" fetchpriority="high"
+              alt="The cover screen's home: notification cards, the agenda, activity, weather, folders and the dock">
+            <img class="held-shot" src="assets/w44/hold-home-cover.webp" width="720" height="1680" alt="" aria-hidden="true">
+            <span class="press" aria-hidden="true"></span><span class="press-ring" aria-hidden="true"></span><span class="tap" aria-hidden="true"></span>
+            <button class="hold" type="button" aria-label="Press and hold the Google Home icon to open its panel"><span class="hold-ring" aria-hidden="true"></span></button>
+          </figure>
           <i class="cam"></i>
         </div>
+        <p class="demo-hint" aria-live="polite">Hold the Home icon</p>
       </div>
     </div>
   </section>
 
+  <!-- A looping band: what one hold carries, and the rest. -->
+  <div class="band" data-anim aria-hidden="true">
+    <div class="band-track">
+      <span>Live widgets</span><i></i><span>Notifications</span><i></i><span>Shortcuts</span><i></i><span>Smart-home scenes</span><i></i><span>Icon stacks</span><i></i><span>Widget stacks</span><i></i><span>Resize and scale</span><i></i><span>Glass and Hue</span><i></i><span>Large folders</span><i></i><span>App Library</span><i></i><span>App Zero</span><i></i><span>Game launcher</span><i></i><span>Backup and restore</span><i></i>
+      <span>Live widgets</span><i></i><span>Notifications</span><i></i><span>Shortcuts</span><i></i><span>Smart-home scenes</span><i></i><span>Icon stacks</span><i></i><span>Widget stacks</span><i></i><span>Resize and scale</span><i></i><span>Glass and Hue</span><i></i><span>Large folders</span><i></i><span>App Library</span><i></i><span>App Zero</span><i></i><span>Game launcher</span><i></i><span>Backup and restore</span><i></i>
+    </div>
+  </div>
+
   <!-- 1. Hold any icon -->
   <section id="panel" class="pillar p-hold">
     <header class="sec-head reveal">
+      <span class="acc" aria-hidden="true"><i class="a-ring"></i><i class="a-orb"></i><i class="a-dot"></i></span>
       <p class="eyebrow">Hold any icon</p>
       <h2>Hold. Read. <em>Let go.</em></h2>
       <p class="lede">Its live widget, its latest notifications and its shortcuts, right over your home screen.
         Tap what you need, let go, and you never left.</p>
     </header>
     <div class="stage stage-hold">
+      <span class="glow" aria-hidden="true"></span>
       <div class="dev open big reveal pop">
         <div class="bz"><img src="assets/w44/hold-home-open.webp" width="1400" height="1554" loading="lazy" decoding="async"
           alt="Google Home held on the open screen: its live device tiles, then scene shortcuts such as Lights off, Kitchen Lights and Moonlight"><i class="crease"></i></div>
@@ -80,17 +108,125 @@
       <li><b>Its notifications.</b> What it sent you, waiting under the icon.</li>
       <li><b>Its shortcuts.</b> Search Maps, or head home, in one tap.</li>
     </ul>
+
+    <!-- The gesture, slowed down: the live site's opener, drawn in the page. A finger holds an
+         icon; the home dims; the panel grows out of it in the order Arcadia composes it (header,
+         notification, widget, shortcuts, App info). A second finger taps a widget tile and a
+         shortcut while the first keeps holding, as the app allows; then the first lets go. -->
+    <div class="slowmo">
+      <div class="opener-art reveal pop" data-anim aria-hidden="true">
+        <div class="slab">
+          <div class="apps">
+            <i style="--h:206"></i><i style="--h:150"></i><i style="--h:44"></i><i style="--h:320"></i>
+            <i style="--h:12"></i><i style="--h:268"></i><i class="held" style="--h:196"></i><i style="--h:190"></i>
+            <i style="--h:220"></i><i style="--h:96"></i><i style="--h:340"></i><i style="--h:168"></i>
+          </div>
+          <span class="shade"></span><span class="press-ring"></span><span class="finger"></span>
+          <div class="sheet">
+            <div class="sheet-head"><span class="sheet-ic"></span><span class="lines"><b style="width:30%"></b><b class="sm" style="width:52%"></b></span></div>
+            <div class="sheet-note" style="--h:206"><span class="dot2"></span><span class="lines"><b style="width:74%"></b><b class="sm" style="width:48%"></b></span><b class="when"></b></div>
+            <div class="sheet-widget"><div class="widget-head"><span class="widget-ic"></span><b style="width:30%"></b></div>
+              <div class="tiles"><span></span><span class="lit"><u></u></span><span></span><span></span></div></div>
+            <div class="sheet-chips"><span class="chip tap" style="--w:36%"><u></u></span><span class="chip" style="--w:48%"></span><span class="chip" style="--w:54%"></span><span class="chip" style="--w:38%"></span></div>
+            <div class="sheet-actions"><span></span><span></span></div>
+          </div>
+          <span class="finger2"></span>
+        </div>
+      </div>
+      <ol class="steps reveal d1" data-anim>
+        <li class="st1"><b>Hold.</b> One finger on any icon. A buzz, and it lifts.</li>
+        <li class="st2"><b>Read.</b> Its panel opens over Home. A second finger can tap a tile or a shortcut while the first holds.</li>
+        <li class="st3"><b>Let go.</b> The panel folds back into the icon. Home is as you left it.</li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- Under a held icon: the live site's three feature demos, each with its finger. -->
+  <section id="under" class="explain">
+    <header class="sec-head reveal">
+      <span class="acc" aria-hidden="true"><i class="a-ring"></i><i class="a-orb"></i><i class="a-dot"></i></span>
+      <p class="eyebrow">Under a held icon</p>
+      <h2>One press.<br><em>Three more tricks.</em></h2>
+      <p class="lede">An icon can carry a stack of apps, a game launcher its games, and an app that is playing its controls.</p>
+    </header>
+    <div class="explain-grid">
+      <article class="explain-card x-stack reveal">
+        <div class="anim anim-stack" data-anim aria-hidden="true">
+          <i class="ic c1" style="--h:206"></i><i class="ic c2 held" style="--h:150"></i><i class="ic c3" style="--h:44"></i><i class="ic c4" style="--h:320"></i>
+          <i class="ic c1 r2" style="--h:12"></i><i class="ic c2 r2" style="--h:268"></i><i class="ic c3 r2" style="--h:196"></i><i class="ic c4 r2" style="--h:190"></i>
+          <span class="ring"></span>
+          <div class="sheet">
+            <div class="row" style="--i:0"><i style="--h:206"></i><b style="--w:18cqw"></b></div>
+            <div class="row" style="--i:1"><i style="--h:44"></i><b style="--w:12cqw"></b></div>
+            <div class="row" style="--i:2"><i style="--h:320"></i><b style="--w:20cqw"></b></div>
+            <div class="row" style="--i:3"><i style="--h:268"></i><b style="--w:14cqw"></b></div>
+          </div>
+          <span class="finger"></span>
+        </div>
+        <h3>Icon stacks</h3>
+        <p>Put several apps under one icon. Hold it and they appear in your order, each a tap away.</p>
+      </article>
+      <article class="explain-card x-games reveal d1">
+        <div class="anim anim-games" data-anim aria-hidden="true">
+          <i class="ic bg c1" style="--h:206"></i><i class="ic bg c2" style="--h:44"></i><i class="ic bg c3" style="--h:320"></i><i class="ic bg c4" style="--h:150"></i>
+          <div class="chips">
+            <span class="chip" style="--i:0;--h:14;--w:30cqw"><i></i><b></b></span>
+            <span class="chip" style="--i:1;--h:120;--w:22cqw"><i></i><b></b></span>
+            <span class="chip" style="--i:2;--h:200;--w:34cqw"><i></i><b></b></span>
+            <span class="chip" style="--i:3;--h:280;--w:26cqw"><i></i><b></b></span>
+            <span class="chip" style="--i:4;--h:40;--w:31cqw"><i></i><b></b></span>
+            <span class="chip" style="--i:5;--h:330;--w:24cqw"><i></i><b></b></span>
+          </div>
+          <div class="dock"></div>
+          <i class="ic c1" style="--h:12"></i>
+          <i class="ic c2 held" style="--h:262"><svg viewBox="0 0 24 24"><rect x="2.5" y="7" width="19" height="10.5" rx="5.2" fill="none" stroke="currentColor" stroke-width="1.9"/><path d="M8 10.2v4M6 12.2h4" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><circle cx="15.6" cy="11.1" r="1.2" fill="currentColor"/><circle cx="18" cy="13.6" r="1.2" fill="currentColor"/></svg></i>
+          <i class="ic c3" style="--h:190"></i><i class="ic c4" style="--h:96"></i>
+          <span class="ring"></span><span class="finger"></span>
+        </div>
+        <h3>Game launcher</h3>
+        <p>Choose up to six games for one icon. Hold it and each is one tap from playing.</p>
+      </article>
+      <article class="explain-card x-media reveal d2">
+        <div class="anim anim-media" data-anim aria-hidden="true">
+          <i class="ic c1" style="--h:206"></i>
+          <i class="ic c2 held" style="--h:340"><svg viewBox="0 0 24 24"><path d="M9 18.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0Zm0 0V6l10-2.5v12.5m0 0a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0Z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round" stroke-linecap="round"/></svg></i>
+          <i class="ic c3" style="--h:44"></i>
+          <span class="ring"></span>
+          <div class="sheet">
+            <div class="art"><span class="disc"></span></div>
+            <b class="title"></b><b class="sub"></b>
+            <div class="btn-row">
+              <span class="ctl"><svg viewBox="0 0 24 24"><rect x="5" y="5" width="2.4" height="14" rx=".8" fill="currentColor"/><path d="M19 5 8.5 12 19 19z" fill="currentColor"/></svg></span>
+              <span class="ctl play"><svg viewBox="0 0 24 24"><rect x="6.5" y="5" width="4" height="14" rx="1" fill="currentColor"/><rect x="13.5" y="5" width="4" height="14" rx="1" fill="currentColor"/></svg></span>
+              <span class="ctl"><svg viewBox="0 0 24 24"><rect x="16.6" y="5" width="2.4" height="14" rx=".8" fill="currentColor"/><path d="M5 5l10.5 7L5 19z" fill="currentColor"/></svg></span>
+            </div>
+            <div class="track"><span class="fill"></span><span class="knob"></span></div>
+          </div>
+          <span class="finger"></span>
+        </div>
+        <h3>Media controls</h3>
+        <p>Hold an app that is playing: the artwork, play, pause and next. Skip a track, then let go.</p>
+      </article>
+    </div>
   </section>
 
   <!-- 2. Notifications -->
   <section id="notifications" class="pillar p-notes">
     <header class="sec-head reveal">
+      <span class="acc" aria-hidden="true"><i class="a-ring"></i><i class="a-orb"></i><i class="a-dot"></i></span>
       <p class="eyebrow">Notifications</p>
       <h2>Notifications that<br><em>wait their turn.</em></h2>
       <p class="lede">New ones land as cards across the top of your home screen, picture and time included.
         Read them in passing. Turn on history to keep the ones you clear.</p>
     </header>
     <div class="stage stage-notes">
+      <span class="glow" aria-hidden="true"></span>
+      <!-- Cards that slide in and wait, the way they land on Home. Abstract: shapes, not text. -->
+      <div class="n-cards" data-anim aria-hidden="true">
+        <span style="--i:0;--h:206"><i></i><b></b><b class="sm"></b></span>
+        <span style="--i:1;--h:12"><i></i><b></b><b class="sm"></b></span>
+        <span style="--i:2;--h:150"><i></i><b></b><b class="sm"></b></span>
+      </div>
       <div class="dev cover tilt-l reveal pop">
         <div class="bz"><img src="assets/w44/home-cover.webp" width="720" height="1680" loading="lazy" decoding="async"
           alt="The cover screen's home: three notification cards at the top, then the agenda, activity, weather and the dock"><i class="cam"></i></div>
@@ -105,12 +241,14 @@
   <!-- 3. One home, folded or open -->
   <section id="fold" class="pillar p-fold">
     <header class="sec-head reveal">
+      <span class="acc" aria-hidden="true"><i class="a-ring"></i><i class="a-orb"></i><i class="a-dot"></i></span>
       <p class="eyebrow">Folded or open</p>
       <h2>Fold it. Open it.<br><em>Still home.</em></h2>
       <p class="lede">The same layout on the cover screen and the inner screen. Open the phone and it unfolds in place,
         complete the moment it appears.</p>
     </header>
     <div class="stage stage-fold">
+      <span class="glow" aria-hidden="true"></span>
       <figure class="fold-step reveal pop">
         <div class="dev cover">
           <div class="bz">
@@ -137,20 +275,21 @@
   <!-- 4. Make it yours: a bento of five, each its own colour -->
   <section id="widgets" class="pillar p-yours">
     <header class="sec-head reveal">
+      <span class="acc" aria-hidden="true"><i class="a-ring"></i><i class="a-orb"></i><i class="a-dot"></i></span>
       <p class="eyebrow">Make it yours</p>
       <h2>Make it yours.<br><em>Then change your mind.</em></h2>
       <p class="lede">Widgets that resize and scale, looks that repaint every icon, folders big enough to live in.</p>
     </header>
 
     <div class="bento">
-      <article class="tile t-resize reveal">
+      <article class="tile has-orb t-resize reveal">
         <div class="tile-copy"><h3>Any widget, <em>any size.</em></h3>
           <p>Hold a widget to set its width, height and zoom, right where it sits.</p></div>
         <div class="dev cover peek"><div class="bz"><img src="assets/w44/widget-resize-cover.webp" width="720" height="1680" loading="lazy" decoding="async"
           alt="A weather widget being edited on the home screen: 5 by 2 at 77 percent, with Size, Zoom and Text tabs"><i class="cam"></i></div></div>
       </article>
 
-      <article class="tile t-looks reveal d1">
+      <article class="tile has-orb t-looks reveal d1">
         <div class="tile-copy"><h3>Glass. Hue. <em>Or as it came.</em></h3>
           <p>Repaint every icon in one go, then go back just as fast.</p></div>
         <div class="looks">
@@ -161,14 +300,14 @@
         </div>
       </article>
 
-      <article class="tile t-folders reveal">
+      <article class="tile has-orb t-folders reveal">
         <div class="tile-copy"><h3>Folders with <em>room to breathe.</em></h3>
           <p>Turn on large folders and every app inside is one tap away.</p></div>
         <div class="dev cover peek"><div class="bz"><img src="assets/w44/folder-cover.webp" width="720" height="1680" loading="lazy" decoding="async"
           alt="A large folder open on the cover screen, its apps in a grid"><i class="cam"></i></div></div>
       </article>
 
-      <article class="tile t-library reveal d1">
+      <article class="tile has-orb t-library reveal d1">
         <div class="tile-copy"><h3>Every app, <em>one swipe up.</em></h3>
           <p>Search, recents and an App Library sorted for you, or A&ndash;Z.</p></div>
         <div class="dev cover peek"><div class="bz"><img src="assets/w44/library-cover.webp" width="720" height="1680" loading="lazy" decoding="async"
@@ -187,6 +326,7 @@
   <!-- And so much more -->
   <section id="features" class="more">
     <header class="sec-head reveal">
+      <span class="acc" aria-hidden="true"><i class="a-ring"></i><i class="a-orb"></i><i class="a-dot"></i></span>
       <p class="eyebrow">And there is more</p>
       <h2>Small things, <em>done properly.</em></h2>
     </header>
@@ -203,27 +343,38 @@
     </div>
   </section>
 
+  <!-- A looping abstract band: capsules and rings in the page's colours, on their way to the dark. -->
+  <div class="band band-abs" data-anim aria-hidden="true">
+    <div class="band-track"><i class="k1"></i><i class="k2"></i><i class="k3"></i><i class="k4"></i><i class="k5"></i><i class="k6"></i><i class="k7"></i><i class="k8"></i><i class="k1"></i><i class="k2"></i><i class="k3"></i><i class="k4"></i><i class="k5"></i><i class="k6"></i><i class="k7"></i><i class="k8"></i></div>
+  </div>
+
   <!-- 5. Privacy: dark, the approved line -->
   <section id="privacy" class="privacy">
+    <div class="p-field" data-anim aria-hidden="true"><span class="orb q1"></span><span class="orb q2"></span><span class="orb q3"></span></div>
     <div class="privacy-inner">
       <div class="privacy-copy reveal">
         <p class="eyebrow">Private by design</p>
-        <h2>Your phone. Your rules.<br><em>Zero ads. No data sold.</em></h2>
+        <h2><span>Your phone.</span> <span>Your rules.</span><br><em><span>Zero ads.</span> <span>No data sold.</span></em></h2>
         <p class="lede">Built to respect your privacy.</p>
+        <div class="pills"><span class="pill">Zero ads</span><span class="pill">No data sold</span><span class="pill">No account</span><span class="pill">Every permission optional</span></div>
         <p>All six permissions are optional, and Arcadia works without any of them. No account needed. Your
           home-screen layout and notification history stay in Android&rsquo;s private app storage.</p>
         <p class="fine">Clear, simple information about your data. <a href="privacy-policy.html">Read the policy</a>.</p>
       </div>
-      <div class="dev cover privacy-dev reveal pop d1">
+      <div class="privacy-stage reveal pop d1">
+      <span class="halo" aria-hidden="true"><i></i><i></i></span>
+      <div class="dev cover privacy-dev">
         <div class="bz"><img src="assets/w44/permissions-cover.webp" width="720" height="1680" loading="lazy" decoding="async"
           alt="Settings, Permissions: all six permissions are optional, each one listed with what it does"><i class="cam"></i></div>
+      </div>
       </div>
     </div>
   </section>
 
   <section id="get" class="get">
+    <div class="g-field" data-anim aria-hidden="true"><span class="orb g1"></span><span class="orb g2"></span><span class="orb g3"></span></div>
     <div class="get-inner reveal">
-      <img class="mark" src="assets/icon.png" alt="" width="96" height="96" loading="lazy">
+      <div class="mark-wrap"><span class="ripple" aria-hidden="true"></span><span class="ripple r2" aria-hidden="true"></span><img class="mark" src="assets/icon.png" alt="" width="96" height="96" loading="lazy"></div>
       <h2>Your home.<br><em>One hold away.</em></h2>
       <p class="lede">Free on Google Play. No account.</p>
       <div class="cta"><a class="btn" href="https://play.google.com/store/apps/details?id=com.arcadiafoundry.launcher" rel="noopener">Get it on Google&nbsp;Play</a></div>
