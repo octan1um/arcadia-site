@@ -1,5 +1,5 @@
-// Build the Glass and Hue pictures for #looks from Kashim's two captures of his Home (16 Nov 2026,
-// unfolded Fold inner screen, 1923x2048 JPEG). Scaled only: no crop, no blur, no mask, so the
+// Build the Glass and Hue pictures for #looks from the two Home screenshots (16 Nov 2026,
+// unfolded inner screen, 1923x2048 JPEG). Scaled only: no crop, no blur, no mask, so the
 // screen keeps its own aspect. AVIF and WebP at 720 and 1440 wide (1x and 2x of the frame), with
 // a JPEG fallback at the same widths. The originals stay out of the repo.
 //
