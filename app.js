@@ -156,7 +156,7 @@
     }, { threshold: 0.35 }).observe(looks);
   }
 
-  /* The clips are real screen recordings. They play muted while on screen and pause when
+  /* The clips play muted while on screen and pause when
      scrolled away. With less motion asked for they stay on their poster frame. */
   var clips = document.querySelectorAll('video.clip');
   if (reduced) {
