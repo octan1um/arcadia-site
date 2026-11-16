@@ -19,7 +19,7 @@
 <header class="nav">
   <a class="brand" href="#top"><img src="assets/icon.png" alt="" width="28" height="28"><span>Arcadia</span></a>
   <nav class="nav-links" aria-label="Sections">
-    <a href="#panel">Hold</a><a href="#notifications">Notifications</a><a href="#fold">Fold</a><a href="#widgets">Make it yours</a><a href="#privacy">Privacy</a>
+    <a href="#panel">Hold</a><a href="#notifications">Notifications</a><a href="#fold">Fold</a><a href="#widgets">Make it yours</a><a href="#looks">Glass and Hue</a><a href="#privacy">Privacy</a>
   </nav>
   <a class="btn tiny" href="#get">Get it</a>
 </header>
@@ -289,37 +289,70 @@
           alt="A weather widget being edited on the home screen: 5 by 2 at 77 percent, with Size, Zoom and Text tabs"><i class="cam"></i></div></div>
       </article>
 
-      <article class="tile has-orb t-looks reveal d1">
-        <div class="tile-copy"><h3>Glass. Hue. <em>Or as it came.</em></h3>
-          <p>Repaint every icon in one go, then go back just as fast.</p></div>
-        <div class="looks">
-          <div class="dev open"><div class="bz"><img src="assets/w44/look-glass-open.webp" width="1400" height="1554" loading="lazy" decoding="async"
-            alt="The open home in the Glass look: every icon clear glass over the wallpaper"></div></div>
-          <div class="dev open"><div class="bz"><img src="assets/w44/look-hue-open.webp" width="1400" height="1554" loading="lazy" decoding="async"
-            alt="The open home in the Hue look: every icon tinted one colour"></div></div>
-        </div>
-      </article>
-
-      <article class="tile has-orb t-folders reveal">
+      <article class="tile has-orb t-folders reveal d1">
         <div class="tile-copy"><h3>Folders with <em>room to breathe.</em></h3>
           <p>Turn on large folders and every app inside is one tap away.</p></div>
         <div class="dev cover peek"><div class="bz"><img src="assets/w44/folder-cover.webp" width="720" height="1680" loading="lazy" decoding="async"
           alt="A large folder open on the cover screen, its apps in a grid"><i class="cam"></i></div></div>
       </article>
 
-      <article class="tile has-orb t-library reveal d1">
+      <article class="tile has-orb t-library reveal">
         <div class="tile-copy"><h3>Every app, <em>one swipe up.</em></h3>
           <p>Search, recents and an App Library sorted for you, or A&ndash;Z.</p></div>
         <div class="dev cover peek"><div class="bz"><img src="assets/w44/library-cover.webp" width="720" height="1680" loading="lazy" decoding="async"
           alt="App search on the cover screen: the search field, recent apps, and the App Library with its letter index"><i class="cam"></i></div></div>
       </article>
 
-      <article id="scenes" class="tile t-blocks reveal d2">
+      <article id="scenes" class="tile t-blocks reveal d1">
         <div class="tile-copy"><h3>Good night, <em>in one press.</em></h3>
           <p>App Blocks put your Google Home routines in the hold panel.</p></div>
         <div class="dev cover peek"><div class="bz"><img src="assets/w44/app-blocks-cover.webp" width="720" height="1680" loading="lazy" decoding="async"
           alt="Settings, App Blocks: Google Home automations such as Lights off, Good night and Movie time, and the shortcuts shown when you hold Google Home"><i class="cam"></i></div></div>
       </article>
+    </div>
+  </section>
+
+  <!-- Glass and Hue: the same home in two of the four looks (Default, Dark, Glass, Hue), from
+       Kashim's own Fold on 16 Nov, shown as captured. app.js puts the pair in one frame that
+       crossfades between them, with a switch to pick one; without it, or with less motion asked
+       for, they stand side by side. No divider: a line down an open Fold reads as a seam. -->
+  <section id="looks" class="pillar p-looks">
+    <header class="sec-head reveal">
+      <span class="acc" aria-hidden="true"><i class="a-ring"></i><i class="a-orb"></i><i class="a-dot"></i></span>
+      <p class="eyebrow">Glass and Hue</p>
+      <h2>Same home.<br><em>A different light.</em></h2>
+      <p class="lede">Clear glass that keeps every colour, or one soft hue over everything.
+        Switch any time in Appearance.</p>
+    </header>
+    <div class="looks-stage reveal pop" data-looks>
+      <figure class="look look-glass">
+        <div class="dev open"><div class="bz">
+          <div class="look-scr">
+            <picture>
+              <source type="image/avif" srcset="assets/w48/look-glass-720.avif 720w, assets/w48/look-glass-1440.avif 1440w" sizes="(max-width: 640px) 86vw, min(720px, 60vw)">
+              <source type="image/webp" srcset="assets/w48/look-glass-720.webp 720w, assets/w48/look-glass-1440.webp 1440w" sizes="(max-width: 640px) 86vw, min(720px, 60vw)">
+              <img src="assets/w48/look-glass-720.jpg" srcset="assets/w48/look-glass-720.jpg 720w, assets/w48/look-glass-1440.jpg 1440w" sizes="(max-width: 640px) 86vw, min(720px, 60vw)"
+                width="1440" height="1534" loading="lazy" decoding="async"
+                alt="The same home in the Glass look: clear glass panels with bright edges, each widget in its own colours, over a mountain wallpaper at dusk">
+            </picture>
+          </div>
+        </div></div>
+        <figcaption>Glass</figcaption>
+      </figure>
+      <figure class="look look-hue">
+        <div class="dev open"><div class="bz">
+          <div class="look-scr">
+            <picture>
+              <source type="image/avif" srcset="assets/w48/look-hue-720.avif 720w, assets/w48/look-hue-1440.avif 1440w" sizes="(max-width: 640px) 86vw, min(720px, 60vw)">
+              <source type="image/webp" srcset="assets/w48/look-hue-720.webp 720w, assets/w48/look-hue-1440.webp 1440w" sizes="(max-width: 640px) 86vw, min(720px, 60vw)">
+              <img src="assets/w48/look-hue-720.jpg" srcset="assets/w48/look-hue-720.jpg 720w, assets/w48/look-hue-1440.jpg 1440w" sizes="(max-width: 640px) 86vw, min(720px, 60vw)"
+                width="1440" height="1534" loading="lazy" decoding="async"
+                alt="The same home in the Hue look: every widget and icon tinted one soft violet over the same wallpaper">
+            </picture>
+          </div>
+        </div></div>
+        <figcaption>Hue</figcaption>
+      </figure>
     </div>
   </section>
 
