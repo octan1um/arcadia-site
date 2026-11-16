@@ -104,6 +104,58 @@
     document.querySelectorAll('[data-anim]').forEach(function (el) { loopIo.observe(el); });
   }
 
+  /* Glass and Hue: one frame, the two captures crossfading, and a switch to hold either. With
+     less motion asked for, or no script, the pair stays side by side as written in the page.
+     The fade changes look every few seconds only while the section is on screen, stops after a
+     few turns, and stops for good once either button is pressed. */
+  var looks = document.querySelector('[data-looks]');
+  var glassFig = looks && looks.querySelector('.look-glass');
+  var hueFig = looks && looks.querySelector('.look-hue');
+  if (looks && glassFig && hueFig && !reduced && 'IntersectionObserver' in window) {
+    var huePic = hueFig.querySelector('picture');
+    var hueImg = huePic.querySelector('img');
+    var glassImg = glassFig.querySelector('picture img');
+    huePic.classList.add('alt');
+    glassFig.querySelector('.look-scr').appendChild(huePic);
+    hueFig.parentNode.removeChild(hueFig);
+    var cap = glassFig.querySelector('figcaption');
+    if (cap) cap.parentNode.removeChild(cap);
+    var sw = document.createElement('div');
+    sw.className = 'look-switch';
+    sw.setAttribute('role', 'group');
+    sw.setAttribute('aria-label', 'Show the home in Glass or Hue');
+    sw.innerHTML = '<span class="thumb" aria-hidden="true"></span>' +
+      '<button type="button" data-look="glass" aria-pressed="true">Glass</button>' +
+      '<button type="button" data-look="hue" aria-pressed="false">Hue</button>';
+    looks.appendChild(sw);
+    looks.classList.add('fade');
+    var buttons = sw.querySelectorAll('button');
+    var show = function (look) {
+      var hue = look === 'hue';
+      looks.classList.toggle('show-hue', hue);
+      buttons.forEach(function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-look') === look)); });
+      /* Only the picture on show is announced. */
+      hueImg.setAttribute('aria-hidden', String(!hue));
+      glassImg.setAttribute('aria-hidden', String(hue));
+    };
+    show('glass');
+    var timer = null, turns = 0, stopped = false;
+    var stop = function () { if (timer) { clearInterval(timer); timer = null; } };
+    var start = function () {
+      if (timer || stopped) return;
+      timer = setInterval(function () {
+        show(looks.classList.contains('show-hue') ? 'glass' : 'hue');
+        if (++turns >= 6) { stopped = true; stop(); }
+      }, 3200);
+    };
+    buttons.forEach(function (b) {
+      b.addEventListener('click', function () { stopped = true; stop(); show(b.getAttribute('data-look')); });
+    });
+    new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) { if (entry.isIntersecting) start(); else stop(); });
+    }, { threshold: 0.35 }).observe(looks);
+  }
+
   /* The clips are real screen recordings. They play muted while on screen and pause when
      scrolled away. With less motion asked for they stay on their poster frame. */
   var clips = document.querySelectorAll('video.clip');
