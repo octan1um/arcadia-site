@@ -33,7 +33,7 @@ call to action (`#get`).
 - Paper tones throughout, one vivid accent family per section drawn from the screens, the
   privacy section dark. The system font stack only; no web fonts.
 - Device frames are CSS (`.dev.cover`, `.dev.open`): metal edge, black bezel, the capture at
-  its own aspect, the hinge and crease on the open Fold, in percentages so they scale.
+  its own aspect, the hinge marks on the open Fold's frame (nothing is drawn over a screen), in percentages so they scale.
   Proportions match the Play v2 slides (`play/html-20261115-v2` in arcadia-marketing).
 - Screens are `assets/w44/`: WebP stills and two muted H.264 clips with WebP posters, made
   from the 15 Nov Fold captures with nothing blurred or masked.

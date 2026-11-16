@@ -3,7 +3,8 @@
    Paper tones throughout, one vivid accent family per section drawn from the screens,
    a dark privacy section. No web fonts, no libraries, no blur anywhere.
    Device frames match the Play v2 slides (play/html-20261115-v2): metal edge, black bezel,
-   the capture at its own aspect, hinge marks on the open Fold. */
+   the capture at its own aspect, hinge marks on the open Fold's frame. Nothing is drawn over a
+   screen: the captures are shown as they are (W48 took out a crease line that read as a seam). */
 
 :root {
   --paper: #f7f3ec;
@@ -106,11 +107,6 @@ body.scrolled .nav { border-color: var(--line); background: rgba(247, 243, 236, 
   background:
     linear-gradient(90deg, rgba(255, 255, 255, .28), #000 30%, #000 70%, rgba(255, 255, 255, .18)) top / 100% 1.75% no-repeat,
     linear-gradient(90deg, rgba(255, 255, 255, .28), #000 30%, #000 70%, rgba(255, 255, 255, .18)) bottom / 100% 1.75% no-repeat;
-}
-/* The inner screen's crease: a hairline of light, as a real panel catches it. */
-.dev .crease {
-  position: absolute; left: 50%; top: 1.65%; bottom: 1.65%; width: 2px; margin-left: -1px; pointer-events: none;
-  background: linear-gradient(180deg, transparent, rgba(255, 255, 255, .07) 20%, rgba(255, 255, 255, .07) 80%, transparent);
 }
 .dev .cam {
   position: absolute; left: 50%; top: 2.72%; width: 2.65%; aspect-ratio: 1; transform: translateX(-50%); border-radius: 50%;
