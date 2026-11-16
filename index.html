@@ -3,493 +3,231 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Arcadia — hold an icon, use the app without opening it</title>
-<meta name="description" content="An Android home screen launcher. Hold any icon to see that app's notifications, its shortcuts and one of its widgets, without opening it. Your phone. Your rules. Zero ads. No data sold. Built to respect your privacy.">
+<title>Arcadia — your home, one hold away</title>
+<meta name="description" content="A home screen launcher for Android, made with Galaxy foldables in mind. Hold any icon for its live widget, its notifications and its shortcuts, without opening the app. Your phone. Your rules. Zero ads. No data sold. Built to respect your privacy.">
 <meta name="theme-color" content="#f7f3ec">
 <meta name="color-scheme" content="light">
-<meta property="og:title" content="Arcadia">
-<meta property="og:description" content="Hold any icon to see that app's notifications, shortcuts and a live widget, without opening it.">
+<meta property="og:title" content="Arcadia — your home, one hold away">
+<meta property="og:description" content="Hold any icon for its live widget, its notifications and its shortcuts, without opening the app.">
 <meta property="og:type" content="website">
 <link rel="icon" href="assets/icon.png">
+<link rel="preload" as="image" href="assets/w44/home-open.webp" type="image/webp">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="aurora" aria-hidden="true">
-  <span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span>
-  <div class="grid-veil"></div><div class="noise"></div>
-</div>
-
 <header class="nav">
-  <a class="brand" href="#top"><img src="assets/icon.png" alt="" width="32" height="32"><span>Arcadia</span></a>
-  <a class="btn tiny primary" href="#get">Get it</a>
+  <a class="brand" href="#top"><img src="assets/icon.png" alt="" width="28" height="28"><span>Arcadia</span></a>
+  <nav class="nav-links" aria-label="Sections">
+    <a href="#panel">Hold</a><a href="#notifications">Notifications</a><a href="#fold">Fold</a><a href="#widgets">Make it yours</a><a href="#privacy">Privacy</a>
+  </nav>
+  <a class="btn tiny" href="#get">Get it</a>
 </header>
 
 <main id="top">
 
-
-  <!-- The opener. Built from the Play Store feature graphic rather than borrowing its pixels:
-       the same abstract launcher and the same held icon, drawn in the page so it scales,
-       animates and reads on a phone. -->
-  <section class="opener">
-    <div class="opener-copy">
-      <p class="eyebrow"><span class="dot"></span> Home screen launcher</p>
-      <h1><span>Hold.</span><span>Read.</span><em>Let&nbsp;go.</em></h1>
-      <p class="lede">Notifications, shortcuts and a live widget &mdash; without ever opening the app.</p>
-      <div class="cta">
-        <a class="btn primary" href="#get">Get Arcadia</a>
-        <a class="btn ghost" href="#panel">See it work</a>
-      </div>
-    </div>
-
-    <!-- The panel is drawn the way Arcadia composes it (HomeActionsUi: one column holding the
-         header, the notification history, a separator, the hosted widget, a separator, the
-         shortcut chips, then App info / Create folder), dark over a home that dims as a whole;
-         the held icon stays lifted above it. Two fingers: the one that holds, and a second one
-         that taps a widget tile and a shortcut while the first keeps holding, as the app allows. -->
-    <div class="opener-art" aria-hidden="true">
-      <div class="slab">
-        <div class="apps">
-          <i style="--h:206"></i><i style="--h:150"></i><i style="--h:44"></i><i style="--h:320"></i>
-          <i style="--h:12"></i><i style="--h:268"></i><i class="held" style="--h:196"></i><i style="--h:190"></i>
-          <i style="--h:220"></i><i style="--h:96"></i><i style="--h:340"></i><i style="--h:168"></i>
-        </div>
-        <span class="shade"></span>
-        <span class="press-ring"></span>
-        <span class="finger"></span>
-        <div class="sheet">
-          <div class="sheet-head"><span class="sheet-ic"></span>
-            <span class="lines"><b style="width:30%"></b><b class="sm" style="width:52%"></b></span>
-          </div>
-          <div class="sheet-note" style="--h:206"><span class="dot2"></span>
-            <span class="lines"><b style="width:74%"></b><b class="sm" style="width:48%"></b></span>
-            <b class="when"></b>
-          </div>
-          <div class="sheet-widget">
-            <div class="widget-head"><span class="widget-ic"></span><b style="width:30%"></b></div>
-            <div class="tiles"><span></span><span class="lit"></span><span></span><span></span></div>
-          </div>
-          <div class="sheet-chips">
-            <span class="chip tap" style="--w:36%"></span><span class="chip" style="--w:48%"></span>
-            <span class="chip" style="--w:54%"></span><span class="chip" style="--w:38%"></span>
-          </div>
-          <div class="sheet-actions"><span></span><span></span></div>
-        </div>
-        <span class="finger2"></span>
-      </div>
-    </div>
-  </section>
-
+  <!-- Hero: the one line, and the product on both screens. The cover phone plays the real
+       hold (k03, Arcadia 0.2105 on Kashim's Fold) over the open phone's home (o01). -->
   <section class="hero">
     <div class="hero-copy">
-      <p class="eyebrow reveal"><span class="dot"></span> The gesture</p>
-      <h1 class="reveal delay-1">Hold an icon.<br><em>Use the app without opening it.</em></h1>
-      <p class="lede reveal delay-2">
-        A panel opens over your home screen with that app's notifications, its shortcuts,
-        and one of its widgets running live. Read it, tap what you need, let go. The app
-        never launches.
-      </p>
-      <div class="cta reveal delay-2">
-        <a class="btn primary" href="#get">Get Arcadia</a>
-        <a class="btn ghost" href="#panel">See it</a>
+      <p class="eyebrow rise">Arcadia for Android</p>
+      <h1 class="rise d1">Your home.<br><em>One hold away.</em></h1>
+      <p class="lede rise d2">Hold any icon for its live widget, its notifications and its shortcuts. The app never opens.</p>
+      <div class="cta rise d3">
+        <a class="btn" href="https://play.google.com/store/apps/details?id=com.arcadiafoundry.launcher" rel="noopener">Get it on Google&nbsp;Play</a>
+        <a class="link-arrow" href="#panel">See how it works</a>
       </div>
     </div>
 
-    <div class="hero-devices reveal delay-2">
-      <figure class="dev fold">
-        <img src="assets/device-foldable.png" alt="An unfolded foldable phone running Arcadia: notification cards across the top, then the day's agenda, activity, device batteries, an alarm, a weather forecast and a full month calendar, with large folders and the dock below">
-      </figure>
-      <figure class="dev bar demo" aria-label="Holding an icon on the home screen opens that app's panel, with its shortcuts listed, without opening the app">
-        <span class="phone">
-        <img class="shell" src="assets/phone-shell.png" alt="">
-        <span class="screen">
-          <img class="home" src="assets/home-cover.png" alt="An ordinary phone running Arcadia: notifications across the top, then the day's agenda, activity rings, weather and two large folders above a two-row dock">
-          <span class="press" aria-hidden="true"></span>
-          <img class="panel" src="assets/overlay-shortcuts.png" alt="" aria-hidden="true">
-          <!-- The whole pitch is a gesture, and until now the page only played it at you.
-               Hold this and the panel opens for as long as you hold it, exactly as on the phone. -->
-          <button class="hold" type="button"
-                  aria-label="Press and hold the Google Home icon to open its panel">
-            <span class="hold-ring" aria-hidden="true"></span>
-          </button>
-        </span>
-        </span>
-        <figcaption class="demo-hint" aria-live="polite">Hold the Home icon</figcaption>
-      </figure>
-    </div>
-  </section>
-
-  <section class="strip" aria-label="At a glance">
-    <div class="strip-inner">
-      <span>Panels</span><i></i><span>Smart-home scenes</span><i></i><span>Live widgets</span><i></i>
-      <span>Widget stacks</span><i></i><span>Resize and scale</span><i></i><span>App Zero</span><i></i>
-      <span>Game launcher</span><i></i><span>Hide apps</span><i></i><span>Backup &amp; restore</span><i></i>
-      <span>App Library</span><i></i><span>Large folders</span><i></i><span>Glass icons</span><i></i>
-      <span>Panels</span><i></i><span>Smart-home scenes</span><i></i><span>Live widgets</span><i></i>
-      <span>Widget stacks</span><i></i><span>Resize and scale</span><i></i><span>App Zero</span><i></i>
-      <span>Game launcher</span><i></i><span>Hide apps</span><i></i><span>Backup &amp; restore</span><i></i>
-      <span>App Library</span><i></i><span>Large folders</span><i></i><span>Glass icons</span><i></i>
-    </div>
-  </section>
-
-  <!-- the panel -->
-  <section id="panel" class="showcase">
-    <header class="sec-head reveal">
-      <p class="eyebrow">The panel</p>
-      <h2>Everything the app can tell you, without opening it.</h2>
-      <p class="lede">
-        Most launchers answer a long press with a few shortcuts. Arcadia adds the app's
-        notifications and one of its widgets, and keeps the panel open until you lift
-        your finger.
-      </p>
-    </header>
-
-    <div class="feature-stage reveal">
-      <figure class="stage-shot group-shot">
-        <div class="panel-captures">
-          <a class="panel-cover" href="assets/current-20261115/held-google-home.png" aria-label="View the cover-screen panel screenshot at full size">
-            <img src="assets/current-20261115/held-google-home.png" width="914" height="2048" alt="Google Home held on the cover screen, with its live controls and scene shortcuts">
-          </a>
-          <a class="panel-open" href="assets/panel-google-home-open.png" aria-label="View the open-screen panel screenshot at full size">
-            <img src="assets/panel-google-home-open.png" width="1968" height="2184" alt="Google Home held on the open screen, with its live controls and scene shortcuts">
-          </a>
+    <div class="hero-stage" aria-label="Arcadia on a foldable: the home screen on the open screen, and a held Google Home icon on the cover screen">
+      <span class="orb o1" aria-hidden="true"></span><span class="orb o2" aria-hidden="true"></span>
+      <div class="dev open hero-open enter">
+        <div class="bz"><img src="assets/w44/home-open.webp" width="1400" height="1554" fetchpriority="high"
+          alt="The open screen's home: notification cards across the top, the day's agenda, activity, device batteries, an alarm, the weather and a month calendar, with large folders and the dock"><i class="crease"></i></div>
+      </div>
+      <div class="dev cover hero-cover enter d2">
+        <div class="bz">
+          <video class="clip" muted loop playsinline autoplay preload="metadata" width="540" height="1260"
+                 poster="assets/w44/hold-clip-poster.webp" aria-label="Holding the Google Home icon in the dock: its live device tiles and scene shortcuts open over the home screen">
+            <source src="assets/w44/hold-clip.mp4" type="video/mp4">
+          </video>
+          <i class="cam"></i>
         </div>
-        <figcaption>Hold Google Home on the cover screen or the open one: the same panel, its controls and its scenes, without the app. Select either image to view it at full size.</figcaption>
-      </figure>
-      <ol class="stage-notes">
-        <li><span class="n">01</span><div>
-          <h3>The notifications it sent you</h3>
-          <p>Live ones and, with history on, the ones you already swiped away, kept per app and scrollable inside the panel.</p>
-          <span class="panel-map" aria-hidden="true">
-            <span class="pm-head"></span>
-            <span class="pm-band lit"><i></i><i></i><i></i></span>
-            <span class="pm-band"><i></i><i></i></span>
-            <span class="pm-band tall"></span>
-          </span></div></li>
-        <li><span class="n">02</span><div>
-          <h3>The shortcuts it publishes</h3>
-          <p>Whatever the app offers: a scene, a chat, a search. No loading screen first.</p>
-          <span class="panel-map" aria-hidden="true">
-            <span class="pm-head"></span>
-            <span class="pm-band"><i></i><i></i><i></i></span>
-            <span class="pm-band lit"><i></i><i></i></span>
-            <span class="pm-band tall"></span>
-          </span></div></li>
-        <li><span class="n">03</span><div>
-          <h3>One of its widgets, running</h3>
-          <p>Pick a widget per app and it runs inside the panel, updating as it would on the home screen.</p>
-          <span class="panel-map" aria-hidden="true">
-            <span class="pm-head"></span>
-            <span class="pm-band"><i></i><i></i><i></i></span>
-            <span class="pm-band"><i></i><i></i></span>
-            <span class="pm-band tall lit"></span>
-          </span></div></li>
-      </ol>
+      </div>
     </div>
   </section>
 
-  <!-- notifications -->
-  <section id="notifications" class="showcase">
+  <!-- 1. Hold any icon -->
+  <section id="panel" class="pillar p-hold">
+    <header class="sec-head reveal">
+      <p class="eyebrow">Hold any icon</p>
+      <h2>Hold. Read. <em>Let go.</em></h2>
+      <p class="lede">Its live widget, its latest notifications and its shortcuts, right over your home screen.
+        Tap what you need, let go, and you never left.</p>
+    </header>
+    <div class="stage stage-hold">
+      <div class="dev open big reveal pop">
+        <div class="bz"><img src="assets/w44/hold-home-open.webp" width="1400" height="1554" loading="lazy" decoding="async"
+          alt="Google Home held on the open screen: its live device tiles, then scene shortcuts such as Lights off, Kitchen Lights and Moonlight"><i class="crease"></i></div>
+      </div>
+      <div class="dev cover tilt-r reveal pop d2">
+        <div class="bz"><img src="assets/w44/hold-maps-cover.webp" width="720" height="1680" loading="lazy" decoding="async"
+          alt="Maps held on the cover screen: its search widget running live, with Bolt, Lime, Trainline and Uber stacked under it, and Home and Work"><i class="cam"></i></div>
+      </div>
+    </div>
+    <ul class="trio reveal">
+      <li><b>Its widget, live.</b> Turn on the lights from the Home icon.</li>
+      <li><b>Its notifications.</b> What it sent you, waiting under the icon.</li>
+      <li><b>Its shortcuts.</b> Search Maps, or head home, in one tap.</li>
+    </ul>
+  </section>
+
+  <!-- 2. Notifications -->
+  <section id="notifications" class="pillar p-notes">
     <header class="sec-head reveal">
       <p class="eyebrow">Notifications</p>
-      <h2>What came in, already on the screen.</h2>
-      <p class="lede">
-        Recent notifications sit across the top of the home screen, so the thing you
-        reached for your phone to check is readable without pulling anything down. Tap one
-        to open it, swipe it away when you are done.
-      </p>
+      <h2>Notifications that<br><em>wait their turn.</em></h2>
+      <p class="lede">New ones land as cards across the top of your home screen, picture and time included.
+        Read them in passing. Turn on history to keep the ones you clear.</p>
     </header>
-
-    <figure class="strip-shot glow reveal">
-      <img src="assets/notifications-strip.png" alt="The top of the home screen: six notification cards in two rows of three, each with its picture, its message and the time it arrived">
-      <figcaption>The top of the home screen. Six across the open screen, fewer on the cover screen, oldest dropping off the end.</figcaption>
-    </figure>
-    <figure class="group-shot reveal">
-      <img src="assets/group-notifications.png" alt="The notification strip scrolled to older cards, on the cover screen and on the open screen">
-      <figcaption>Swipe the strip and the older ones come up: three at a time on the cover, six across when open.</figcaption>
-    </figure>
-
-    <ol class="stage-notes wide-notes reveal">
-      <li><span class="n">01</span><div>
-        <h3>Read without opening</h3>
-        <p>Sender, message and arrival time on the card. Most of the time that is the whole errand.</p></div></li>
-      <li><span class="n">02</span><div>
-        <h3>Kept after you clear them</h3>
-        <p>Turn on notification history and clearing the shade does not lose them. Each app keeps its own, including the images they arrived with.</p></div></li>
-      <li><span class="n">03</span><div>
-        <h3>Waiting under the icon</h3>
-        <p>Hold an app and its notifications are in the panel, live ones and kept ones together, scrollable.</p></div></li>
-    </ol>
-  </section>
-
-  <!-- per-display layouts -->
-  <section id="fold" class="screens">
-    <header class="sec-head reveal">
-      <p class="eyebrow">Phones and foldables</p>
-      <h2>One home screen, however the phone is open.</h2>
-      <p class="lede">
-        Arcadia keeps a single layout at a single grid. The inner screen is exactly twice
-        the width of the cover screen&rsquo;s grid, so two cover pages are the two halves of one
-        unfolded page — the same apps, in the same order, in the same places. Unfolding
-        shows you the half you were not looking at. It does not switch layouts, reflow the
-        grid or move anything, and widgets are limited to the width of one half, so nothing
-        is ever split down the fold. When Arcadia starts, your home screen is drawn complete
-        from a saved copy, then checked against your apps, so there is no empty grid filling in.
-      </p>
-    </header>
-    <div class="screen-pair reveal">
-      <figure class="glow cover"><img src="assets/home-cover.png" alt="The cover screen showing one half of the home grid: the day's agenda, activity rings, weather and two large folders">
-        <figcaption>Folded — the cover screen shows one half of the grid.</figcaption></figure>
-      <figure class="glow open"><img src="assets/home-open.png" alt="The inner screen showing both halves of the same home grid at once: the agenda, activity, weather and large folders on the left, device batteries, an alarm and a full month calendar on the right">
-        <figcaption>Unfolded — the same grid with both halves on screen. Nothing moved.</figcaption></figure>
-    </div>
-  </section>
-
-  <!-- scenes -->
-  <section id="scenes" class="split-section">
-    <div class="split-inner reveal">
-      <div class="split-copy">
-        <p class="eyebrow">App Blocks</p>
-        <h2>Smart-home scenes<br><em>under the Home icon.</em></h2>
-        <p class="lede">
-          Name your Google Home routines once and they sit under the Home icon. Turning
-          the lights off on the way out is a press and a tap, instead of opening the app
-          and waiting for it to load.
-        </p>
-        <ul class="ticks">
-          <li>Rename each scene to whatever you call it</li>
-          <li>Reorder them so the one you use most is first</li>
-          <li>Pull any scene out as its own home screen tile</li>
-        </ul>
+    <div class="stage stage-notes">
+      <div class="dev cover tilt-l reveal pop">
+        <div class="bz"><img src="assets/w44/home-cover.webp" width="720" height="1680" loading="lazy" decoding="async"
+          alt="The cover screen's home: three notification cards at the top, then the agenda, activity, weather and the dock"><i class="cam"></i></div>
       </div>
-      <figure class="split-media glow">
-        <img src="assets/app-blocks-editor.png" alt="App Blocks settings with the Google Home demonstration, shortcut switch and scene editor">
-        <figcaption>The App Blocks editor: rename each scene, move it up or down, or send it to the home screen as its own tile.</figcaption>
+      <div class="dev open big reveal pop d2">
+        <div class="bz"><img src="assets/w44/strip-open.webp" width="1400" height="1554" loading="lazy" decoding="async"
+          alt="The open screen with its notification cards scrolled back to older ones, above the widgets and the dock"><i class="crease"></i></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. One home, folded or open -->
+  <section id="fold" class="pillar p-fold">
+    <header class="sec-head reveal">
+      <p class="eyebrow">Folded or open</p>
+      <h2>Fold it. Open it.<br><em>Still home.</em></h2>
+      <p class="lede">The same layout on the cover screen and the inner screen. Open the phone and it unfolds in place,
+        complete the moment it appears.</p>
+    </header>
+    <div class="stage stage-fold">
+      <figure class="fold-step reveal pop">
+        <div class="dev cover">
+          <div class="bz">
+            <video class="clip" muted loop playsinline preload="none" width="540" height="1260"
+                   poster="assets/w44/coldstart-clip-poster.webp" aria-label="Arcadia starting on the cover screen: the home screen appears complete, widgets and all">
+              <source src="assets/w44/coldstart-clip.mp4" type="video/mp4">
+            </video>
+            <i class="cam"></i>
+          </div>
+        </div>
+        <figcaption>Folded: half the home.</figcaption>
+      </figure>
+      <span class="fold-arrow reveal d1" aria-hidden="true"><svg viewBox="0 0 48 24"><path d="M2 12h40M34 4l8 8-8 8"/></svg></span>
+      <figure class="fold-step reveal pop d2">
+        <div class="dev open">
+          <div class="bz"><img src="assets/w44/home-open.webp" width="1400" height="1554" loading="lazy" decoding="async"
+            alt="The same home on the open screen, both halves at once"><i class="crease"></i></div>
+        </div>
+        <figcaption>Open: all of it, nothing moved.</figcaption>
       </figure>
     </div>
   </section>
 
-  <!-- widgets -->
-  <section id="widgets" class="showcase alt">
+  <!-- 4. Make it yours: a bento of five, each its own colour -->
+  <section id="widgets" class="pillar p-yours">
     <header class="sec-head reveal">
-      <p class="eyebrow">Widgets</p>
-      <h2>Stacked, scaled, or hosted inside an icon.</h2>
-      <p class="lede">
-        Arcadia hosts standard Android app widgets and adds three things: several widgets
-        sharing a single grid slot, independent resizing and content scaling, and a widget
-        that runs inside an app's panel instead of on the home screen.
-      </p>
+      <p class="eyebrow">Make it yours</p>
+      <h2>Make it yours.<br><em>Then change your mind.</em></h2>
+      <p class="lede">Widgets that resize and scale, looks that repaint every icon, folders big enough to live in.</p>
     </header>
 
-    <div class="media-trio reveal">
-      <figure class="trio-item tall">
-        <div class="trio-media glow">
-          <img src="assets/icon-widgets.png" width="914" height="2048" alt="Maps held on the home screen: its search widget running inside the panel, with Bolt, Lime, Trainline and Uber stacked under it">
-        </div>
-        <figcaption><strong>Hosted in a panel</strong> Assign one widget per app and it renders in that app's panel rather than consuming a home screen slot, in a compact or large size.</figcaption>
-      </figure>
+    <div class="bento">
+      <article class="tile t-resize reveal">
+        <div class="tile-copy"><h3>Any widget, <em>any size.</em></h3>
+          <p>Hold a widget to set its width, height and zoom, right where it sits.</p></div>
+        <div class="dev cover peek"><div class="bz"><img src="assets/w44/widget-resize-cover.webp" width="720" height="1680" loading="lazy" decoding="async"
+          alt="A weather widget being edited on the home screen: 5 by 2 at 77 percent, with Size, Zoom and Text tabs"><i class="cam"></i></div></div>
+      </article>
 
-      <figure class="trio-item square">
-        <div class="trio-media glow">
-          <video src="assets/stacked-widgets.mp4" poster="assets/stacked-widgets-poster.png" autoplay muted loop playsinline preload="metadata"
-                 aria-label="Several widgets sharing a single grid slot on the home screen, cycled by swiping the stack, while the surrounding icons and folders stay in place"></video>
+      <article class="tile t-looks reveal d1">
+        <div class="tile-copy"><h3>Glass. Hue. <em>Or as it came.</em></h3>
+          <p>Repaint every icon in one go, then go back just as fast.</p></div>
+        <div class="looks">
+          <div class="dev open"><div class="bz"><img src="assets/w44/look-glass-open.webp" width="1400" height="1554" loading="lazy" decoding="async"
+            alt="The open home in the Glass look: every icon clear glass over the wallpaper"><i class="crease"></i></div></div>
+          <div class="dev open"><div class="bz"><img src="assets/w44/look-hue-open.webp" width="1400" height="1554" loading="lazy" decoding="async"
+            alt="The open home in the Hue look: every icon tinted one colour"><i class="crease"></i></div></div>
         </div>
-        <figcaption><strong>Stacks</strong> Any number of widgets share one grid slot and are cycled with a swipe. The gesture is scoped to the stack — surrounding icons, folders and widgets are untouched. Turn on Auto-rotate and a different card is waiting each time you come back.</figcaption>
-      </figure>
+      </article>
 
-      <figure class="trio-item wide">
-        <div class="trio-media glow">
-          <img src="assets/widget-resize.png" width="960" height="400" alt="A widget's editor: its name and grid size, 5 by 2 at 77 percent, tabs for Size, Zoom and Text, and buttons to make it wider, narrower, taller or shorter">
-        </div>
-        <figcaption><strong>Resize and scale</strong> Set the grid footprint, then scale the widget's contents, or only its text, to fit it instead of cropping them.</figcaption>
-      </figure>
+      <article class="tile t-folders reveal">
+        <div class="tile-copy"><h3>Folders with <em>room to breathe.</em></h3>
+          <p>Turn on large folders and every app inside is one tap away.</p></div>
+        <div class="dev cover peek"><div class="bz"><img src="assets/w44/folder-cover.webp" width="720" height="1680" loading="lazy" decoding="async"
+          alt="A large folder open on the cover screen, its apps in a grid"><i class="cam"></i></div></div>
+      </article>
+
+      <article class="tile t-library reveal d1">
+        <div class="tile-copy"><h3>Every app, <em>one swipe up.</em></h3>
+          <p>Search, recents and an App Library sorted for you, or A&ndash;Z.</p></div>
+        <div class="dev cover peek"><div class="bz"><img src="assets/w44/library-cover.webp" width="720" height="1680" loading="lazy" decoding="async"
+          alt="App search on the cover screen: the search field, recent apps, and the App Library with its letter index"><i class="cam"></i></div></div>
+      </article>
+
+      <article id="scenes" class="tile t-blocks reveal d2">
+        <div class="tile-copy"><h3>Good night, <em>in one press.</em></h3>
+          <p>App Blocks put your Google Home routines in the hold panel.</p></div>
+        <div class="dev cover peek"><div class="bz"><img src="assets/w44/app-blocks-cover.webp" width="720" height="1680" loading="lazy" decoding="async"
+          alt="Settings, App Blocks: Google Home automations such as Lights off, Good night and Movie time, and the shortcuts shown when you hold Google Home"><i class="cam"></i></div></div>
+      </article>
     </div>
   </section>
 
-  <!-- under a held icon: icon stacks, the game launcher, media controls.
-       Explained with abstract animations drawn in the page - shapes for icons, a finger, and
-       the thing that opens - rather than filmed. Each stage is sized in container units so it
-       scales with its card; app.js pauses them while they are off screen. -->
-  <section id="features" class="explain">
+  <!-- And so much more -->
+  <section id="features" class="more">
     <header class="sec-head reveal">
-      <p class="eyebrow">Under a held icon</p>
-      <h2>Three more things <em>a long press</em> can carry.</h2>
-      <p class="lede">
-        The panel is not only notifications, shortcuts and a widget. An icon can carry a
-        stack of other apps, a game launcher can carry its games, and an app that is
-        playing carries its controls.
-      </p>
+      <p class="eyebrow">And there is more</p>
+      <h2>Small things, <em>done properly.</em></h2>
     </header>
-
-    <div class="explain-grid">
-      <article class="explain-card reveal">
-        <div class="anim anim-stack" data-anim aria-hidden="true">
-          <i class="ic c1" style="--h:206"></i>
-          <i class="ic c2 held" style="--h:150"></i>
-          <i class="ic c3" style="--h:44"></i>
-          <i class="ic c4" style="--h:320"></i>
-          <i class="ic c1 r2" style="--h:12"></i>
-          <i class="ic c2 r2" style="--h:268"></i>
-          <i class="ic c3 r2" style="--h:196"></i>
-          <i class="ic c4 r2" style="--h:190"></i>
-          <span class="ring"></span>
-          <div class="sheet">
-            <div class="row" style="--i:0"><i style="--h:206"></i><b style="--w:18cqw"></b></div>
-            <div class="row" style="--i:1"><i style="--h:44"></i><b style="--w:12cqw"></b></div>
-            <div class="row" style="--i:2"><i style="--h:320"></i><b style="--w:20cqw"></b></div>
-            <div class="row" style="--i:3"><i style="--h:268"></i><b style="--w:14cqw"></b></div>
-          </div>
-          <span class="finger"></span>
-        </div>
-        <h3>Icon stacks</h3>
-        <p>Any home icon can carry a list of apps you choose. Hold it and they appear underneath it as a stack of small icons, in your order, each one a tap away. Let go and the home screen is exactly as it was.</p>
-        <p class="how">Long press on any icon</p>
-      </article>
-
-      <article class="explain-card reveal delay-1">
-        <div class="anim anim-games" data-anim aria-hidden="true">
-          <i class="ic bg c1" style="--h:206"></i>
-          <i class="ic bg c2" style="--h:44"></i>
-          <i class="ic bg c3" style="--h:320"></i>
-          <i class="ic bg c4" style="--h:150"></i>
-          <div class="chips">
-            <span class="chip" style="--i:0;--h:14;--w:30cqw"><i></i><b></b></span>
-            <span class="chip" style="--i:1;--h:120;--w:22cqw"><i></i><b></b></span>
-            <span class="chip" style="--i:2;--h:200;--w:34cqw"><i></i><b></b></span>
-            <span class="chip" style="--i:3;--h:280;--w:26cqw"><i></i><b></b></span>
-            <span class="chip" style="--i:4;--h:40;--w:31cqw"><i></i><b></b></span>
-            <span class="chip" style="--i:5;--h:330;--w:24cqw"><i></i><b></b></span>
-          </div>
-          <div class="dock"></div>
-          <i class="ic c1" style="--h:12"></i>
-          <i class="ic c2 held" style="--h:262"><svg viewBox="0 0 24 24"><rect x="2.5" y="7" width="19" height="10.5" rx="5.2" fill="none" stroke="currentColor" stroke-width="1.9"/><path d="M8 10.2v4M6 12.2h4" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><circle cx="15.6" cy="11.1" r="1.2" fill="currentColor"/><circle cx="18" cy="13.6" r="1.2" fill="currentColor"/></svg></i>
-          <i class="ic c3" style="--h:190"></i>
-          <i class="ic c4" style="--h:96"></i>
-          <span class="ring"></span>
-          <span class="finger"></span>
-        </div>
-        <h3>Game launcher</h3>
-        <p>Pick a launcher app and choose up to six games for it. Hold its icon and they appear as a list, one under the other, each one straight into the game. Your most played games, a long press away.</p>
-        <p class="how">Long press on the game launcher icon</p>
-      </article>
-
-      <article class="explain-card reveal delay-2">
-        <div class="anim anim-media" data-anim aria-hidden="true">
-          <i class="ic c1" style="--h:206"></i>
-          <i class="ic c2 held" style="--h:340"><svg viewBox="0 0 24 24"><path d="M9 18.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0Zm0 0V6l10-2.5v12.5m0 0a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0Z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round" stroke-linecap="round"/></svg></i>
-          <i class="ic c3" style="--h:44"></i>
-          <span class="ring"></span>
-          <div class="sheet">
-            <div class="art"><span class="disc"></span></div>
-            <b class="title"></b><b class="sub"></b>
-            <div class="btn-row">
-              <span class="ctl"><svg viewBox="0 0 24 24"><rect x="5" y="5" width="2.4" height="14" rx=".8" fill="currentColor"/><path d="M19 5 8.5 12 19 19z" fill="currentColor"/></svg></span>
-              <span class="ctl play"><svg viewBox="0 0 24 24"><rect x="6.5" y="5" width="4" height="14" rx="1" fill="currentColor"/><rect x="13.5" y="5" width="4" height="14" rx="1" fill="currentColor"/></svg></span>
-              <span class="ctl"><svg viewBox="0 0 24 24"><rect x="16.6" y="5" width="2.4" height="14" rx=".8" fill="currentColor"/><path d="M5 5l10.5 7L5 19z" fill="currentColor"/></svg></span>
-            </div>
-            <div class="track"><span class="fill"></span><span class="knob"></span></div>
-          </div>
-          <span class="finger"></span>
-        </div>
-        <h3>Media controls</h3>
-        <p>Hold the icon of an app that is playing and its panel shows what is on: the artwork, and play, pause and next. Two things and nothing else, with no use counts beside them. Skip the track or pause it, then let go.</p>
-        <p class="how">Long press on an app that is playing</p>
-      </article>
+    <div id="control" class="more-grid">
+      <article class="reveal"><h3>Icon stacks</h3><p>Several apps under one icon. Hold it to pick.</p></article>
+      <article class="reveal d1"><h3>Widget stacks</h3><p>Several widgets in one spot. Swipe through them.</p></article>
+      <article class="reveal d2"><h3>App Zero</h3><p>One app owns the page left of home. Swipe right and you are in it.</p></article>
+      <article class="reveal"><h3>Game launcher</h3><p>Up to six games you choose, under one icon.</p></article>
+      <article class="reveal d1"><h3>Hide apps</h3><p>Gone from home, the dock and search. Still installed, still working.</p></article>
+      <article class="reveal d2"><h3>Backup and restore</h3><p>Pages, folders, widgets and settings in a file you keep.</p></article>
+      <article class="reveal"><h3>Lock the layout</h3><p>A stray press cannot drag an icon out of place.</p></article>
+      <article class="reveal d1"><h3>Gestures</h3><p>Double tap to search or lock. Swipe up for search.</p></article>
+      <article class="reveal d2"><h3>Undo</h3><p>Moved something by mistake? Undo and Redo are right there.</p></article>
     </div>
   </section>
 
-  <!-- control -->
-  <section id="control" class="features">
-    <header class="sec-head reveal">
-      <p class="eyebrow">Control</p>
-      <h2>Set up once, then left alone.</h2>
-    </header>
-
-    <figure class="group-shot reveal">
-      <img src="assets/group-pages.png" alt="Three phones: the pages overview with four page cards and Appearance, Widgets, Settings and Lock tiles; the page editor listing a page's apps with Move buttons and ticks; the widget picker searched for weather">
-      <figcaption>Long-press empty space for the pages overview; a pencil on each page lists its apps; the widget picker searches everything your apps offer.</figcaption>
-    </figure>
-
-    <div class="cards">
-      <article class="card reveal">
-        <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12h11M10 7l-5 5 5 5"/><rect x="17.5" y="5" width="3" height="14" rx="1.2"/></svg></div><h3>App Zero</h3>
-        <p>One app owns the page left of home. Swipe right from page zero and you are in it.</p>
-      </article>
-      <article class="card reveal delay-1">
-        <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="2.5" y="7" width="19" height="10.5" rx="5.2"/><path d="M8 10.2v4M6 12.2h4"/><circle cx="15.6" cy="11.1" r="1.1" fill="currentColor" stroke="none"/><circle cx="18" cy="13.6" r="1.1" fill="currentColor" stroke="none"/></svg></div><h3>Game launcher</h3>
-        <p>Pick a launcher app, then choose up to six of your most played games for its panel.</p>
-      </article>
-      <article class="card reveal delay-2">
-        <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 3l18 18M10.6 10.6a2 2 0 0 0 2.8 2.8M9.9 5.2A10.6 10.6 0 0 1 21 12a11 11 0 0 1-2.6 3.3M6.3 6.3A11 11 0 0 0 3 12s3.5 6.5 9 6.5a9.6 9.6 0 0 0 3.2-.6"/></svg></div><h3>Hide what you never open</h3>
-        <p>Hidden apps leave home, the dock and search. They stay installed and still work.</p>
-      </article>
-      <article class="card reveal">
-        <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 16v-5a6 6 0 0 1 12 0v5l1.5 2h-15zM10 20.5a2 2 0 0 0 4 0"/></svg></div><h3>Notification history</h3>
-        <p>Switch it on and notifications are kept per app, with the images they arrived with, after the shade has been cleared. Clear one app or all of them.</p>
-      </article>
-      <article class="card reveal delay-1">
-        <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 4v10M8 10l4 4 4-4M4 16v3h16v-3"/></svg></div><h3>Backup and restore</h3>
-        <p>Pages, folders, widgets and settings saved to a file you keep. New phone, same home screen.</p>
-      </article>
-      <article class="card reveal delay-2">
-        <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="8" height="14" rx="2"/><rect x="13" y="5" width="8" height="14" rx="2"/></svg></div><h3>Phones and foldables</h3>
-        <p>One layout at one grid. The cover screen shows half of it, the inner screen shows all of it, and opening the phone rearranges nothing.</p>
-      </article>
-      <article class="card reveal">
-        <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></div><h3>Lock the home screen</h3>
-        <p>Freeze the layout so a stray press cannot drag an icon out of place. Press and hold still opens the app&rsquo;s block — the lock stops things moving, not the controls you use.</p>
-      </article>
-      <article class="card reveal delay-1">
-        <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="2"/><path d="M7.5 7.5a6.4 6.4 0 0 0 0 9M16.5 7.5a6.4 6.4 0 0 1 0 9"/></svg></div><h3>Gestures</h3>
-        <p>Double tap to search or lock the phone. Swipe up for search, swipe up on the dock for the task switcher.</p>
-      </article>
-      <article class="card reveal delay-2">
-        <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="7" height="7" rx="1.6"/><rect x="13" y="4" width="7" height="7" rx="1.6"/><rect x="4" y="13" width="7" height="7" rx="1.6"/><rect x="13" y="13" width="7" height="7" rx="1.6"/></svg></div><h3>Large folders</h3>
-        <p>Switch it on, or resize a folder past one slot, and the folder becomes a large tile: its apps in a grid, each one tap away.</p>
-      </article>
-      <article class="card reveal">
-        <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M8 9h8M8 12h8M8 15h5"/></svg></div><h3>App Library</h3>
-        <p>Swipe up and every app is there: sorted into categories you can rename, or A&ndash;Z.</p>
-      </article>
-      <article class="card reveal delay-1">
-        <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 7L4.5 11.5 9 16M4.5 11.5H15a4.5 4.5 0 0 1 0 9h-2"/></svg></div><h3>Undo</h3>
-        <p>Moved something by mistake? Undo and Redo are on screen while you arrange the home screen.</p>
-      </article>
-      <article class="card reveal delay-2">
-        <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 4a8 8 0 0 0 0 16z" fill="currentColor" stroke="none"/></svg></div><h3>Appearance</h3>
-        <p>Default, Dark, Glass or Hue icons, and light or dark panels, from solid to fully see-through.</p>
-      </article>
-    </div>
-
-    <figure class="group-shot reveal">
-      <img src="assets/group-settings.png" alt="Four settings pages side by side: the settings list, Gestures, Notifications and Backup and restore">
-      <figcaption>The settings pages: the main list, Gestures, Notifications, and Backup and restore.</figcaption>
-    </figure>
-  </section>
-
-  <!-- privacy -->
+  <!-- 5. Privacy: dark, the approved line -->
   <section id="privacy" class="privacy">
-    <div class="privacy-inner reveal">
-      <p class="eyebrow">Privacy</p>
-      <h2>Your phone. Your rules.<br><em>Zero ads. No data sold.</em></h2>
-      <p class="lede">Built to respect your privacy.</p>
-      <p>Your privacy is a top priority. Your home-screen layout and notification history stay
-        in Android’s private app storage. No account needed. You choose which permissions to allow.</p>
-      <div class="pills">
-        <span class="pill">Zero ads</span>
-        <span class="pill">No data sold</span>
-        <span class="pill">Privacy first</span>
-        <span class="pill">No account</span>
+    <div class="privacy-inner">
+      <div class="privacy-copy reveal">
+        <p class="eyebrow">Private by design</p>
+        <h2>Your phone. Your rules.<br><em>Zero ads. No data sold.</em></h2>
+        <p class="lede">Built to respect your privacy.</p>
+        <p>All six permissions are optional, and Arcadia works without any of them. No account needed. Your
+          home-screen layout and notification history stay in Android&rsquo;s private app storage.</p>
+        <p class="fine">Clear, simple information about your data. <a href="privacy-policy.html">Read the policy</a>.</p>
       </div>
-      <p class="fine">Clear, simple information about your data. <a href="privacy-policy.html">Read the policy</a>.</p>
+      <div class="dev cover privacy-dev reveal pop d1">
+        <div class="bz"><img src="assets/w44/permissions-cover.webp" width="720" height="1680" loading="lazy" decoding="async"
+          alt="Settings, Permissions: all six permissions are optional, each one listed with what it does"><i class="cam"></i></div>
+      </div>
     </div>
   </section>
 
   <section id="get" class="get">
     <div class="get-inner reveal">
-      <h2>Get Arcadia</h2>
-      <p class="lede">Productivity. No account.</p>
-      <div class="cta"><a class="btn primary" href="https://play.google.com/store/apps/details?id=com.arcadiafoundry.launcher" rel="noopener">Google&nbsp;Play</a></div>
+      <img class="mark" src="assets/icon.png" alt="" width="96" height="96" loading="lazy">
+      <h2>Your home.<br><em>One hold away.</em></h2>
+      <p class="lede">Free on Google Play. No account.</p>
+      <div class="cta"><a class="btn" href="https://play.google.com/store/apps/details?id=com.arcadiafoundry.launcher" rel="noopener">Get it on Google&nbsp;Play</a></div>
+      <p class="fine">Actual Arcadia screens, recorded on a Galaxy Z Fold.</p>
     </div>
   </section>
 
@@ -497,7 +235,7 @@
 
 <footer>
   <div class="foot-inner">
-    <img src="assets/icon.png" alt="" width="28" height="28">
+    <img src="assets/icon.png" alt="" width="28" height="28" loading="lazy">
     <p>Arcadia · <a href="privacy-policy.html">Privacy policy</a> · <a href="terms-of-service.html">Terms of service</a> · <a href="accessibility/">Accessibility service</a> · <a href="mailto:contact@arcadiafoundry.com">contact@arcadiafoundry.com</a></p>
 
     <div class="legal">
@@ -520,7 +258,8 @@
         Product names, logos and brands shown on this page — including in screenshots and
         video — are the property of their respective owners and are used only to identify
         the apps concerned. Their use does not imply any affiliation with, sponsorship by,
-        or endorsement from those owners.
+        or endorsement from those owners. Galaxy and Galaxy Z Fold are trademarks of Samsung
+        Electronics Co., Ltd.
       </p>
       <p>
         Android, Google Home and Google Play are trademarks of Google LLC. All other

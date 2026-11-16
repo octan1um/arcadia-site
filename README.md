@@ -12,26 +12,35 @@ The public policy describes the currently shipped app. Unactivated Firebase work
 | path | what |
 | --- | --- |
 | `index.html` | the page |
-| `style.css` | all styling: the light palette, the backdrop, the three feature animations |
-| `app.js` | scroll reveal, the hold-to-open hero demo, pausing loops that are off screen |
+| `style.css` | all styling: the paper palette, per-section accents, the CSS device frames, the motion |
+| `app.js` | scroll reveal, the hero headline rising word by word, clips that play only while on screen |
 | `privacy-policy.html` | privacy policy, also the URL Play requires |
 | `terms-of-service.html` | terms for the app and website, including lawful warranty and liability exclusions |
 | `accessibility/index.html` | how the optional accessibility service is used, the page Play's accessibility declaration links to; its video is `media/arcadia-accessibility-demo.mp4` with `media/arcadia-accessibility-demo-poster.jpg` |
-| `assets/` | icon and product screenshots |
+| `assets/` | icon and product screenshots; `assets/w44/` holds the relaunch stills and clips |
 | `tools/` | render and measurement scripts (see below) |
 
 ## Design
 
-The page is light: warm paper, warm greys for type, the app icon's cyan and
-periwinkle for accents, and an italic serif for the one emphasised phrase in each
-heading. The launcher itself is dark glass over a wallpaper; the abstract pieces on
-the page (the opener, the three animated features) draw the wallpaper and use
-frosted white for the glass, so they read as the same idea in daylight.
+The November 2026 relaunch (W44): one idea per section, Apple-inspired. Each section has an
+eyebrow, a large tight headline whose second line carries the section's colour, two lines of
+copy and one device moment. Order: hero (the open Fold's home with the cover phone playing a
+real hold), Hold any icon (`#panel`), Notifications (`#notifications`), Folded or open
+(`#fold`), Make it yours as a bento (`#widgets`, `#scenes`), And there is more (`#features`,
+`#control`), a dark privacy section with the approved line (`#privacy`), and the closing
+call to action (`#get`).
 
-`#features` explains icon stacks, the game launcher and media controls with CSS
-animations drawn in the page: shapes for icons, a finger, and the thing that opens.
-They are transform and opacity only, share one 7-second clock, are paused while off
-screen, and collapse to a single open still under `prefers-reduced-motion`.
+- Paper tones throughout, one vivid accent family per section drawn from the screens, the
+  privacy section dark. The system font stack only; no web fonts.
+- Device frames are CSS (`.dev.cover`, `.dev.open`): metal edge, black bezel, the capture at
+  its own aspect, the hinge and crease on the open Fold, in percentages so they scale.
+  Proportions match the Play v2 slides (`play/html-20261115-v2` in arcadia-marketing).
+- Screens are `assets/w44/`: WebP stills and two muted H.264 clips with WebP posters, made
+  from the 15 Nov Fold captures with nothing blurred or masked.
+- Motion is transform and opacity only, revealed on scroll; everything is visible without
+  JavaScript and under `prefers-reduced-motion`, where clips stay on their poster.
+- Avoid `text-wrap: balance`: with this page's headlines it hangs Chromium 130's layout
+  (headless renders never reach `load`). Headlines break with explicit `<br>` instead.
 
 ## Running it locally
 
