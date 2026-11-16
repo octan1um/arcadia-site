@@ -147,8 +147,12 @@ body.scrolled .nav { border-color: var(--line); background: rgba(247, 243, 236, 
   position: relative; display: flex; justify-content: center; align-items: flex-end;
   margin: clamp(48px, 6vw, 80px) auto 0; max-width: 1180px; padding-bottom: clamp(56px, 7vw, 110px);
 }
-.hero-open { width: min(820px, 76vw); }
-.hero-cover { position: absolute; z-index: 2; width: min(300px, 27vw); right: calc(50% - min(500px, 47vw)); bottom: clamp(20px, 3vw, 50px); rotate: 6deg; }
+/* The hero's open Fold: as wide as it has been drawn (640 px), never wider than the screen. `.dev.open` sets 640 px
+   with two classes, so a one-class `.hero-open` width never applied and a phone clipped the Fold (W50). */
+.dev.open.hero-open { width: min(640px, 86vw); }
+/* Same for the hero's cover phone: `.dev.cover` sets 280 px with two classes (W50). */
+.dev.cover.hero-cover { width: min(280px, 27vw); }
+.hero-cover { position: absolute; z-index: 2; right: calc(50% - min(500px, 47vw)); bottom: clamp(20px, 3vw, 50px); rotate: 6deg; }
 /* The held cover phone floats, the way the panel stays up for as long as you hold. */
 @media (prefers-reduced-motion: no-preference) {
   .hero-cover .bz { animation: breathe 6s ease-in-out infinite 2.2s; }
@@ -321,8 +325,9 @@ footer { background: var(--paper-2); border-top: 1px solid var(--line); padding:
 @media (max-width: 640px) {
   body { font-size: 16px; }
   .hero { padding-top: 104px; }
-  .hero-open { width: 86vw; }
-  .hero-cover { width: 31vw; right: 1vw; }
+  .dev.open.hero-open { width: 86vw; }
+  .hero-cover { right: 1vw; }
+  .dev.cover.hero-cover { width: 31vw; }
   .stage .dev.open.big { width: 78vw; }
   .stage .dev.cover { width: 34vw; }
   .stage-hold .dev.cover, .stage-notes .dev.cover { margin-left: -14vw; margin-right: 0; }
